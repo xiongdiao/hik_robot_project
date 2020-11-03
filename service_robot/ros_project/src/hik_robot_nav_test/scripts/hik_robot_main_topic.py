@@ -4,11 +4,11 @@ import rospy
 import move_base
 import actionlib
 from std_msgs.msg import String 
-from hik_robot_nav_test.msg import HikRobotSetTaskMsg, HikRobotSetModules
+from hik_robot_nav_test.msg import HikRobotSetModules
+from rosjava_hikrobot_msgs.msg import HikRobotSetTaskMsg
 from geometry_msgs.msg import PoseStamped
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from smach_ros import SimpleActionState  
-
 
 
 def patrol_task(msg):

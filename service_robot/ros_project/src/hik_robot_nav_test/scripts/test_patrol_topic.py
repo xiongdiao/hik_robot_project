@@ -4,7 +4,8 @@ import rospy
 from std_msgs.msg import String, Header
 from move_base_msgs.msg import MoveBaseGoal
 from geometry_msgs.msg import PoseStamped
-from hik_robot_nav_test.msg import HikRobotSetTaskMsg
+#from hik_robot_nav_test.msg import HikRobotSetTaskMsg
+from rosjava_hikrobot_msgs.msg import HikRobotSetTaskMsg
 
 def talker():
     pub = rospy.Publisher('HiRobotSetTaskMsg', HikRobotSetTaskMsg, queue_size=10)
@@ -29,6 +30,7 @@ def talker():
     pub.publish(HikRobotSetTaskMsg(2,3,3,4,5,robot_goal))
     count = count + 1
     rate.sleep()
+    rospy.spin()
 
 
 if __name__ == '__main__':
