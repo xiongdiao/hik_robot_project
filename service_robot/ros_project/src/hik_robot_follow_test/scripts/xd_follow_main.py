@@ -17,7 +17,7 @@ def quit(signum, frame):
 class FollowTask():
     def __init__(self):
         # The root node
-        FollowTaskSeqNode = Sequence("FollowTask")
+        FollowTaskSeqNode = Sequence("FollowTask", reset_after = True)
         self.node = FollowTaskSeqNode
         # Create follow task sub
         rospy.Subscriber("HikRobotFollowTaskMsg", HikRobotSetModulesMsg, self.followTaskMsgCb, tcp_nodelay=True)
@@ -25,7 +25,7 @@ class FollowTask():
         rospy.Service('HikRobotFollowTaskSrv', HikRobotSetModulesSrv, self.followTaskSrvCb)
 
         # Create follow action
-        FollowActionNode = FollowAction("FollowActionNode", 1, 2, 1)
+        FollowActionNode = FollowAction("FollowActionNode", 1, 5, 1)
 
         #PrepareCaramerSeq = Selector("PrepareCaramerSel")
         #TurnAroundActionNode = TurnAroundAction()
@@ -50,25 +50,18 @@ class FollowTask():
                 continue
 
             status = FollowTaskSeqNode.run()
-
             if status == TaskStatus.SUCCESS:
                 # 执行success后，上报任务状态已完成
+                self.NeedFollow = False
                 print "Finished running tree."
-                #break
-
             elif status == TaskStatus.RUNNING:
                 print "Running status"
-
-            elif status == TaskStatus.IDLEING:
-                print "Running idle"
-
             elif status == TaskStatus.FAILURE:
-                # 执行failure后，上报状态人物执行失败
+                # 执行failure后，上报状态任务执行失败
+                self.NeedFollow = False
                 print "Running failure"
-                #break
             else:
                 print "unknow status"
-
             time.sleep(1)
 
     def followTaskMsgCb(self, msg):
@@ -91,8 +84,6 @@ class FollowTask():
                 self.NeedFollow = True
         return True
 
-
-
 class FollowAction(Task):
     def __init__(self, name, start, stop, step, *args, **kwargs):
         super(FollowAction, self).__init__(name, *args, **kwargs)
@@ -105,10 +96,16 @@ class FollowAction(Task):
 
     def run(self):
         print self.name, "running"
-        return TaskStatus.SUCCESS
+        self.count += self.step
+        print self.count, self.stop
+        if self.count >= self.stop:
+            return TaskStatus.SUCCESS
+        else:
+            return TaskStatus.RUNNING
 
     def reset(self):
-        pass
+        print self.name, "reset"
+        self.count = 0
 
 if __name__ == '__main__':
     rospy.init_node('FollowTask')
