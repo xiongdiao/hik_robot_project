@@ -39,7 +39,9 @@ catkin_package(CATKIN_DEPENDS
 
 
 catkin_install_python(PROGRAMS 
-    scripts/xd_follow_test.py
+    scripts/xd_follow_main.py
+    scripts/test_follow.py
+    scripts/xd_btree_ros.py
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

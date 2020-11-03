@@ -1,10 +1,11 @@
 #!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 
 import rospy
 import move_base
 import actionlib
 from std_msgs.msg import String 
-from hik_robot_nav_test.msg import HikRobotSetModules
+from hik_robot_nav_test.msg import HikRobotSetModulesMsg
 from rosjava_hikrobot_msgs.msg import HikRobotSetTaskMsg
 from geometry_msgs.msg import PoseStamped
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
@@ -22,12 +23,12 @@ def patrol_task(msg):
 def follow_task(msg):
     if msg.cmd == 0:
         print "follow task stop"
-        pub = rospy.Publisher('HiRobotSetModules', HikRobotSetModules, queue_size=10)
-        pub.publish(HikRobotSetModules(0,0,0))
+        pub = rospy.Publisher('HiRobotSetModules', HikRobotSetModulesMsg, queue_size=10)
+        pub.publish(HikRobotSetModulesMsg(0,0,0))
     else:
         print "follow task start"
-        pub = rospy.Publisher('HiRobotSetModules', HikRobotSetModules, queue_size=10)
-        pub.publish(HikRobotSetModules(0,0,1))
+        pub = rospy.Publisher('HiRobotSetModules', HikRobotSetModulesMsg, queue_size=10)
+        pub.publish(HikRobotSetModulesMsg(0,0,1))
 
 
 def set_task_callback(msg):

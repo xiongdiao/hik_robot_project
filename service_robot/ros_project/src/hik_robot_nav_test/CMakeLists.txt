@@ -20,13 +20,13 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
     DIRECTORY msg 
     FILES HikRobotSetTaskMsg.msg
-    FILES HikRobotSetModules.msg
+    FILES HikRobotSetModulesMsg.msg
 )
 
 add_service_files( 
     DIRECTORY srv 
     FILES HikRobotSetTaskSrv.srv
-    FILES HikRobotSetTaskSrv.srv
+    FILES HikRobotSetModulesSrv.srv
 )
     
 
