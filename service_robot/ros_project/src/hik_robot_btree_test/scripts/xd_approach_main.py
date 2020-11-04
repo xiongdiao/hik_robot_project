@@ -11,6 +11,14 @@ from hik_robot_test.msg import HikRobotSetModulesMsg
 from hik_robot_test.srv import HikRobotSetModulesSrv
 from rosjava_hikrobot_msgs.msg import HikRobotSetTaskMsg, HikRobotVoiceOut
 
+goal_point=[   
+    ['主卧', (-4.04510669055, -2.7710217169, -2.93690315345e-07 ), ( -2.50929001864e-06, -1.04532299837e-08, 0.999954645332, 0.0095240365914)],
+    ['次卧', (4.28719623994, -1.68696903075, 6.7047681851e-09),    (1.39978919884e-08, 1.58919747342e-08, -0.557240571657, 0.830351097608)],
+    ['阳台', (0.112158038761, 5.17669966938, 4.69199491482e-08),   (-1.5094644549e-08, 1.16399754546e-07, 0.734774907242, 0.678311016929)],
+    ['客厅', (0, 0, 0),    					   (0, 0, 0, 0)],
+    ['书房', (-4.01049644155, 2.2449960999, -2.97643652442e-06),   (-6.6380401294e-06, -3.49535828781e-06, 0.899343173441, 0.437243474884)],  
+]
+
 def quit(signum, frame):
     print 'stop task'
     sys.exit()
@@ -107,28 +115,22 @@ class ApproachAction(Task):
                 print "到主卧"
                 self.goal.target_pose.header.frame_id = 'map'
                 self.goal.target_pose.header.stamp = rospy.Time.now()
-                self.goal.target_pose.pose.position.x = 0.112158038761
-                self.goal.target_pose.pose.position.y =  5.17669966938
-                self.goal.target_pose.pose.position.z = 4.69199491482e-08
-                self.goal.target_pose.pose.orientation.x = -1.5094644549e-08
-                self.goal.target_pose.pose.orientation.y = 1.16399754546e-07
-                self.goal.target_pose.pose.orientation.z = 0.734774907242
-                self.goal.target_pose.pose.orientation.w = 0.678311016929
-
+                self.goal.target_pose.pose.position.x    = goal_point[0][1][0]
+                self.goal.target_pose.pose.position.y    = goal_point[0][1][1]
+                self.goal.target_pose.pose.position.z    = goal_point[0][1][2]
+                self.goal.target_pose.pose.orientation.x = goal_point[0][2][0]
+                self.goal.target_pose.pose.orientation.y = goal_point[0][2][1]
+                self.goal.target_pose.pose.orientation.z = goal_point[0][2][2]
+                self.goal.target_pose.pose.orientation.w = goal_point[0][2][3]
                 self.moveBaseAction.send_goal(self.goal, active_cb = self.actionActiveCb, done_cb = self.actionDoneCb)
-                #self.status = TaskStatus.SUCCESS
             elif msg.num == 1:
                 print "到次卧"
-                self.status = TaskStatus.SUCCESS
             elif msg.num == 2:
                 print "到阳台"
-                self.status = TaskStatus.SUCCESS
             elif msg.num == 3:
                 print "到客厅"
-                self.status = TaskStatus.SUCCESS
             elif msg.num == 4:
                 print "到厨房"
-                self.status = TaskStatus.SUCCESS
 
     def actionActiveCb(self):
         print self.name, "action active successed"
