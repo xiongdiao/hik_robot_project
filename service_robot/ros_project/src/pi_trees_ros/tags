@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+MonitorTask	src/pi_trees_ros/pi_trees_ros.py	/^class MonitorTask(Task):$/;"	c
+ServiceTask	src/pi_trees_ros/pi_trees_ros.py	/^class ServiceTask(Task):$/;"	c
+SimpleActionTask	src/pi_trees_ros/pi_trees_ros.py	/^class SimpleActionTask(Task):$/;"	c
+__init__	src/pi_trees_ros/pi_trees_ros.py	/^    def __init__(self, name, action, action_type, goal, rate=5, connect_timeout=10, result_timeout=30, reset_after=False, active_cb=None, done_cb=None, feedback_cb=None):$/;"	m	class:SimpleActionTask
+__init__	src/pi_trees_ros/pi_trees_ros.py	/^    def __init__(self, name, service, service_type, request, result_cb=None, wait_for_service=True, timeout=5):$/;"	m	class:ServiceTask
+__init__	src/pi_trees_ros/pi_trees_ros.py	/^    def __init__(self, name, topic, msg_type, msg_cb, wait_for_message=True, timeout=5):$/;"	m	class:MonitorTask
+_msg_cb	src/pi_trees_ros/pi_trees_ros.py	/^    def _msg_cb(self, msg):$/;"	m	class:MonitorTask
+d	setup.py	/^d = generate_distutils_setup($/;"	v
+default_active_cb	src/pi_trees_ros/pi_trees_ros.py	/^    def default_active_cb(self):$/;"	m	class:SimpleActionTask
+default_done_cb	src/pi_trees_ros/pi_trees_ros.py	/^    def default_done_cb(self, result_state, result):$/;"	m	class:SimpleActionTask
+default_feedback_cb	src/pi_trees_ros/pi_trees_ros.py	/^    def default_feedback_cb(self, msg):$/;"	m	class:SimpleActionTask
+package_dir	setup.py	/^    package_dir={'': 'src'},$/;"	v
+packages	setup.py	/^    packages=['pi_trees_ros'],$/;"	v
+reset	src/pi_trees_ros/pi_trees_ros.py	/^    def reset(self):$/;"	m	class:ServiceTask
+reset	src/pi_trees_ros/pi_trees_ros.py	/^    def reset(self):$/;"	m	class:SimpleActionTask
+run	src/pi_trees_ros/pi_trees_ros.py	/^    def run(self):$/;"	m	class:MonitorTask
+run	src/pi_trees_ros/pi_trees_ros.py	/^    def run(self):$/;"	m	class:ServiceTask
+run	src/pi_trees_ros/pi_trees_ros.py	/^    def run(self):$/;"	m	class:SimpleActionTask

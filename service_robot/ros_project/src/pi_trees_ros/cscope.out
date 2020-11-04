@@ -1,0 +1,1493 @@
+cscope 15 $HOME/project/xd_robot/xd_robot_test/src/pi_trees_ros -q 0000000166 0000007005
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_ros/setup.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+äom
+ 
+	gdi¡uts
+.
+cÜe
+ 
+impÜt
+ 
+£tup
+
+
+4 
+äom
+ 
+	gÿtkš_pkg
+.
+pythÚ_£tup
+ 
+impÜt
+ 
+g’”©e_di¡uts_£tup
+
+
+6 
+	gd
+ = 
+g’”©e_di¡uts_£tup
+(
+
+7 
+·ckages
+=['pi_trees_ros'],
+
+8 
+·ckage_dœ
+={'': 'src'},
+
+11 
+£tup
+(**
+d
+)
+
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_ros/src/pi_trees_ros/__init__.py
+
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_ros/src/pi_trees_ros/pi_trees_ros.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+impÜt
+ 
+ro¥y
+
+
+4 
+impÜt
+ 
+aùiÚlib
+
+
+5 
+äom
+ 
+	gaùiÚlib_msgs
+.
+msg
+ 
+impÜt
+ 
+GßlStus
+
+
+6 
+äom
+ 
+	gpi_Œ“s_lib
+.
+pi_Œ“s_lib
+ 
+impÜt
+ *
+
+7 
+impÜt
+ 
+sys
+
+
+9 
+şass
+ 
+	$MÚ™ÜTask
+(
+Task
+):
+
+11 
+Tuº
+ 
+a
+ 
+ROS
+ 
+subsüib”
+ 
+što
+‡ 
+Task
+.
+
+13 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+tİic
+, 
+msg_ty³
+, 
+msg_cb
+, 
+wa™_fÜ_mes§ge
+=
+True
+, 
+timeout
+=5):
+
+14 
+	`su³r
+(
+MÚ™ÜTask
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+)
+
+16 
+£lf
+.
+tİic
+ =opic
+
+17 
+£lf
+.
+msg_ty³
+ = msg_type
+
+18 
+£lf
+.
+timeout
+ =imeout
+
+19 
+£lf
+.
+msg_cb
+ = msg_cb
+
+21 
+ro¥y
+.
+	`logšfo
+("SubsüibšgØtİiø" + 
+tİic
+)
+
+23 
+wa™_fÜ_mes§ge
+:
+
+24 
+Œy
+:
+
+25 
+ro¥y
+.
+	$wa™_fÜ_mes§ge
+(
+tİic
+, 
+msg_ty³
+, 
+timeout
+=
+£lf
+.timeout)
+
+26 
+ro¥y
+.
+	`logšfo
+("Connected.")
+
+27 
+exû±
+:
+
+28 
+ro¥y
+.
+	`logšfo
+("Timed ouˆwa™šg fÜ " + 
+tİic
+)
+
+30 #Subsüib
+to
+ 
+the
+ 
+giv’
+ 
+tİic
+ 
+w™h
+hgiv’ 
+ÿÎback
+ 
+funùiÚ
+ 
+execu‹d
+ 
+vŸ
+ 
+	`run
+()
+
+31 
+ro¥y
+.
+	$Subsüib”
+(
+£lf
+.
+tİic
+, s–f.
+msg_ty³
+, s–f.
+_msg_cb
+)
+
+33 
+def
+ 
+	$_msg_cb
+(
+£lf
+, 
+msg
+):
+
+34 
+£lf
+.
+	`£t_¡©us
+(£lf.
+	$msg_cb
+(
+msg
+))
+
+36 
+def
+ 
+	$run
+(
+£lf
+):
+
+37  
+£lf
+.
+¡©us
+
+
+39 
+şass
+ 
+	$S”viûTask
+(
+Task
+):
+
+41 
+Tuº
+ 
+a
+ 
+ROS
+ 
+£rviû
+ 
+što
+‡ 
+Task
+.
+
+43 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+£rviû
+, 
+£rviû_ty³
+, 
+»que¡
+, 
+»suÉ_cb
+=
+NÚe
+, 
+wa™_fÜ_£rviû
+=
+True
+, 
+timeout
+=5):
+
+44 
+	`su³r
+(
+S”viûTask
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+)
+
+46 
+£lf
+.
+»suÉ
+ = 
+NÚe
+
+
+47 
+£lf
+.
+»que¡
+ =„equest
+
+48 
+£lf
+.
+timeout
+ =imeout
+
+49 
+£lf
+.
+»suÉ_cb
+ =„esult_cb
+
+51 
+ro¥y
+.
+	`logšfo
+("CÚÃùšgØ£rviû " + 
+£rviû
+)
+
+53 
+wa™_fÜ_£rviû
+:
+
+54 
+ro¥y
+.
+	`logšfo
+("Waiting for service")
+
+55 
+ro¥y
+.
+	$wa™_fÜ_£rviû
+(
+£rviû
+, 
+timeout
+=
+£lf
+.timeout)
+
+56 
+ro¥y
+.
+	`logšfo
+("Connected.")
+
+58 #C»©
+a
+ 
+£rviû
+ 
+´oxy
+
+
+59 
+£lf
+.
+£rviû_´oxy
+ = 
+ro¥y
+.
+	$S”viûProxy
+(
+£rviû
+, 
+£rviû_ty³
+)
+
+61 
+def
+ 
+	$run
+(
+£lf
+):
+
+62 
+Œy
+:
+
+63 
+»suÉ
+ = 
+£lf
+.
+	$£rviû_´oxy
+(
+£lf
+.
+»que¡
+)
+
+64 
+£lf
+.
+»suÉ_cb
+ 
+is
+ 
+nÙ
+ 
+NÚe
+:
+
+65 
+£lf
+.
+	$»suÉ_cb
+(
+»suÉ
+)
+
+66  
+TaskStus
+.
+SUCCESS
+
+
+67 
+exû±
+:
+
+68 
+ro¥y
+.
+	`log”r
+(
+sys
+.
+	$exc_šfo
+())
+
+69  
+TaskStus
+.
+FAILURE
+
+
+71 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+72 
+£lf
+.
+¡©us
+ = 
+NÚe
+
+
+74 
+şass
+ 
+	$Sim¶eAùiÚTask
+(
+Task
+):
+
+76 
+Tuº
+ 
+a
+ 
+ROS
+ 
+aùiÚ
+ 
+što
+‡ 
+Task
+.
+
+78 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+aùiÚ
+, 
+aùiÚ_ty³
+, 
+gßl
+, 
+¿‹
+=5, 
+cÚÃù_timeout
+=10, 
+»suÉ_timeout
+=30, 
+»£t_aá”
+=
+F®£
+, 
+aùive_cb
+=
+NÚe
+, 
+dÚe_cb
+=NÚe, 
+ãedback_cb
+=None):
+
+79 
+	`su³r
+(
+Sim¶eAùiÚTask
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+)
+
+81 
+£lf
+.
+aùiÚ
+ =‡ction
+
+82 
+£lf
+.
+gßl
+ = goal
+
+83 
+£lf
+.
+tick
+ = 1.0 / 
+¿‹
+
+
+84 
+£lf
+.
+¿‹
+ = 
+ro¥y
+.
+	$R©e
+(
+¿‹
+)
+
+86 
+£lf
+.
+»suÉ
+ = 
+NÚe
+
+
+87 
+£lf
+.
+cÚÃù_timeout
+ = connect_timeout
+
+88 
+£lf
+.
+»suÉ_timeout
+ =„esult_timeout
+
+89 
+£lf
+.
+»£t_aá”
+ =„eset_after
+
+91 
+£lf
+.
+fš®_¡©us
+ = 
+NÚe
+
+
+93 
+dÚe_cb
+:
+
+94 
+£lf
+.
+u£r_dÚe_cb
+ = 
+dÚe_cb
+
+
+96 
+£lf
+.
+u£r_dÚe_cb
+ = 
+NÚe
+
+
+98 
+£lf
+.
+dÚe_cb
+ = s–f.
+deçuÉ_dÚe_cb
+
+
+100 
+aùive_cb
+ =ğ
+NÚe
+:
+
+101 
+aùive_cb
+ = 
+£lf
+.
+deçuÉ_aùive_cb
+
+
+102 
+£lf
+.
+aùive_cb
+ =‡ctive_cb
+
+104 
+ãedback_cb
+ =ğ
+NÚe
+:
+
+105 
+ãedback_cb
+ = 
+£lf
+.
+deçuÉ_ãedback_cb
+
+
+106 
+£lf
+.
+ãedback_cb
+ = feedback_cb
+
+108 
+£lf
+.
+aùiÚ_¡¬‹d
+ = 
+F®£
+
+
+109 
+£lf
+.
+aùiÚ_fšished
+ = 
+F®£
+
+
+110 
+£lf
+.
+gßl_¡©us_»pÜ‹d
+ = 
+F®£
+
+
+111 
+£lf
+.
+time_so_çr
+ = 0.0
+
+113 #GßÈ
+¡©e
+  
+v®ues
+
+
+114 
+£lf
+.
+gßl_¡©es
+ = ['PENDING', 'ACTIVE', 'PREEMPTED',
+
+119 
+£lf
+.
+»Œy_gßl_¡©es
+ = [
+GßlStus
+.
+PREEMPTED
+]
+
+121 
+ro¥y
+.
+	`logšfo
+("CÚÃùšgØaùiÚ " + 
+aùiÚ
+)
+
+123 #Subsüib
+to
+ 
+the
+ 
+ba£
+ 
+aùiÚ
+ 
+£rv”
+
+
+124 
+£lf
+.
+aùiÚ_ş›Á
+ = 
+aùiÚlib
+.
+	$Sim¶eAùiÚCl›Á
+(
+aùiÚ
+, 
+aùiÚ_ty³
+)
+
+126 
+ro¥y
+.
+	`logšfo
+("Waiting for‡ction server...")
+
+128 #Wa™ 
+up
+ 
+to
+ 
+timeout
+ 
+£cÚds
+ 
+the
+ 
+aùiÚ
+ 
+£rv”
+Ø
+become
+ 
+avaabË
+
+
+129 
+Œy
+:
+
+130 
+£lf
+.
+aùiÚ_ş›Á
+.
+	`wa™_fÜ_£rv”
+(
+ro¥y
+.
+	$Du¿tiÚ
+(
+£lf
+.
+cÚÃù_timeout
+))
+
+131 
+exû±
+:
+
+132 
+ro¥y
+.
+	`logšfo
+("Timed ouˆcÚÃùšgØthaùiÚ s”v” " + 
+aùiÚ
+)
+
+134 
+ro¥y
+.
+	`logšfo
+("Connectedo‡ction server")
+
+136 
+def
+ 
+	$run
+(
+£lf
+):
+
+137 #S’d 
+the
+ 
+gßl
+
+
+138 
+nÙ
+ 
+£lf
+.
+aùiÚ_¡¬‹d
+:
+
+139 
+ro¥y
+.
+	`logšfo
+("S’dšg " + 
+	`¡r
+(
+£lf
+.
+Çme
+) + " goalo‡ction server...")
+
+140 
+£lf
+.
+aùiÚ_ş›Á
+.
+	$£nd_gßl
+(
+£lf
+.
+gßl
+, 
+dÚe_cb
+=£lf.dÚe_cb, 
+aùive_cb
+=£lf.aùive_cb, 
+ãedback_cb
+=self.feedback_cb)
+
+141 
+£lf
+.
+aùiÚ_¡¬‹d
+ = 
+True
+
+
+142 
+£lf
+.
+aùiv©e_time
+ = 
+ro¥y
+.
+Time
+.
+	`now
+()
+
+145 
+Œ“
+ 
+so
+ 
+we
+  
+™
+ 
+down
+ 
+š
+ 
+time
+ 
+¦iûs
+ 
+of
+ 
+du¿tiÚ
+ 1 / 
+¿‹
+.
+
+147 
+nÙ
+ 
+£lf
+.
+aùiÚ_fšished
+:
+
+148 
+£lf
+.
+time_so_çr
+ +ğ£lf.
+tick
+
+
+149 
+£lf
+.
+¿‹
+.
+	$¦“p
+()
+
+150 
+£lf
+.
+time_so_çr
+ > s–f.
+»suÉ_timeout
+:
+
+151 
+£lf
+.
+aùiÚ_ş›Á
+.
+	$ÿnûl_gßl
+()
+
+152 
+ro¥y
+.
+	`logšfo
+("Timed out‡chieving goal")
+
+153 
+£lf
+.
+aùiÚ_fšished
+ = 
+True
+
+
+154  
+TaskStus
+.
+FAILURE
+
+
+156  
+TaskStus
+.
+RUNNING
+
+
+158 #Check 
+the
+ 
+fš®
+ 
+gßl
+ 
+¡©us
+ 
+»tuºed
+ 
+by
+ 
+deçuÉ_dÚe_cb
+
+
+159 
+£lf
+.
+gßl_¡©us
+ =ğ
+GßlStus
+.
+SUCCEEDED
+:
+
+160 
+£lf
+.
+¡©us
+ = 
+TaskStus
+.
+SUCCESS
+
+
+162 #Thi 
+hªdËs
+ 
+PREEMPTED
+
+
+163 
+–if
+ 
+£lf
+.
+gßl_¡©us
+ 
+š
+ s–f.
+»Œy_gßl_¡©es
+:
+
+164 
+£lf
+.
+¡©us
+ = 
+TaskStus
+.
+RUNNING
+
+
+165 
+£lf
+.
+aùiÚ_¡¬‹d
+ = 
+F®£
+
+
+166 
+£lf
+.
+aùiÚ_fšished
+ = 
+F®£
+
+
+167 
+£lf
+.
+time_so_çr
+ = 0
+
+169 #Oth”wi£, 
+cÚsid”
+ 
+the
+ 
+sk
+ 
+to
+ 
+have
+ 
+çed
+
+
+171 
+£lf
+.
+¡©us
+ = 
+TaskStus
+.
+FAILURE
+
+
+173 #StÜ
+the
+ 
+fš®
+ 
+¡©us
+ 
+befÜe
+ 
+we
+ 
+»£t
+
+
+174 
+£lf
+.
+fš®_¡©us
+ = s–f.
+¡©us
+
+
+176 #Re£ˆ
+the
+ 
+sk
+ th
+»£t_aá”
+ 
+æag
+ 
+is
+ 
+True
+
+
+177 
+£lf
+.
+»£t_aá”
+:
+
+178 
+£lf
+.
+	$»£t
+()
+
+180 
+£lf
+.
+aùiÚ_ş›Á
+.
+	`wa™_fÜ_»suÉ
+(
+ro¥y
+.
+	$Du¿tiÚ
+(10))
+
+181  
+£lf
+.
+fš®_¡©us
+
+
+183 
+def
+ 
+	$deçuÉ_dÚe_cb
+(
+£lf
+, 
+»suÉ_¡©e
+, 
+»suÉ
+):
+
+185 
+This
+ 
+ÿÎback
+ 
+»£ts
+ 
+the
+ 
+aùive
+ 
+æags
+ 
+ªd
+ 
+»pÜts
+h
+du¿tiÚ
+ 
+of
+h
+aùiÚ
+.
+
+186 
+Also
+, 
+the
+ 
+u£r
+ 
+has
+ 
+defšed
+ 
+a
+ 
+»suÉ_cb
+, 
+™
+ 
+is
+ 
+ÿÎed
+ 
+h”e
+ 
+befÜe
+he
+
+187 
+m‘hod
+ 
+»tuºs
+.
+
+189 
+£lf
+.
+gßl_¡©us
+ = 
+»suÉ_¡©e
+
+
+190 
+£lf
+.
+aùiÚ_fšished
+ = 
+True
+
+
+192 
+nÙ
+ 
+£lf
+.
+gßl_¡©us_»pÜ‹d
+:
+
+193 
+£lf
+.
+_du¿tiÚ
+ = 
+ro¥y
+.
+Time
+.
+	`now
+(è- s–f.
+aùiv©e_time
+
+
+195 
+ro¥y
+.
+	`logšfo
+("AùiÚ " + 
+£lf
+.
+Çme
+ + "erminated‡fter "\
+
+196 + 
+	`¡r
+(
+£lf
+.
+_du¿tiÚ
+.
+	`to_£c
+()) + " seconds with„esult "\
+
+197 + 
+£lf
+.
+gßl_¡©es
+[£lf.
+aùiÚ_ş›Á
+.
+	`g‘_¡©e
+()] + ".")
+
+199 
+£lf
+.
+gßl_¡©us_»pÜ‹d
+ = 
+True
+
+
+201 
+£lf
+.
+u£r_dÚe_cb
+:
+
+202 
+£lf
+.
+	$u£r_dÚe_cb
+(
+»suÉ_¡©e
+, 
+»suÉ
+)
+
+204 
+def
+ 
+	$deçuÉ_aùive_cb
+(
+£lf
+):
+
+205 
+·ss
+
+
+207 
+def
+ 
+	$deçuÉ_ãedback_cb
+(
+£lf
+, 
+msg
+):
+
+208 
+·ss
+
+
+210 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+211 
+ro¥y
+.
+	`logdebug
+("RESETTING " + 
+	$¡r
+(
+£lf
+.
+Çme
+))
+
+212 
+£lf
+.
+aùiÚ_¡¬‹d
+ = 
+F®£
+
+
+213 
+£lf
+.
+aùiÚ_fšished
+ = 
+F®£
+
+
+214 
+£lf
+.
+gßl_¡©us_»pÜ‹d
+ = 
+F®£
+
+
+215 
+£lf
+.
+¡©us
+ = s–f.
+fš®_¡©us
+
+
+216 
+£lf
+.
+time_so_çr
+ = 0.0
+
+217 
+	`su³r
+(
+Sim¶eAùiÚTask
+, 
+£lf
+).
+	`»£t
+()
+
+	@
+1
+.
+1
+/usr/include
+3
+242
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_ros/setup.py
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_ros/src/pi_trees_ros/__init__.py
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_ros/src/pi_trees_ros/pi_trees_ros.py

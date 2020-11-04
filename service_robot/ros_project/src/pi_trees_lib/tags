@@ -1,0 +1,172 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AlwaysFail	src/pi_trees_lib/pi_trees_lib.py	/^class AlwaysFail(Task):$/;"	c
+AlwaysSucceed	src/pi_trees_lib/pi_trees_lib.py	/^class AlwaysSucceed(Task):$/;"	c
+AutoRemoveSequence	src/pi_trees_lib/pi_trees_lib.py	/^class AutoRemoveSequence(Task):$/;"	c
+BlackBoard	examples/patrol_tree.py	/^class BlackBoard():$/;"	c
+CallbackTask	src/pi_trees_lib/pi_trees_lib.py	/^class CallbackTask(Task):$/;"	c
+CompositeTasks	examples/composite_tasks.py	/^class CompositeTasks():$/;"	c
+Count	examples/composite_tasks.py	/^class Count(Task):$/;"	c
+Count	examples/parallel_example.py	/^class Count(Task):$/;"	c
+Count	examples/xd_btree_example.py	/^class Count(Task):$/;"	c
+FAILURE	src/pi_trees_lib/pi_trees_lib.py	/^    FAILURE = 0$/;"	v	class:TaskStatus
+IgnoreFailure	src/pi_trees_lib/pi_trees_lib.py	/^class IgnoreFailure(Task):$/;"	c
+Invert	src/pi_trees_lib/pi_trees_lib.py	/^class Invert(Task):$/;"	c
+Iterator	src/pi_trees_lib/pi_trees_lib.py	/^class Iterator(Task):$/;"	c
+Limit	src/pi_trees_lib/pi_trees_lib.py	/^class Limit(Task):$/;"	c
+Loop	src/pi_trees_lib/pi_trees_lib.py	/^class Loop(Task):$/;"	c
+Message	examples/weighted_random_example.py	/^class Message(Task):$/;"	c
+ParallelAll	src/pi_trees_lib/pi_trees_lib.py	/^class ParallelAll(Task):$/;"	c
+ParallelExample	examples/parallel_example.py	/^class ParallelExample():$/;"	c
+ParallelOne	src/pi_trees_lib/pi_trees_lib.py	/^class ParallelOne(Task):$/;"	c
+Patrol	examples/patrol_tree.py	/^class Patrol():$/;"	c
+RUNNING	src/pi_trees_lib/pi_trees_lib.py	/^    RUNNING = 2$/;"	v	class:TaskStatus
+RandomIterator	src/pi_trees_lib/pi_trees_lib.py	/^class RandomIterator(Task):$/;"	c
+RandomSelector	src/pi_trees_lib/pi_trees_lib.py	/^class RandomSelector(Task):$/;"	c
+RandomSequence	src/pi_trees_lib/pi_trees_lib.py	/^class RandomSequence(Task):$/;"	c
+RechargeRobot	examples/patrol_tree.py	/^class RechargeRobot(Task):$/;"	c
+RobotFuncTask	examples/xd_btree_example.py	/^class RobotFuncTask():$/;"	c
+SUCCESS	src/pi_trees_lib/pi_trees_lib.py	/^    SUCCESS = 1$/;"	v	class:TaskStatus
+Selector	src/pi_trees_lib/pi_trees_lib.py	/^class Selector(Task):$/;"	c
+Sequence	src/pi_trees_lib/pi_trees_lib.py	/^class Sequence(Task):$/;"	c
+Task	src/pi_trees_lib/pi_trees_lib.py	/^class Task(object):$/;"	c
+TaskNot	src/pi_trees_lib/pi_trees_lib.py	/^TaskNot = Invert$/;"	v
+TaskStatus	src/pi_trees_lib/pi_trees_lib.py	/^class TaskStatus(object):$/;"	c
+UntilFail	src/pi_trees_lib/pi_trees_lib.py	/^UntilFail = UntilFailure$/;"	v
+UntilFailure	src/pi_trees_lib/pi_trees_lib.py	/^class UntilFailure(Task):$/;"	c
+UntilSuccess	src/pi_trees_lib/pi_trees_lib.py	/^class UntilSuccess(Task):$/;"	c
+WaitTask	src/pi_trees_lib/pi_trees_lib.py	/^class WaitTask(Task):$/;"	c
+WeightedRandomExample	examples/weighted_random_example.py	/^class WeightedRandomExample():$/;"	c
+WeightedRandomIterator	src/pi_trees_lib/pi_trees_lib.py	/^class WeightedRandomIterator(Task):$/;"	c
+WeightedRandomSelector	src/pi_trees_lib/pi_trees_lib.py	/^class WeightedRandomSelector(Task):$/;"	c
+WeightedRandomSequence	src/pi_trees_lib/pi_trees_lib.py	/^class WeightedRandomSequence(Task):$/;"	c
+__enter__	src/pi_trees_lib/pi_trees_lib.py	/^    def __enter__(self):$/;"	m	class:Task	file:
+__exit__	src/pi_trees_lib/pi_trees_lib.py	/^    def __exit__(self, exc_type, exc_val, exc_tb):$/;"	m	class:Task	file:
+__init__	examples/composite_tasks.py	/^    def __init__(self):$/;"	m	class:CompositeTasks
+__init__	examples/composite_tasks.py	/^    def __init__(self, name, start, stop, step, *args, **kwargs):$/;"	m	class:Count
+__init__	examples/parallel_example.py	/^    def __init__(self):$/;"	m	class:ParallelExample
+__init__	examples/parallel_example.py	/^    def __init__(self, name, start, stop, step, *args, **kwargs):$/;"	m	class:Count
+__init__	examples/patrol_tree.py	/^    def __init__(self):$/;"	m	class:BlackBoard
+__init__	examples/patrol_tree.py	/^    def __init__(self):$/;"	m	class:Patrol
+__init__	examples/patrol_tree.py	/^    def __init__(self, name, interval=3, blackboard=None):$/;"	m	class:RechargeRobot
+__init__	examples/weighted_random_example.py	/^    def __init__(self):$/;"	m	class:WeightedRandomExample
+__init__	examples/weighted_random_example.py	/^    def __init__(self, name, message, *args, **kwargs):$/;"	m	class:Message
+__init__	examples/xd_btree_example.py	/^    def __init__(self):$/;"	m	class:RobotFuncTask
+__init__	examples/xd_btree_example.py	/^    def __init__(self, name, start, stop, step, *args, **kwargs):$/;"	m	class:Count
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:AlwaysFail
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:AlwaysSucceed
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:AutoRemoveSequence
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:IgnoreFailure
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:Invert
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:Iterator
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:ParallelAll
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:ParallelOne
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:RandomIterator
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:RandomSelector
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:RandomSequence
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:Selector
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, *args, **kwargs):$/;"	m	class:Sequence
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, announce=True, *args, **kwargs):$/;"	m	class:Limit
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, announce=True, *args, **kwargs):$/;"	m	class:Loop
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, cb=None, cb_args=[], cb_kwargs={}, **kwargs):$/;"	m	class:CallbackTask
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, children=None, reset_after=False, announce=False, *args, **kwargs):$/;"	m	class:Task
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, interval, *args, **kwargs):$/;"	m	class:WaitTask
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, max_attempts=-1, *args, **kwargs):$/;"	m	class:UntilFailure
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, max_attempts=-1, *args, **kwargs):$/;"	m	class:UntilSuccess
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, weights, *args, **kwargs):$/;"	m	class:WeightedRandomIterator
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, weights, *args, **kwargs):$/;"	m	class:WeightedRandomSelector
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, name, weights, *args, **kwargs):$/;"	m	class:WeightedRandomSequence
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, task):$/;"	m	class:always_fail
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, task):$/;"	m	class:ignore_failure
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, task):$/;"	m	class:ignore_success
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, task):$/;"	m	class:task_not
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, task):$/;"	m	class:until_fail
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, task, iterations=-1):$/;"	m	class:loop
+__init__	src/pi_trees_lib/pi_trees_lib.py	/^    def __init__(self, task, max_executions=-1):$/;"	m	class:limit
+add_child	src/pi_trees_lib/pi_trees_lib.py	/^    def add_child(self, c):$/;"	m	class:Task
+always_fail	src/pi_trees_lib/pi_trees_lib.py	/^class always_fail(Task):$/;"	c
+announce	src/pi_trees_lib/pi_trees_lib.py	/^    def announce(self):$/;"	m	class:Task
+check_battery	examples/patrol_tree.py	/^    def check_battery(self):$/;"	m	class:Patrol
+d	setup.py	/^d = generate_distutils_setup($/;"	v
+get_status	src/pi_trees_lib/pi_trees_lib.py	/^    def get_status(self):$/;"	m	class:Task
+get_type	src/pi_trees_lib/pi_trees_lib.py	/^    def get_type(self):$/;"	m	class:Task
+ignore_failure	src/pi_trees_lib/pi_trees_lib.py	/^class ignore_failure(Task):$/;"	c
+ignore_success	src/pi_trees_lib/pi_trees_lib.py	/^class ignore_success(Task):$/;"	c
+init_docking_station_marker	src/pi_trees_lib/task_setup.py	/^def init_docking_station_marker(self):$/;"	f
+init_waypoint_markers	src/pi_trees_lib/task_setup.py	/^def init_waypoint_markers(self):$/;"	f
+insert_child	src/pi_trees_lib/pi_trees_lib.py	/^    def insert_child(self, c, i):$/;"	m	class:Task
+invert	src/pi_trees_lib/pi_trees_lib.py	/^invert = task_not$/;"	v
+last_dot_tree	src/pi_trees_lib/pi_trees_lib.py	/^last_dot_tree = ''$/;"	v
+limit	src/pi_trees_lib/pi_trees_lib.py	/^class limit(Task):$/;"	c
+loop	src/pi_trees_lib/pi_trees_lib.py	/^class loop(Task):$/;"	c
+monitor_battery	examples/patrol_tree.py	/^    def monitor_battery(self, msg):$/;"	m	class:Patrol
+package_dir	setup.py	/^    package_dir={'': 'src'},$/;"	v
+packages	setup.py	/^    packages=['pi_trees_lib'],$/;"	v
+prepend_child	src/pi_trees_lib/pi_trees_lib.py	/^    def prepend_child(self, c):$/;"	m	class:Task
+print_phpsyntax_tree	src/pi_trees_lib/pi_trees_lib.py	/^def print_phpsyntax_tree(tree):    $/;"	f
+print_tree	src/pi_trees_lib/pi_trees_lib.py	/^def print_tree(tree, indent=0, use_symbols=False):$/;"	f
+print_tree_symbol	src/pi_trees_lib/pi_trees_lib.py	/^def print_tree_symbol(c, indent):$/;"	f
+recharge_cb	examples/patrol_tree.py	/^    def recharge_cb(self, result):$/;"	m	class:Patrol
+remove_child	src/pi_trees_lib/pi_trees_lib.py	/^    def remove_child(self, c):$/;"	m	class:Task
+reset	examples/composite_tasks.py	/^    def reset(self):$/;"	m	class:Count
+reset	examples/parallel_example.py	/^    def reset(self):$/;"	m	class:Count
+reset	examples/patrol_tree.py	/^    def reset(self):$/;"	m	class:RechargeRobot
+reset	examples/xd_btree_example.py	/^    def reset(self):$/;"	m	class:Count
+reset	src/pi_trees_lib/pi_trees_lib.py	/^    def reset(self):$/;"	m	class:CallbackTask
+reset	src/pi_trees_lib/pi_trees_lib.py	/^    def reset(self):$/;"	m	class:Limit
+reset	src/pi_trees_lib/pi_trees_lib.py	/^    def reset(self):$/;"	m	class:ParallelAll
+reset	src/pi_trees_lib/pi_trees_lib.py	/^    def reset(self):$/;"	m	class:ParallelOne
+reset	src/pi_trees_lib/pi_trees_lib.py	/^    def reset(self):$/;"	m	class:Task
+reset	src/pi_trees_lib/pi_trees_lib.py	/^    def reset(self):$/;"	m	class:UntilFailure
+reset	src/pi_trees_lib/pi_trees_lib.py	/^    def reset(self):$/;"	m	class:UntilSuccess
+run	examples/composite_tasks.py	/^    def run(self):$/;"	m	class:Count
+run	examples/parallel_example.py	/^    def run(self):$/;"	m	class:Count
+run	examples/patrol_tree.py	/^    def run(self):$/;"	m	class:RechargeRobot
+run	examples/weighted_random_example.py	/^    def run(self):$/;"	m	class:Message
+run	examples/xd_btree_example.py	/^    def run(self):$/;"	m	class:Count
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:AlwaysFail
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:AlwaysSucceed
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:AutoRemoveSequence
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:CallbackTask
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:IgnoreFailure
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:Invert
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:Iterator
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:Limit
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:Loop
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:ParallelAll
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:ParallelOne
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:RandomIterator
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:RandomSelector
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:RandomSequence
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:Selector
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:Sequence
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:Task
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:UntilFailure
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:UntilSuccess
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:WaitTask
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:WeightedRandomIterator
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:WeightedRandomSelector
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:WeightedRandomSequence
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:always_fail
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:ignore_failure
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:ignore_success
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:limit
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:loop
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:task_not
+run	src/pi_trees_lib/pi_trees_lib.py	/^    def run(self):$/;"	m	class:until_fail
+set_status	src/pi_trees_lib/pi_trees_lib.py	/^    def set_status(self, s):$/;"	m	class:Task
+setup_task_environment	src/pi_trees_lib/task_setup.py	/^def setup_task_environment(self):$/;"	f
+shutdown	examples/patrol_tree.py	/^    def shutdown(self):$/;"	m	class:Patrol
+task_not	src/pi_trees_lib/pi_trees_lib.py	/^class task_not(Task):$/;"	c
+tree	examples/composite_tasks.py	/^    tree = CompositeTasks()$/;"	v
+tree	examples/parallel_example.py	/^    tree = ParallelExample()$/;"	v
+tree	examples/patrol_tree.py	/^    tree = Patrol()$/;"	v
+tree	examples/weighted_random_example.py	/^    tree = WeightedRandomExample()$/;"	v
+tree	examples/xd_btree_example.py	/^    tree = RobotFuncTask()$/;"	v
+until_fail	src/pi_trees_lib/pi_trees_lib.py	/^class until_fail(Task):$/;"	c
+weighted_choice	src/pi_trees_lib/pi_trees_lib.py	/^def weighted_choice(weights):$/;"	f
+weighted_shuffle	src/pi_trees_lib/pi_trees_lib.py	/^def weighted_shuffle(a,w):$/;"	f

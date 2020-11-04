@@ -1,0 +1,10910 @@
+cscope 15 $HOME/project/xd_robot/xd_robot_test/src/pi_trees_lib -q 0000000552 0000048032
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/examples/composite_tasks.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+äom
+ 
+	gpi_Œ“s_lib
+.
+pi_Œ“s_lib
+ 
+impÜt
+ *
+
+4 
+impÜt
+ 
+time
+
+
+6 
+şass
+ 
+	$Compos™eTasks
+():
+
+7 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+8 #Th
+roÙ
+ 
+node
+
+
+9 
+BEHAVE
+ = 
+	`Sequ’û
+("behave")
+
+11 #C»©
+a
+ 
+S–eùÜ
+ 
+compos™e
+ 
+	`sk
+ (
+»tuºs
+ 
+SUCCESS
+ 
+as
+ 
+soÚ
+‡ 
+ªy
+ 
+subsk
+„eturns SUCCESS)
+
+12 
+SELECTOR_TASK
+ = 
+	`S–eùÜ
+("Selector Count")
+
+14 #C»©
+a
+ 
+Sequ’û
+ 
+compos™e
+ 
+	`sk
+ (
+»tuºs
+ 
+FAULURE
+ 
+as
+ 
+soÚ
+‡ 
+ªy
+ 
+subsk
+„‘uº 
+FAILURE
+)
+
+15 
+SEQUENCE_TASK
+ = 
+	`Sequ’û
+("Sequence Count")
+
+17 
+WAIT_TASK
+ = 
+	`Wa™Task
+("Wait Task", 5)
+
+19 #C»©
+th»e
+ 
+couÁšg
+ 
+sks
+
+
+20 
+COUNT2
+ = 
+	`CouÁ
+("Count+2", 1, 2, 1)
+
+21 
+COUNT5
+ = 
+	`CouÁ
+("Count-5", 5, 1, -1)
+
+22 
+COUNT16
+ = 
+	`CouÁ
+("Count+16", 1, 16, 1)
+
+24 #Add 
+the
+ 
+sks
+ 
+to
+h
+£qu’û
+ 
+compos™e
+ 
+sk
+
+
+25 
+SEQUENCE_TASK
+.
+	$add_chd
+(
+COUNT2
+)
+
+26 
+SEQUENCE_TASK
+.
+	$add_chd
+(
+WAIT_TASK
+)
+
+27 
+SEQUENCE_TASK
+.
+	$add_chd
+(
+COUNT5
+)
+
+28 
+SEQUENCE_TASK
+.
+	$add_chd
+(
+COUNT16
+)
+
+30 #Add 
+the
+ 
+sks
+ 
+to
+h
+£ËùÜ
+ 
+compos™e
+ 
+sk
+
+
+31 
+SELECTOR_TASK
+.
+	$add_chd
+(
+COUNT5
+)
+
+32 
+SELECTOR_TASK
+.
+	$add_chd
+(
+COUNT2
+)
+
+33 
+SELECTOR_TASK
+.
+	$add_chd
+(
+COUNT16
+)
+
+35 #Add 
+the
+ 
+compos™e
+ 
+sk
+ 
+to
+h
+roÙ
+ask
+
+36 
+BEHAVE
+.
+	$add_chd
+(
+SEQUENCE_TASK
+)
+
+37 
+BEHAVE
+.
+	$add_chd
+(
+SELECTOR_TASK
+)
+
+39 #Pršˆ
+a
+ 
+sim¶e
+ 
+»´e£Á©iÚ
+ 
+of
+ 
+the
+ 
+Œ“
+
+
+40 
+´št
+ "Behavior Tree Structure"
+
+41 
+	$´št_Œ“
+(
+BEHAVE
+, 
+u£_symbŞs
+=
+True
+)
+
+43 #RuÀ
+the
+ 
+Œ“
+
+
+44 
+True
+:
+
+45 
+¡©us
+ = 
+BEHAVE
+.
+	$run
+()
+
+46 
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+47 
+´št
+ "Finished„unningree."
+
+50 #A 
+couÁšg
+ 
+sk
+ 
+th©
+ 
+ex‹nds
+ 
+the
+ 
+ba£
+ 
+Task
+ask
+
+51 
+şass
+ 
+	$CouÁ
+(
+Task
+):
+
+52 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+¡¬t
+, 
+¡İ
+, 
+¡•
+, *
+¬gs
+, **
+kw¬gs
+):
+
+53 
+	`su³r
+(
+CouÁ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+55 
+£lf
+.
+Çme
+ =‚ame
+
+56 
+£lf
+.
+¡¬t
+ = start
+
+57 
+£lf
+.
+¡İ
+ = stop
+
+58 
+£lf
+.
+¡•
+ = step
+
+59 
+£lf
+.
+couÁ
+ = s–f.
+¡¬t
+
+
+60 
+´št
+ "C»©šgask CouÁ", 
+£lf
+.
+¡¬t
+, s–f.
+¡İ
+, s–f.
+¡•
+
+
+62 
+def
+ 
+	$run
+(
+£lf
+):
+
+63 
+	`abs
+(
+£lf
+.
+couÁ
+ - s–f.
+¡İ
+ - s–f.
+¡•
+) <= 0:
+
+64  
+TaskStus
+.
+SUCCESS
+
+
+66 
+´št
+ 
+£lf
+.
+Çme
+, s–f.
+couÁ
+
+
+67 
+time
+.
+	$¦“p
+(0.5)
+
+68 
+£lf
+.
+couÁ
+ +ğ£lf.
+¡•
+
+
+69 
+	`abs
+(
+£lf
+.
+couÁ
+ - s–f.
+¡İ
+ - s–f.
+¡•
+) <= 0:
+
+70  
+TaskStus
+.
+SUCCESS
+
+
+72  
+TaskStus
+.
+RUNNING
+
+
+75 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+76 
+£lf
+.
+couÁ
+ = s–f.
+¡¬t
+
+
+78 
+__Çme__
+ == '__main__':
+
+79 
+Œ“
+ = 
+	`Compos™eTasks
+()
+
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/examples/parallel_example.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+äom
+ 
+	gpi_Œ“s_lib
+.
+pi_Œ“s_lib
+ 
+impÜt
+ *
+
+4 
+impÜt
+ 
+time
+
+
+6 
+şass
+ 
+	$P¬®ËlExam¶e
+():
+
+7 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+8 #Th
+roÙ
+ 
+node
+
+
+9 
+BEHAVE
+ = 
+	`Sequ’û
+("behave")
+
+11 #C»©
+a
+ 
+P¬®ËlOÃ
+ 
+compos™e
+ 
+	`sk
+ (
+»tuºs
+ 
+SUCCESS
+ 
+as
+ 
+soÚ
+‡ 
+ªy
+ 
+subsk
+„eturns SUCCESS)
+
+12 
+PARALLEL_TASKS
+ = 
+	`P¬®ËlOÃ
+("Counting in Parallel")
+
+14 #C»©
+th»e
+ 
+couÁšg
+ 
+sks
+
+
+15 
+COUNT2
+ = 
+	`CouÁ
+("Count+2", 1, 2, 1)
+
+16 
+COUNT5
+ = 
+	`CouÁ
+("Count-5", 5, 1, -1)
+
+17 
+COUNT16
+ = 
+	`CouÁ
+("Count+16", 1, 16, 1)
+
+19 #Add 
+the
+ 
+sks
+ 
+to
+h
+·¿Î–
+ 
+compos™e
+ 
+sk
+
+
+20 
+PARALLEL_TASKS
+.
+	$add_chd
+(
+COUNT5
+)
+
+21 
+PARALLEL_TASKS
+.
+	$add_chd
+(
+COUNT2
+)
+
+22 
+PARALLEL_TASKS
+.
+	$add_chd
+(
+COUNT16
+)
+
+24 #Add 
+the
+ 
+compos™e
+ 
+sk
+ 
+to
+h
+roÙ
+ask
+
+25 
+BEHAVE
+.
+	$add_chd
+(
+PARALLEL_TASKS
+)
+
+27 #Pršˆ
+a
+ 
+sim¶e
+ 
+»´e£Á©iÚ
+ 
+of
+ 
+the
+ 
+Œ“
+
+
+28 
+´št
+ "Behavior Tree Structure"
+
+29 
+	$´št_Œ“
+(
+BEHAVE
+)
+
+31 #RuÀ
+the
+ 
+Œ“
+
+
+32 
+True
+:
+
+33 
+¡©us
+ = 
+BEHAVE
+.
+	$run
+()
+
+34 
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+35 
+´št
+ "Finished„unningree."
+
+38 #A 
+couÁšg
+ 
+sk
+ 
+th©
+ 
+ex‹nds
+ 
+the
+ 
+ba£
+ 
+Task
+ask
+
+39 
+şass
+ 
+	$CouÁ
+(
+Task
+):
+
+40 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+¡¬t
+, 
+¡İ
+, 
+¡•
+, *
+¬gs
+, **
+kw¬gs
+):
+
+41 
+	`su³r
+(
+CouÁ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+43 
+£lf
+.
+Çme
+ =‚ame
+
+44 
+£lf
+.
+¡¬t
+ = start
+
+45 
+£lf
+.
+¡İ
+ = stop
+
+46 
+£lf
+.
+¡•
+ = step
+
+47 
+£lf
+.
+couÁ
+ = s–f.
+¡¬t
+
+
+48 
+´št
+ "C»©šgask CouÁ", 
+£lf
+.
+¡¬t
+, s–f.
+¡İ
+, s–f.
+¡•
+
+
+50 
+def
+ 
+	$run
+(
+£lf
+):
+
+51 
+	`abs
+(
+£lf
+.
+couÁ
+ - s–f.
+¡İ
+ - s–f.
+¡•
+) <= 0:
+
+52  
+TaskStus
+.
+SUCCESS
+
+
+54 
+´št
+ 
+£lf
+.
+Çme
+, s–f.
+couÁ
+
+
+55 
+time
+.
+	$¦“p
+(0.5)
+
+56 
+£lf
+.
+couÁ
+ +ğ£lf.
+¡•
+
+
+57 
+	`abs
+(
+£lf
+.
+couÁ
+ - s–f.
+¡İ
+ - s–f.
+¡•
+) <= 0:
+
+58  
+TaskStus
+.
+SUCCESS
+
+
+60  
+TaskStus
+.
+RUNNING
+
+
+63 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+64 
+£lf
+.
+couÁ
+ = s–f.
+¡¬t
+
+
+66 
+__Çme__
+ == '__main__':
+
+67 
+Œ“
+ = 
+	`P¬®ËlExam¶e
+()
+
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/examples/patrol_tree.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+impÜt
+ 
+ro¥y
+
+
+4 
+äom
+ 
+	g¡d_msgs
+.
+msg
+ 
+impÜt
+ 
+Flßt32
+
+
+5 
+äom
+ 
+	ggeom‘ry_msgs
+.
+msg
+ 
+impÜt
+ 
+	gTwi¡
+
+
+6 #äom 
+rbx2_msgs
+.
+¤v
+ 
+impÜt
+ *
+
+7 
+äom
+ 
+	gpi_Œ“s_ros
+.
+pi_Œ“s_ros
+ 
+impÜt
+ *
+
+8 
+äom
+ 
+	gpi_Œ“s_lib
+.
+sk_£tup
+ 
+impÜt
+ *
+
+10 
+şass
+ 
+	$BÏckBßrd
+():
+
+11 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+12 
+£lf
+.
+b©‹ry_Ëv–
+ = 
+NÚe
+
+
+13 
+£lf
+.
+ch¬gšg
+ = 
+NÚe
+
+
+15 
+şass
+ 
+	$P©rŞ
+():
+
+16 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+17 
+ro¥y
+.
+	`š™_node
+("patrol_tree")
+
+19 #S‘ 
+the
+ 
+shutdown
+ 
+	`funùiÚ
+ (
+¡İ
+h
+robÙ
+)
+
+20 
+ro¥y
+.
+	$Ú_shutdown
+(
+£lf
+.
+shutdown
+)
+
+22 #In™Ÿliz
+a
+ 
+numb”
+ 
+of
+ 
+·¿m‘”s
+ 
+ªd
+ 
+v¬ŸbËs
+
+
+23 
+	$£tup_sk_’vœÚm’t
+(
+£lf
+)
+
+25 #In™Ÿliz
+the
+ 
+bÏck
+ 
+bßrd
+
+
+26 
+£lf
+.
+bÏckbßrd
+ = 
+	$BÏckBßrd
+()
+
+28 #How 
+äequ’y
+ dØ
+we
+ "tic" 
+the
+ 
+Œ“
+?
+
+29 
+¿‹
+ = 
+ro¥y
+.
+	`g‘_·¿m
+('~rate', 10)
+
+31 #CÚv”ˆ
+tic
+ 
+¿‹
+ 
+to
+ 
+a
+ 
+ROS
+„ate
+
+32 
+tic
+ = 
+ro¥y
+.
+	$R©e
+(
+¿‹
+)
+
+34 #Wh”
+should
+ 
+the
+ 
+DOT
+ 
+fe
+ 
+be
+ 
+¡Üed
+. 
+DeçuÉ
+ 
+loÿtiÚ
+ 
+is
+ 
+$HOME
+/.
+ros
+/
+Œ“
+.
+dÙ
+
+
+35 
+dÙf•©h
+ = 
+ro¥y
+.
+	`g‘_·¿m
+('~dÙf•©h', 
+NÚe
+)
+
+37 #C»©
+a
+ 
+li¡
+ 
+to
+ 
+hŞd
+ 
+the
+ 
+move_ba£
+ 
+sks
+
+
+38 
+MOVE_BASE_TASKS
+ = 
+	$li¡
+()
+
+40 
+n_waypošts
+ = 
+	$Ën
+(
+£lf
+.
+waypošts
+)
+
+42 #C»©
+sim¶e
+ 
+aùiÚ
+ 
+Çvig©iÚ
+ 
+sk
+ 
+—ch
+ 
+waypošt
+
+
+43 
+i
+ 
+š
+ 
+	$¿nge
+(
+n_waypošts
+):
+
+44 
+gßl
+ = 
+	$MoveBa£Gßl
+()
+
+45 
+gßl
+.
+rg‘_po£
+.
+h—d”
+.
+äame_id
+ = 'map'
+
+46 
+gßl
+.
+rg‘_po£
+.
+h—d”
+.
+¡amp
+ = 
+ro¥y
+.
+Time
+.
+	$now
+()
+
+47 
+gßl
+.
+rg‘_po£
+.
+po£
+ = 
+£lf
+.
+waypošts
+[
+i
+ % 
+n_waypošts
+]
+
+49 
+move_ba£_sk
+ = 
+	`Sim¶eAùiÚTask
+("MOVE_BASE_TASK_" + 
+	`¡r
+(
+i
+), "move_ba£", 
+MoveBa£AùiÚ
+, 
+gßl
+, 
+»£t_aá”
+=
+F®£
+)
+
+51 
+MOVE_BASE_TASKS
+.
+	$­³nd
+(
+move_ba£_sk
+)
+
+53 #S‘ 
+the
+ 
+dockšg
+ 
+¡©iÚ
+ 
+po£
+
+
+54 
+gßl
+ = 
+	$MoveBa£Gßl
+()
+
+55 
+gßl
+.
+rg‘_po£
+.
+h—d”
+.
+äame_id
+ = 'map'
+
+56 
+gßl
+.
+rg‘_po£
+.
+h—d”
+.
+¡amp
+ = 
+ro¥y
+.
+Time
+.
+	$now
+()
+
+57 
+gßl
+.
+rg‘_po£
+.
+po£
+ = 
+£lf
+.
+dockšg_¡©iÚ_po£
+
+
+59 #AssigÀ
+the
+ 
+dockšg
+ 
+¡©iÚ
+ 
+po£
+ 
+to
+ 
+a
+ 
+move_ba£
+ 
+aùiÚ
+ 
+sk
+
+
+60 
+NAV_DOCK_TASK
+ = 
+	`Sim¶eAùiÚTask
+("NAV_DOC_TASK", "move_ba£", 
+MoveBa£AùiÚ
+, 
+gßl
+, 
+»£t_aá”
+=
+F®£
+)
+
+62 #C»©
+the
+ 
+roÙ
+ 
+node
+
+
+63 
+BEHAVE
+ = 
+	`Sequ’û
+("BEHAVE")
+
+65 #C»©
+the
+ "¡ay h—Éhy" 
+£ËùÜ
+
+
+66 
+STAY_HEALTHY
+ = 
+	`S–eùÜ
+("STAY_HEALTHY")
+
+68 #C»©
+the
+ 
+·ŒŞ
+ 
+loİ
+ 
+decÜ©Ü
+
+
+69 
+LOOP_PATROL
+ = 
+	`Loİ
+("LOOP_PATROL", 
+™”©iÚs
+=
+£lf
+.
+n_·ŒŞs
+)
+
+71 #Add 
+the
+ 
+two
+ 
+subŒ“s
+ 
+to
+h
+roÙ
+ 
+node
+ 
+š
+ 
+Üd”
+ 
+of
+ 
+´iÜ™y
+
+
+72 
+BEHAVE
+.
+	$add_chd
+(
+STAY_HEALTHY
+)
+
+73 
+BEHAVE
+.
+	$add_chd
+(
+LOOP_PATROL
+)
+
+75 #C»©
+the
+ 
+·ŒŞ
+ 
+™”©Ü
+
+
+76 
+PATROL
+ = 
+	`I‹¿tÜ
+("PATROL")
+
+78 #Add 
+the
+ 
+move_ba£
+ 
+sks
+ 
+to
+h
+·ŒŞ
+ 
+sk
+
+
+79 
+sk
+ 
+š
+ 
+MOVE_BASE_TASKS
+:
+
+80 
+PATROL
+.
+	$add_chd
+(
+sk
+)
+
+82 #Add 
+the
+ 
+·ŒŞ
+ 
+to
+h
+loİ
+ 
+decÜ©Ü
+
+
+83 
+LOOP_PATROL
+.
+	$add_chd
+(
+PATROL
+)
+
+85 #Add 
+the
+ 
+b©‹ry
+ 
+check
+ 
+ªd
+ 
+»ch¬ge
+ 
+sks
+ 
+to
+h"¡ay h—Éhy" 
+sk
+
+
+86 
+w™h
+ 
+STAY_HEALTHY
+:
+
+87 #MÚ™Ü 
+the
+ 
+çke
+ 
+b©‹ry
+ 
+Ëv–
+ 
+by
+ 
+subsüibšg
+ 
+to
+h/
+b©‹ry_Ëv–
+ 
+tİic
+
+
+88 
+MONITOR_BATTERY
+ = 
+	`MÚ™ÜTask
+("MONITOR_BATTERY", "b©‹ry_Ëv–", 
+Flßt32
+, 
+£lf
+.
+mÚ™Ü_b©‹ry
+)
+
+90 #I 
+the
+ 
+çke
+ 
+b©‹ry
+ 
+Ëv–
+ 
+b–ow
+ 
+th»shŞd
+?
+
+91 
+CHECK_BATTERY
+ = 
+	`C®lbackTask
+("BATTERY_OK?", 
+£lf
+.
+check_b©‹ry
+)
+
+93 #S‘ 
+the
+ 
+çke
+ 
+b©‹ry
+ 
+Ëv–
+ 
+back
+ 
+to
+ 100 
+usšg
+ 
+a
+ 
+S”viûTask
+
+
+94 
+CHARGE_COMPLETE
+ = 
+	`S”viûTask
+("CHARGE_COMPLETE", "/b©‹ry_simuÏtÜ/£t_b©‹ry_Ëv–", 
+S‘B©‹ryLev–
+, 100, 
+»suÉ_cb
+=
+£lf
+.
+»ch¬ge_cb
+)
+
+96 #SË• 
+the
+ 
+giv’
+ 
+š‹rv®
+ 
+to
+ 
+simuÏ‹
+ 
+ch¬gšg
+
+
+97 
+CHARGING
+ = 
+	`Rech¬geRobÙ
+("CHARGING", 
+š‹rv®
+=3, 
+bÏckbßrd
+=
+£lf
+.blackboard)
+
+99 #Bud 
+the
+ 
+»ch¬ge
+ 
+£qu’û
+ 
+usšg
+ 
+šlše
+ 
+cÚ¡ruùiÚ
+
+
+100 
+RECHARGE
+ = 
+	`Sequ’û
+("RECHARGE", [
+NAV_DOCK_TASK
+, 
+CHARGING
+, 
+CHARGE_COMPLETE
+], 
+»£t_aá”
+=
+True
+)
+
+102 #Add 
+the
+ 
+check
+ 
+b©‹ry
+ 
+ªd
+ 
+»ch¬ge
+ 
+sks
+ 
+to
+h
+¡ay
+ 
+h—Éhy
+ 
+£ËùÜ
+
+
+103 
+STAY_HEALTHY
+.
+	$add_chd
+(
+CHECK_BATTERY
+)
+
+104 
+STAY_HEALTHY
+.
+	$add_chd
+(
+RECHARGE
+)
+
+106 #Di¥Ïy 
+the
+ 
+Œ“
+ 
+befÜe
+ 
+begšnšg
+ 
+executiÚ
+
+
+107 
+´št
+ "Patrol Behavior Tree"
+
+108 
+	$´št_Œ“
+(
+BEHAVE
+)
+
+110 #RuÀ
+the
+ 
+Œ“
+
+
+111 
+nÙ
+ 
+ro¥y
+.
+	$is_shutdown
+():
+
+112 
+BEHAVE
+.
+¡©us
+ = BEHAVE.
+	$run
+()
+
+113 
+tic
+.
+	$¦“p
+()
+
+114 
+	$´št_dÙ_Œ“
+(
+BEHAVE
+, 
+dÙf•©h
+)
+
+116 
+def
+ 
+	$mÚ™Ü_b©‹ry
+(
+£lf
+, 
+msg
+):
+
+117 #StÜ
+the
+ 
+b©‹ry
+ 
+Ëv–
+ 
+as
+ 
+published
+ 
+Ú
+h
+çke
+ b©‹ry†ev– 
+tİic
+
+
+118 
+£lf
+.
+bÏckbßrd
+.
+b©‹ry_Ëv–
+ = 
+msg
+.
+d©a
+
+
+119  
+True
+
+
+121 
+def
+ 
+	$check_b©‹ry
+(
+£lf
+):
+
+123 
+£lf
+.
+bÏckbßrd
+.
+ch¬gšg
+:
+
+124  
+F®£
+
+
+126 
+£lf
+.
+bÏckbßrd
+.
+b©‹ry_Ëv–
+ 
+is
+ 
+NÚe
+:
+
+127  
+NÚe
+
+
+128 
+–if
+ 
+£lf
+.
+bÏckbßrd
+.
+b©‹ry_Ëv–
+ < s–f.
+low_b©‹ry_th»shŞd
+:
+
+129 
+ro¥y
+.
+	`logšfo
+("LOW BATTERY -†ev–: " + 
+	`¡r
+((
+£lf
+.
+bÏckbßrd
+.
+b©‹ry_Ëv–
+)))
+
+130  
+F®£
+
+
+132  
+True
+
+
+134 
+def
+ 
+	$»ch¬ge_cb
+(
+£lf
+, 
+»suÉ
+):
+
+135 
+ro¥y
+.
+	`logšfo
+("BATTERY CHARGED!")
+
+136 
+£lf
+.
+bÏckbßrd
+.
+b©‹ry_Ëv–
+ = 100
+
+137 
+£lf
+.
+bÏckbßrd
+.
+ch¬gšg
+ = 
+F®£
+
+
+138 
+ro¥y
+.
+	$¦“p
+(2)
+
+139  
+True
+
+
+141 
+def
+ 
+	$shutdown
+(
+£lf
+):
+
+142 
+ro¥y
+.
+	`logšfo
+("Stoppinghe„obot...")
+
+143 
+£lf
+.
+move_ba£
+.
+	$ÿnûl_®l_gßls
+()
+
+144 
+£lf
+.
+cmd_v–_pub
+.
+	`publish
+(
+	$Twi¡
+())
+
+145 
+ro¥y
+.
+	$¦“p
+(1)
+
+147 
+şass
+ 
+	$Rech¬geRobÙ
+(
+Task
+):
+
+148 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+š‹rv®
+=3, 
+bÏckbßrd
+=
+NÚe
+):
+
+149 
+	`su³r
+(
+Rech¬geRobÙ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+)
+
+151 
+£lf
+.
+Çme
+ =‚ame
+
+152 
+£lf
+.
+š‹rv®
+ = interval
+
+153 
+£lf
+.
+bÏckbßrd
+ = blackboard
+
+155 
+£lf
+.
+tim”
+ = 0
+
+157 
+def
+ 
+	$run
+(
+£lf
+):
+
+158 
+£lf
+.
+tim”
+ == 0:
+
+159 
+ro¥y
+.
+	`logšfo
+("CHARGING THE ROBOT!")
+
+161 
+£lf
+.
+tim”
+ < s–f.
+š‹rv®
+:
+
+162 
+£lf
+.
+tim”
+ += 0.1
+
+163 
+ro¥y
+.
+	$¦“p
+(0.1)
+
+164 
+£lf
+.
+bÏckbßrd
+.
+ch¬gšg
+ = 
+True
+
+
+165  
+TaskStus
+.
+RUNNING
+
+
+167  
+TaskStus
+.
+SUCCESS
+
+
+169 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+170 
+£lf
+.
+¡©us
+ = 
+NÚe
+
+
+171 
+£lf
+.
+tim”
+ = 0
+
+173 
+__Çme__
+ == '__main__':
+
+174 
+Œ“
+ = 
+	`P©rŞ
+()
+
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/examples/weighted_random_example.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+äom
+ 
+	gpi_Œ“s_lib
+.
+pi_Œ“s_lib
+ 
+impÜt
+ *
+
+4 
+impÜt
+ 
+time
+
+
+6 
+şass
+ 
+	$Weigh‹dRªdomExam¶e
+():
+
+7 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+8 #Th
+roÙ
+ 
+node
+
+
+9 
+BEHAVE
+ = 
+	`Sequ’û
+("behave")
+
+11 #C»©
+a
+ 
+P¬®ËlOÃ
+ 
+compos™e
+ 
+	`sk
+ (
+»tuºs
+ 
+SUCCESS
+ 
+as
+ 
+soÚ
+‡ 
+ªy
+ 
+subsk
+„eturns SUCCESS)
+
+12 
+WEIGHTED_RANDOM_TASKS
+ = 
+	`Weigh‹dRªdomS–eùÜ
+("Weigh‹d Rªdom S–eùÜ", 
+weights
+=[3, 2, 1], 
+»£t_aá”
+=
+True
+)
+
+14 #C»©
+th»e
+ 
+couÁšg
+ 
+sks
+
+
+15 
+TASK1
+ = 
+	`Mes§ge
+("High_Probability", "Highest Probability Task")
+
+16 
+TASK2
+ = 
+	`Mes§ge
+("Medium_Probability", "Medium Probability Task")
+
+17 
+TASK3
+ = 
+	`Mes§ge
+("Low_Probability", "Lowest Probability Task")
+
+19 #Add 
+the
+ 
+sks
+ 
+to
+h
+·¿Î–
+ 
+compos™e
+ 
+sk
+
+
+20 
+WEIGHTED_RANDOM_TASKS
+.
+	$add_chd
+(
+TASK1
+)
+
+21 
+WEIGHTED_RANDOM_TASKS
+.
+	$add_chd
+(
+TASK2
+)
+
+22 
+WEIGHTED_RANDOM_TASKS
+.
+	$add_chd
+(
+TASK3
+)
+
+24 
+LOOP
+ = 
+	`Loİ
+("Loİ_FÜev”", 
+™”©iÚs
+=-1)
+
+26 
+LOOP
+.
+	$add_chd
+(
+WEIGHTED_RANDOM_TASKS
+)
+
+28 #Add 
+the
+ 
+compos™e
+ 
+sk
+ 
+to
+h
+roÙ
+ask
+
+29 
+BEHAVE
+.
+	$add_chd
+(
+LOOP
+)
+
+31 #Pršˆ
+a
+ 
+sim¶e
+ 
+»´e£Á©iÚ
+ 
+of
+ 
+the
+ 
+Œ“
+
+
+32 
+´št
+ "Behavior Tree Structure"
+
+33 
+	$´št_Œ“
+(
+BEHAVE
+)
+
+35 #RuÀ
+the
+ 
+Œ“
+
+
+36 
+True
+:
+
+37 
+¡©us
+ = 
+BEHAVE
+.
+	$run
+()
+
+38 
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+39 
+´št
+ "Finished„unningree."
+
+42 #A 
+sk
+ 
+to
+ 
+´št
+ 
+a
+ 
+mes§ge
+
+
+43 
+şass
+ 
+	$Mes§ge
+(
+Task
+):
+
+44 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+mes§ge
+, *
+¬gs
+, **
+kw¬gs
+):
+
+45 
+	`su³r
+(
+Mes§ge
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+47 
+£lf
+.
+Çme
+ =‚ame
+
+48 
+£lf
+.
+mes§ge
+ = message
+
+49 
+´št
+ "C»©šg mes§gsk: ", 
+£lf
+.
+mes§ge
+
+
+51 
+def
+ 
+	$run
+(
+£lf
+):
+
+52 
+´št
+ 
+£lf
+.
+mes§ge
+
+
+53 
+time
+.
+	$¦“p
+(1)
+
+55  
+TaskStus
+.
+SUCCESS
+
+
+58 
+__Çme__
+ == '__main__':
+
+59 
+Œ“
+ = 
+	`Weigh‹dRªdomExam¶e
+()
+
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/examples/xd_btree_example.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+äom
+ 
+	gpi_Œ“s_lib
+.
+pi_Œ“s_lib
+ 
+impÜt
+ *
+
+4 
+impÜt
+ 
+time
+
+
+6 
+şass
+ 
+	$RobÙFuncTask
+():
+
+7 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+8 #Th
+roÙ
+ 
+node
+
+
+9 
+XdBŒ“
+ = 
+	`Sequ’û
+("xd_btree")
+
+11 #C»©
+a
+ 
+S–eùÜ
+ 
+compos™e
+ 
+	`sk
+ (
+»tuºs
+ 
+SUCCESS
+ 
+as
+ 
+soÚ
+‡ 
+ªy
+ 
+subsk
+„eturns SUCCESS)
+
+12 
+S–eùÜNode
+ = 
+	`S–eùÜ
+("SelectorNode")
+
+14 #C»©
+a
+ 
+Sequ’û
+ 
+compos™e
+ 
+	`sk
+ (
+»tuºs
+ 
+FAULURE
+ 
+as
+ 
+soÚ
+‡ 
+ªy
+ 
+subsk
+„‘uº 
+FAILURE
+)
+
+15 
+Sequ’ûNode
+ = 
+	`Sequ’û
+("SequenceNode")
+
+17 #C»©
+th»e
+ 
+couÁšg
+ 
+sks
+
+
+18 
+CouÁ2
+ = 
+	`CouÁ
+("Count+2", 1, 2, 1)
+
+19 
+CouÁ5
+ = 
+	`CouÁ
+("Count-5", 5, 1, -1)
+
+20 
+CouÁ6
+ = 
+	`CouÁ
+("Count-6", 6, 1, -1)
+
+21 
+CouÁ16
+ = 
+	`CouÁ
+("Count+16", 1, 16, 1)
+
+23 #Add 
+the
+ 
+sks
+ 
+to
+h
+£qu’û
+ 
+compos™e
+ 
+sk
+
+
+24 
+Sequ’ûNode
+.
+	$add_chd
+(
+CouÁ5
+)
+
+25 
+Sequ’ûNode
+.
+	$add_chd
+(
+CouÁ16
+)
+
+27 #Add 
+the
+ 
+sks
+ 
+to
+h
+£ËùÜ
+ 
+compos™e
+ 
+sk
+
+
+28 
+S–eùÜNode
+.
+	$add_chd
+(
+CouÁ6
+)
+
+29 
+S–eùÜNode
+.
+	$add_chd
+(
+CouÁ16
+)
+
+31 #Add 
+the
+ 
+compos™e
+ 
+sk
+ 
+to
+h
+roÙ
+ask
+
+32 
+XdBŒ“
+.
+	$add_chd
+(
+Sequ’ûNode
+)
+
+33 
+XdBŒ“
+.
+	$add_chd
+(
+S–eùÜNode
+)
+
+35 #Pršˆ
+a
+ 
+sim¶e
+ 
+»´e£Á©iÚ
+ 
+of
+ 
+the
+ 
+Œ“
+
+
+36 
+´št
+ "Behavior Tree Structure"
+
+37 
+	$´št_Œ“
+(
+XdBŒ“
+, 
+u£_symbŞs
+=
+True
+)
+
+39 #RuÀ
+the
+ 
+Œ“
+
+
+40 
+True
+:
+
+41 
+¡©us
+ = 
+XdBŒ“
+.
+	$run
+()
+
+42 
+´št
+ "XdBtree„un"
+
+43 
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+44 
+´št
+ "Finished„unningree."
+
+46 
+time
+.
+	$¦“p
+(0.02)
+
+48 #A 
+couÁšg
+ 
+sk
+ 
+th©
+ 
+ex‹nds
+ 
+the
+ 
+ba£
+ 
+Task
+ask
+
+49 
+şass
+ 
+	$CouÁ
+(
+Task
+):
+
+50 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+¡¬t
+, 
+¡İ
+, 
+¡•
+, *
+¬gs
+, **
+kw¬gs
+):
+
+51 
+	`su³r
+(
+CouÁ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+53 
+£lf
+.
+Çme
+ =‚ame
+
+54 
+£lf
+.
+¡¬t
+ = start
+
+55 
+£lf
+.
+¡İ
+ = stop
+
+56 
+£lf
+.
+¡•
+ = step
+
+57 
+£lf
+.
+couÁ
+ = s–f.
+¡¬t
+
+
+58 
+´št
+ "C»©šgask CouÁ", 
+£lf
+.
+¡¬t
+, s–f.
+¡İ
+, s–f.
+¡•
+
+
+60 
+def
+ 
+	$run
+(
+£lf
+):
+
+61 
+	`abs
+(
+£lf
+.
+couÁ
+ - s–f.
+¡İ
+ - s–f.
+¡•
+) <= 0:
+
+62 
+´št
+ 
+£lf
+.
+Çme
+, "returen sucess"
+
+63  
+TaskStus
+.
+SUCCESS
+
+
+65 
+´št
+ 
+£lf
+.
+Çme
+, s–f.
+couÁ
+
+
+66 #time.
+	`¦“p
+(0.1)
+
+67 
+£lf
+.
+couÁ
+ +ğ£lf.
+¡•
+
+
+68 
+	`abs
+(
+£lf
+.
+couÁ
+ - s–f.
+¡İ
+ - s–f.
+¡•
+) <= 0:
+
+69 
+´št
+ 
+£lf
+.
+Çme
+, "returen sucess"
+
+70  
+TaskStus
+.
+SUCCESS
+
+
+72  
+TaskStus
+.
+RUNNING
+
+
+75 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+76 
+£lf
+.
+couÁ
+ = s–f.
+¡¬t
+
+
+78 
+__Çme__
+ == '__main__':
+
+79 
+Œ“
+ = 
+	`RobÙFuncTask
+()
+
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/setup.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+äom
+ 
+	gdi¡uts
+.
+cÜe
+ 
+impÜt
+ 
+£tup
+
+
+4 
+äom
+ 
+	gÿtkš_pkg
+.
+pythÚ_£tup
+ 
+impÜt
+ 
+g’”©e_di¡uts_£tup
+
+
+6 
+	gd
+ = 
+g’”©e_di¡uts_£tup
+(
+
+7 
+·ckages
+=['pi_trees_lib'],
+
+8 
+·ckage_dœ
+={'': 'src'},
+
+11 
+£tup
+(**
+d
+)
+
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/src/pi_trees_lib/__init__.py
+
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/src/pi_trees_lib/pi_trees_lib.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+impÜt
+ 
+¡ršg
+
+
+4 
+äom
+ 
+¿ndom
+ 
+impÜt
+ 
+	g¿ndom
+, 
+shufæe
+
+
+6 
+impÜt
+ 
+	gos
+
+
+8 #impÜˆ
+pyg¿phviz
+ 
+as
+ 
+pgv
+
+
+10 
+äom
+ 
+time
+ 
+impÜt
+ 
+¦“p
+
+
+12 
+şass
+ 
+	$TaskStus
+(
+objeù
+):
+
+14 
+FAILURE
+ = 0
+
+15 
+SUCCESS
+ = 1
+
+16 
+RUNNING
+ = 2
+
+18 #A 
+glob®
+ 
+v®ue
+ 
+to
+ 
+Œack
+ 
+wh’
+ 
+the
+ 
+Œ“
+'s status has changed. Used inhe…rint_dot_tree() function.
+
+19 
+Ï¡_dÙ_Œ“
+ = ''
+
+21 
+def
+ 
+	$weigh‹d_choiû
+(
+weights
+):
+
+22 
+ºd
+ = 
+	`¿ndom
+(è* 
+	$sum
+(
+weights
+)
+
+23 
+i
+, 
+w
+ 
+š
+ 
+	$’um”©e
+(
+weights
+):
+
+24 
+ºd
+ -ğ
+w
+
+
+25 
+ºd
+ < 0:
+
+26  
+i
+
+
+28 
+def
+ 
+	$weigh‹d_shufæe
+(
+a
+,
+w
+):
+
+29 
+w
+ = 
+	$li¡
+(
+w
+è#mak
+a
+ 
+cİy
+ 
+of
+ w
+
+30 
+	`Ën
+(
+a
+è!ğ
+	$Ën
+(
+w
+):
+
+31 
+	`´št
+("ERROR: Weighted_shuffle: Number of weights does‚ot match‚umber of children.")
+
+32 
+os
+.
+	$_ex™
+(0)
+
+35 
+r
+ = [0]*
+	$Ën
+(
+a
+è#cÚš 
+the
+ 
+¿ndom
+ 
+shufæe
+
+
+36 
+i
+ 
+š
+ 
+	`¿nge
+(
+	$Ën
+(
+a
+)):
+
+37 
+j
+ = 
+	$weigh‹d_choiû
+(
+w
+)
+
+38 
+r
+[
+i
+]=
+a
+[
+j
+]
+
+39 
+w
+[
+j
+] = 0
+
+40  
+r
+
+
+42 
+şass
+ 
+	$Task
+(
+objeù
+):
+
+43 """ "
+The
+ 
+ba£
+ 
+Task
+ 
+şass
+ """
+
+44 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+chd»n
+=
+NÚe
+, 
+»£t_aá”
+=
+F®£
+, 
+ªnounû
+=F®£, *
+¬gs
+, **
+kw¬gs
+):
+
+45 
+£lf
+.
+Çme
+ =‚ame
+
+46 
+£lf
+.
+¡©us
+ = 
+NÚe
+
+
+47 
+£lf
+.
+»£t_aá”
+ =„eset_after
+
+48 
+£lf
+.
+_ªnounû
+ = 
+ªnounû
+
+
+50 
+chd»n
+ 
+is
+ 
+NÚe
+:
+
+51 
+chd»n
+ = []
+
+53 
+£lf
+.
+chd»n
+ = children
+
+55 
+def
+ 
+	$run
+(
+£lf
+):
+
+56 
+·ss
+
+
+58 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+59 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+60 
+c
+.
+	$»£t
+()
+
+62 
+£lf
+.
+¡©us
+ = 
+NÚe
+
+
+64 
+def
+ 
+	$add_chd
+(
+£lf
+, 
+c
+):
+
+65 
+£lf
+.
+chd»n
+.
+	$­³nd
+(
+c
+)
+
+67 
+def
+ 
+	$»move_chd
+(
+£lf
+, 
+c
+):
+
+68 
+£lf
+.
+chd»n
+.
+	$»move
+(
+c
+)
+
+70 
+def
+ 
+	$´•’d_chd
+(
+£lf
+, 
+c
+):
+
+71 
+£lf
+.
+chd»n
+.
+	$š£¹
+(0, 
+c
+)
+
+73 
+def
+ 
+	$š£¹_chd
+(
+£lf
+, 
+c
+, 
+i
+):
+
+74 
+£lf
+.
+chd»n
+.
+	$š£¹
+(
+i
+, 
+c
+)
+
+76 
+def
+ 
+	$g‘_¡©us
+(
+£lf
+):
+
+77  
+£lf
+.
+¡©us
+
+
+79 
+def
+ 
+	$£t_¡©us
+(
+£lf
+, 
+s
+):
+
+80 
+£lf
+.
+¡©us
+ = 
+s
+
+
+82 
+def
+ 
+	$ªnounû
+(
+£lf
+):
+
+83 
+	`´št
+("Executšgask " + 
+	$¡r
+(
+£lf
+.
+Çme
+))
+
+85 
+def
+ 
+	$g‘_ty³
+(
+£lf
+):
+
+86  
+	$ty³
+(
+£lf
+)
+
+88 #The£ 
+Ãxt
+ 
+two
+ 
+funùiÚs
+ 
+®low
+ 
+us
+ 
+to
+ 
+u£
+ 
+the
+ 'w™h' 
+syÁax
+
+
+89 
+def
+ 
+	$__’‹r__
+(
+£lf
+):
+
+90  
+£lf
+.
+Çme
+
+
+92 
+def
+ 
+	$__ex™__
+(
+£lf
+, 
+exc_ty³
+, 
+exc_v®
+, 
+exc_tb
+):
+
+93 
+exc_ty³
+ 
+is
+ 
+nÙ
+ 
+NÚe
+:
+
+94  
+F®£
+
+
+95  
+True
+
+
+97 
+şass
+ 
+	$S–eùÜ
+(
+Task
+):
+
+99 
+©
+ 
+which
+ 
+pošt
+ 
+™
+ 
+»tuºs
+ 
+SUCCESS
+. 
+If
+ 
+®l
+ 
+sks
+ 
+ç
+, 
+a
+ 
+FAILURE
+
+
+100 
+¡©us
+ 
+is
+ 
+»tuºed
+. 
+If
+ 
+a
+ 
+subsk
+ i 
+¡l
+ 
+RUNNING
+, 
+th’
+‡ RUNNING
+
+101 
+¡©us
+ 
+is
+ 
+»tuºed
+ 
+ªd
+ 
+´oûssšg
+ 
+cÚtšues
+ 
+uÁ
+ 
+e™h”
+ 
+SUCCESS
+
+
+102 
+Ü
+ 
+FAILURE
+ 
+is
+ 
+»tuºed
+ 
+äom
+ 
+the
+ 
+subsk
+.
+
+104 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+105 
+	`su³r
+(
+S–eùÜ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+107 
+def
+ 
+	$run
+(
+£lf
+):
+
+108 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+110 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+112 
+c
+.
+¡©us
+ !ğ
+TaskStus
+.
+FAILURE
+:
+
+113 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+114 
+£lf
+.
+»£t_aá”
+:
+
+115 
+£lf
+.
+	$»£t
+()
+
+116  
+TaskStus
+.
+SUCCESS
+
+
+118  
+c
+.
+¡©us
+
+
+119  
+c
+.
+¡©us
+
+
+121 
+£lf
+.
+»£t_aá”
+:
+
+122 
+£lf
+.
+	$»£t
+()
+
+124  
+TaskStus
+.
+FAILURE
+
+
+126 
+şass
+ 
+	$Sequ’û
+(
+Task
+):
+
+128 
+A
+ 
+£qu’û
+ 
+runs
+ 
+—ch
+ 
+sk
+ 
+š
+ 
+Üd”
+ 
+uÁ
+ 
+Úe
+ 
+çs
+,
+
+129 
+©
+ 
+which
+ 
+pošt
+ 
+™
+ 
+»tuºs
+ 
+FAILURE
+. 
+If
+ 
+®l
+ 
+sks
+ 
+sucûed
+, 
+a
+ 
+SUCCESS
+
+
+130 
+¡©us
+ 
+is
+ 
+»tuºed
+. 
+If
+ 
+a
+ 
+subsk
+ i 
+¡l
+ 
+RUNNING
+, 
+th’
+‡ RUNNING
+
+131 
+¡©us
+ 
+is
+ 
+»tuºed
+ 
+ªd
+ 
+´oûssšg
+ 
+cÚtšues
+ 
+uÁ
+ 
+e™h”
+ 
+SUCCESS
+
+
+132 
+Ü
+ 
+FAILURE
+ 
+is
+ 
+»tuºed
+ 
+äom
+ 
+the
+ 
+subsk
+.
+
+134 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+135 
+	`su³r
+(
+Sequ’û
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+137 
+def
+ 
+	$run
+(
+£lf
+):
+
+138 
+£lf
+.
+_ªnounû
+:
+
+139 
+£lf
+.
+	$ªnounû
+()
+
+141 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+143 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+145 
+c
+.
+¡©us
+ !ğ
+TaskStus
+.
+SUCCESS
+:
+
+146 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+147 
+£lf
+.
+»£t_aá”
+:
+
+148 
+£lf
+.
+	$»£t
+()
+
+149  
+TaskStus
+.
+FAILURE
+
+
+150  
+c
+.
+¡©us
+
+
+152 
+£lf
+.
+»£t_aá”
+:
+
+153 
+£lf
+.
+	$»£t
+()
+
+155  
+TaskStus
+.
+SUCCESS
+
+
+157 
+şass
+ 
+	$RªdomS–eùÜ
+(
+Task
+):
+
+159 
+©
+ 
+which
+ 
+pošt
+ 
+™
+ 
+»tuºs
+ 
+SUCCESS
+. 
+If
+ 
+®l
+ 
+sks
+ 
+ç
+, 
+a
+ 
+FAILURE
+
+
+160 
+¡©us
+ 
+is
+ 
+»tuºed
+. 
+If
+ 
+a
+ 
+subsk
+ i 
+¡l
+ 
+RUNNING
+, 
+th’
+‡ RUNNING
+
+161 
+¡©us
+ 
+is
+ 
+»tuºed
+ 
+ªd
+ 
+´oûssšg
+ 
+cÚtšues
+ 
+uÁ
+ 
+e™h”
+ 
+SUCCESS
+
+
+162 
+Ü
+ 
+FAILURE
+ 
+is
+ 
+»tuºed
+ 
+äom
+ 
+the
+ 
+subsk
+.
+
+164 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+165 
+	`su³r
+(
+RªdomS–eùÜ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+167 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+169 
+def
+ 
+	$run
+(
+£lf
+):
+
+170 
+nÙ
+ 
+£lf
+.
+shufæed
+:
+
+171 
+	$shufæe
+(
+£lf
+.
+chd»n
+)
+
+172 
+£lf
+.
+shufæed
+ = 
+True
+
+
+174 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+176 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+178 
+c
+.
+¡©us
+ !ğ
+TaskStus
+.
+FAILURE
+:
+
+179 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+180 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+182  
+c
+.
+¡©us
+
+
+184 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+186 
+£lf
+.
+»£t_aá”
+:
+
+187 
+£lf
+.
+	$»£t
+()
+
+189  
+TaskStus
+.
+FAILURE
+
+
+191 
+şass
+ 
+	$RªdomSequ’û
+(
+Task
+):
+
+193 
+A
+ 
+£qu’û
+ 
+runs
+ 
+—ch
+ 
+sk
+ 
+š
+ 
+¿ndom
+ 
+Üd”
+ 
+uÁ
+ 
+Úe
+ 
+çs
+,
+
+194 
+©
+ 
+which
+ 
+pošt
+ 
+™
+ 
+»tuºs
+ 
+FAILURE
+. 
+If
+ 
+®l
+ 
+sks
+ 
+sucûed
+, 
+a
+ 
+SUCCESS
+
+
+195 
+¡©us
+ 
+is
+ 
+»tuºed
+. 
+If
+ 
+a
+ 
+subsk
+ i 
+¡l
+ 
+RUNNING
+, 
+th’
+‡ RUNNING
+
+196 
+¡©us
+ 
+is
+ 
+»tuºed
+ 
+ªd
+ 
+´oûssšg
+ 
+cÚtšues
+ 
+uÁ
+ 
+e™h”
+ 
+SUCCESS
+
+
+197 
+Ü
+ 
+FAILURE
+ 
+is
+ 
+»tuºed
+ 
+äom
+ 
+the
+ 
+subsk
+.
+
+199 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+200 
+	`su³r
+(
+RªdomSequ’û
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+202 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+204 
+def
+ 
+	$run
+(
+£lf
+):
+
+205 
+nÙ
+ 
+£lf
+.
+shufæed
+:
+
+206 
+	$shufæe
+(
+£lf
+.
+chd»n
+)
+
+207 
+£lf
+.
+shufæed
+ = 
+True
+
+
+209 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+211 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+213 
+c
+.
+¡©us
+ !ğ
+TaskStus
+.
+SUCCESS
+:
+
+214 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+215 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+217  
+c
+.
+¡©us
+
+
+219 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+221 
+£lf
+.
+»£t_aá”
+:
+
+222 
+£lf
+.
+	$»£t
+()
+
+224  
+TaskStus
+.
+SUCCESS
+
+
+226 
+şass
+ 
+	$Weigh‹dRªdomSequ’û
+(
+Task
+):
+
+228 
+A
+ 
+£qu’û
+ 
+runs
+ 
+—ch
+ 
+sk
+ 
+š
+ 
+¿ndom
+ 
+Üd”
+ 
+uÁ
+ 
+Úe
+ 
+çs
+,
+
+229 
+©
+ 
+which
+ 
+pošt
+ 
+™
+ 
+»tuºs
+ 
+FAILURE
+. 
+If
+ 
+®l
+ 
+sks
+ 
+sucûed
+, 
+a
+ 
+SUCCESS
+
+
+230 
+¡©us
+ 
+is
+ 
+»tuºed
+. 
+If
+ 
+a
+ 
+subsk
+ i 
+¡l
+ 
+RUNNING
+, 
+th’
+‡ RUNNING
+
+231 
+¡©us
+ 
+is
+ 
+»tuºed
+ 
+ªd
+ 
+´oûssšg
+ 
+cÚtšues
+ 
+uÁ
+ 
+e™h”
+ 
+SUCCESS
+
+
+232 
+Ü
+ 
+FAILURE
+ 
+is
+ 
+»tuºed
+ 
+äom
+ 
+the
+ 
+subsk
+.
+
+234 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+weights
+, *
+¬gs
+, **
+kw¬gs
+):
+
+235 
+	`su³r
+(
+Weigh‹dRªdomSequ’û
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+237 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+238 
+£lf
+.
+weights
+ = weights
+
+240 
+def
+ 
+	$run
+(
+£lf
+):
+
+241 
+nÙ
+ 
+£lf
+.
+shufæed
+:
+
+242 
+shufæed_chd»n
+ = 
+	$weigh‹d_shufæe
+(
+£lf
+.
+chd»n
+, s–f.
+weights
+)
+
+243 
+£lf
+.
+shufæed
+ = 
+True
+
+
+245 
+c
+ 
+š
+ 
+shufæed_chd»n
+:
+
+247 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+249 
+c
+.
+¡©us
+ !ğ
+TaskStus
+.
+SUCCESS
+:
+
+250 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+251 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+253  
+c
+.
+¡©us
+
+
+255 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+257 
+£lf
+.
+»£t_aá”
+:
+
+258 
+£lf
+.
+	$»£t
+()
+
+260  
+TaskStus
+.
+SUCCESS
+
+
+262 
+şass
+ 
+	$Weigh‹dRªdomS–eùÜ
+(
+Task
+):
+
+264 
+©
+ 
+which
+ 
+pošt
+ 
+™
+ 
+»tuºs
+ 
+SUCCESS
+. 
+If
+ 
+®l
+ 
+sks
+ 
+ç
+, 
+a
+ 
+FAILURE
+
+
+265 
+¡©us
+ 
+is
+ 
+»tuºed
+. 
+If
+ 
+a
+ 
+subsk
+ i 
+¡l
+ 
+RUNNING
+, 
+th’
+‡ RUNNING
+
+266 
+¡©us
+ 
+is
+ 
+»tuºed
+ 
+ªd
+ 
+´oûssšg
+ 
+cÚtšues
+ 
+uÁ
+ 
+e™h”
+ 
+SUCCESS
+
+
+267 
+Ü
+ 
+FAILURE
+ 
+is
+ 
+»tuºed
+ 
+äom
+ 
+the
+ 
+subsk
+.
+
+269 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+weights
+, *
+¬gs
+, **
+kw¬gs
+):
+
+270 
+	`su³r
+(
+Weigh‹dRªdomS–eùÜ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+272 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+273 
+£lf
+.
+weights
+ = weights
+
+275 
+def
+ 
+	$run
+(
+£lf
+):
+
+276 
+nÙ
+ 
+£lf
+.
+shufæed
+:
+
+277 
+shufæed_chd»n
+ = 
+	$weigh‹d_shufæe
+(
+£lf
+.
+chd»n
+, s–f.
+weights
+)
+
+278 
+£lf
+.
+shufæed
+ = 
+True
+
+
+280 
+c
+ 
+š
+ 
+shufæed_chd»n
+:
+
+282 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+284 
+c
+.
+¡©us
+ !ğ
+TaskStus
+.
+FAILURE
+:
+
+285 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+286 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+288  
+c
+.
+¡©us
+
+
+290 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+292 
+£lf
+.
+»£t_aá”
+:
+
+293 
+£lf
+.
+	$»£t
+()
+
+295  
+TaskStus
+.
+FAILURE
+
+
+297 
+şass
+ 
+	$I‹¿tÜ
+(
+Task
+):
+
+299 
+I‹¿‹
+ 
+through
+ 
+®l
+ 
+chd
+ 
+sks
+ 
+ignÜšg
+ 
+çu»
+.
+
+301 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+302 
+	`su³r
+(
+I‹¿tÜ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+304 
+def
+ 
+	$run
+(
+£lf
+):
+
+305 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+307 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+309 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+RUNNING
+:
+
+310  
+c
+.
+¡©us
+
+
+312 
+£lf
+.
+»£t_aá”
+:
+
+313 
+£lf
+.
+	$»£t
+()
+
+315  
+TaskStus
+.
+SUCCESS
+
+
+317 
+şass
+ 
+	$RªdomI‹¿tÜ
+(
+Task
+):
+
+319 
+I‹¿‹
+ 
+through
+ 
+®l
+ 
+chd
+ 
+sks
+ 
+	$¿ndomly
+ (
+w™hout
+ 
+»¶aûm’t
+è
+ignÜšg
+ 
+çu»
+.
+
+321 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+322 
+	`su³r
+(
+RªdomI‹¿tÜ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+324 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+326 
+def
+ 
+	$run
+(
+£lf
+):
+
+327 
+nÙ
+ 
+£lf
+.
+shufæed
+:
+
+328 
+	$shufæe
+(
+£lf
+.
+chd»n
+)
+
+329 
+£lf
+.
+shufæed
+ = 
+True
+
+
+331 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+333 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+335 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+RUNNING
+:
+
+336  
+c
+.
+¡©us
+
+
+338 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+340 
+£lf
+.
+»£t_aá”
+:
+
+341 
+£lf
+.
+	$»£t
+()
+
+343  
+TaskStus
+.
+SUCCESS
+
+
+345 
+şass
+ 
+	$Weigh‹dRªdomI‹¿tÜ
+(
+Task
+):
+
+347 
+I‹¿‹
+ 
+through
+ 
+®l
+ 
+chd
+ 
+sks
+ 
+	$¿ndomly
+ (
+w™hout
+ 
+»¶aûm’t
+è
+ignÜšg
+ 
+çu»
+.
+
+349 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+weights
+, *
+¬gs
+, **
+kw¬gs
+):
+
+350 
+	`su³r
+(
+Weigh‹dRªdomI‹¿tÜ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+352 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+353 
+£lf
+.
+weights
+ = weights
+
+355 
+def
+ 
+	$run
+(
+£lf
+):
+
+356 
+nÙ
+ 
+£lf
+.
+shufæed
+:
+
+357 
+sufæed_chd»n
+ = 
+	$weigh‹d_shufæe
+(
+£lf
+.
+chd»n
+, s–f.
+weights
+)
+
+358 
+£lf
+.
+shufæed
+ = 
+True
+
+
+360 
+c
+ 
+š
+ 
+sufæed_chd»n
+:
+
+362 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+364 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+RUNNING
+:
+
+365  
+c
+.
+¡©us
+
+
+367 
+£lf
+.
+shufæed
+ = 
+F®£
+
+
+369 
+£lf
+.
+»£t_aá”
+:
+
+370 
+£lf
+.
+	$»£t
+()
+
+372  
+TaskStus
+.
+SUCCESS
+
+
+374 
+şass
+ 
+	$P¬®ËlOÃ
+(
+Task
+):
+
+376 
+A
+ 
+·¿Î–
+ 
+sk
+ 
+runs
+ 
+—ch
+ 
+chd
+ask 
+	$©
+ (
+roughly
+è
+the
+ 
+§me
+ 
+time
+.
+
+377 
+The
+ 
+P¬®ËlOÃ
+ 
+sk
+ 
+»tuºs
+ 
+sucûss
+ 
+as
+ 
+soÚ
+‡ 
+ªy
+ 
+chd
+ 
+sucûeds
+.
+
+379 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+380 
+	`su³r
+(
+P¬®ËlOÃ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+382 
+£lf
+.
+çu»
+ = 
+	$diù
+()
+
+383 
+£lf
+.
+šdex
+ = 0
+
+385 
+def
+ 
+	$run
+(
+£lf
+):
+
+386 
+n_chd»n
+ = 
+	$Ën
+(
+£lf
+.
+chd»n
+)
+
+388 
+£lf
+.
+šdex
+ < 
+n_chd»n
+:
+
+389 
+chd
+ = 
+£lf
+.
+chd»n
+[£lf.
+šdex
+]
+
+390 
+chd
+.
+¡©us
+ = chd.
+	$run
+()
+
+392 
+chd
+.
+¡©us
+ !ğ
+TaskStus
+.
+SUCCESS
+:
+
+393 
+£lf
+.
+šdex
+ += 1
+
+395 
+chd
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+396 
+£lf
+.
+çu»
+[
+chd
+.
+Çme
+] = 
+TaskStus
+.
+FAILURE
+
+
+398  
+TaskStus
+.
+RUNNING
+
+
+400 
+£lf
+.
+»£t_aá”
+:
+
+401 
+£lf
+.
+	$»£t
+()
+
+402 
+£lf
+.
+šdex
+ = 0
+
+403  
+TaskStus
+.
+SUCCESS
+
+
+405 
+–if
+ 
+	`Ën
+(
+£lf
+.
+çu»
+è=ğ
+n_chd»n
+:
+
+406 
+£lf
+.
+»£t_aá”
+:
+
+407 
+£lf
+.
+	$»£t
+()
+
+408  
+TaskStus
+.
+FAILURE
+
+
+410 
+£lf
+.
+šdex
+ = 0
+
+411  
+TaskStus
+.
+RUNNING
+
+
+413 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+414 
+	`su³r
+(
+P¬®ËlOÃ
+, 
+£lf
+).
+	$»£t
+()
+
+415 
+£lf
+.
+çu»
+ = 
+	$diù
+()
+
+416 
+£lf
+.
+šdex
+ = 0
+
+418 
+şass
+ 
+	$P¬®ËlAÎ
+(
+Task
+):
+
+420 
+A
+ 
+·¿Î–
+ 
+sk
+ 
+runs
+ 
+—ch
+ 
+chd
+ask 
+	$©
+ (
+roughly
+è
+the
+ 
+§me
+ 
+time
+.
+
+421 
+The
+ 
+P¬®ËlAÎ
+ 
+sk
+ 
+»quœes
+ 
+®l
+ 
+subsks
+ 
+to
+ 
+sucûed
+ 
+™
+o succeed.
+
+423 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+424 
+	`su³r
+(
+P¬®ËlAÎ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+426 
+£lf
+.
+sucûss
+ = 
+	$diù
+()
+
+427 
+£lf
+.
+šdex
+ = 0
+
+429 
+def
+ 
+	$run
+(
+£lf
+):
+
+430 
+n_chd»n
+ = 
+	$Ën
+(
+£lf
+.
+chd»n
+)
+
+432 
+£lf
+.
+šdex
+ < 
+n_chd»n
+:
+
+433 
+chd
+ = 
+£lf
+.
+chd»n
+[£lf.
+šdex
+]
+
+434 
+chd
+.
+¡©us
+ = chd.
+	$run
+()
+
+436 
+chd
+.
+¡©us
+ !ğ
+TaskStus
+.
+FAILURE
+:
+
+437 
+£lf
+.
+šdex
+ += 1
+
+439 
+chd
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+440 
+£lf
+.
+sucûss
+[
+chd
+.
+Çme
+] = 
+TaskStus
+.
+SUCCESS
+
+
+442  
+TaskStus
+.
+RUNNING
+
+
+444 
+£lf
+.
+»£t_aá”
+:
+
+445 
+£lf
+.
+	$»£t
+()
+
+446  
+TaskStus
+.
+FAILURE
+
+
+448 
+–if
+ 
+	`Ën
+(
+£lf
+.
+sucûss
+è=ğ
+n_chd»n
+:
+
+449 
+£lf
+.
+»£t_aá”
+:
+
+450 
+£lf
+.
+	$»£t
+()
+
+451  
+TaskStus
+.
+SUCCESS
+
+
+453 
+£lf
+.
+šdex
+ = 0
+
+454  
+TaskStus
+.
+RUNNING
+
+
+456 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+457 
+	`su³r
+(
+P¬®ËlAÎ
+, 
+£lf
+).
+	$»£t
+()
+
+458 
+£lf
+.
+sucûss
+ = 
+	$diù
+()
+
+459 
+£lf
+.
+šdex
+ = 0
+
+461 
+şass
+ 
+	$Loİ
+(
+Task
+):
+
+463 
+Loİ
+ 
+ov”
+ 
+Úe
+ 
+Ü
+ 
+mÜe
+ 
+subsks
+ 
+the
+ 
+giv’
+ 
+numb”
+ 
+of
+ 
+™”©iÚs
+
+
+464 
+U£
+ 
+the
+ 
+v®ue
+ -1 
+to
+ 
+šdiÿ‹
+ 
+a
+ 
+cÚtšu®
+ 
+loİ
+.
+
+466 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+ªnounû
+=
+True
+, *
+¬gs
+, **
+kw¬gs
+):
+
+467 
+	`su³r
+(
+Loİ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+469 
+£lf
+.
+™”©iÚs
+ = 
+kw¬gs
+['iterations']
+
+470 
+£lf
+.
+_ªnounû
+ = 
+ªnounû
+
+
+471 
+£lf
+.
+loİ_couÁ
+ = 0
+
+472 
+£lf
+.
+Çme
+ =‚ame
+
+473 
+	`´št
+("Loİ i‹¿tiÚs: " + 
+	$¡r
+(
+£lf
+.
+™”©iÚs
+))
+
+475 
+def
+ 
+	$run
+(
+£lf
+):
+
+477 
+c
+ = 
+£lf
+.
+chd»n
+[0]
+
+479 
+£lf
+.
+™”©iÚs
+ =ğ-1 
+Ü
+ s–f.
+loİ_couÁ
+ < self.iterations:
+
+480 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+482 
+¡©us
+ = 
+c
+.status
+
+484 
+£lf
+.
+¡©us
+ = status
+
+486 
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+ 
+Ü
+ stu =ğTaskStus.
+FAILURE
+:
+
+487 
+£lf
+.
+loİ_couÁ
+ += 1
+
+489 
+£lf
+.
+_ªnounû
+:
+
+490 
+	`´št
+(
+£lf
+.
+Çme
+ + " COMPLETED " + 
+	`¡r
+(£lf.
+loİ_couÁ
+) + " LOOP(S)")
+
+492 
+c
+.
+	$»£t
+()
+
+494  
+¡©us
+
+
+496 
+şass
+ 
+	$Lim™
+(
+Task
+):
+
+498 
+Lim™
+ 
+the
+ 
+numb”
+ 
+of
+ 
+times
+ 
+a
+ 
+sk
+ 
+ÿn
+ 
+execu‹
+
+
+500 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+ªnounû
+=
+True
+, *
+¬gs
+, **
+kw¬gs
+):
+
+501 
+	`su³r
+(
+Lim™
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+503 
+£lf
+.
+max_executiÚs
+ = 
+kw¬gs
+['max_executions']
+
+504 
+£lf
+.
+_ªnounû
+ = 
+ªnounû
+
+
+505 
+£lf
+.
+executiÚ_couÁ
+ = 0
+
+506 
+£lf
+.
+Çme
+ =‚ame
+
+507 
+	`´št
+("Lim™‚umb” oàexecutiÚ to: " + 
+	$¡r
+(
+£lf
+.
+max_executiÚs
+))
+
+509 
+def
+ 
+	$run
+(
+£lf
+):
+
+510 
+c
+ = 
+£lf
+.
+chd»n
+[0]
+
+512 
+£lf
+.
+executiÚ_couÁ
+ >ğ£lf.
+max_executiÚs
+:
+
+514 
+£lf
+.
+_ªnounû
+:
+
+515 
+	`´št
+(
+£lf
+.
+Çme
+ + "„—ched maximum‚umb” (" + 
+	`¡r
+(£lf.
+max_executiÚs
+) + ") ofƒxecutions.")
+
+517 
+£lf
+.
+»£t_aá”
+:
+
+518 
+£lf
+.
+	$»£t
+()
+
+520  
+TaskStus
+.
+FAILURE
+
+
+522 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+524 
+c
+.
+¡©us
+ !ğ
+TaskStus
+.
+RUNNING
+:
+
+525 
+£lf
+.
+executiÚ_couÁ
+ += 1
+
+527  
+c
+.
+¡©us
+
+
+529 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+530 
+c
+ = 
+£lf
+.
+chd»n
+[0]
+
+531 
+c
+.
+	$»£t
+()
+
+532 
+£lf
+.
+executiÚ_couÁ
+ = 0
+
+533 
+£lf
+.
+¡©us
+ = 
+NÚe
+
+
+535 
+şass
+ 
+	$IgnÜeFau»
+(
+Task
+):
+
+537 
+Always
+  
+e™h”
+ 
+RUNNING
+ 
+Ü
+ 
+SUCCESS
+.
+
+539 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+540 
+	`su³r
+(
+IgnÜeFau»
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+542 
+def
+ 
+	$run
+(
+£lf
+):
+
+544 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+546 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+548 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+549  
+TaskStus
+.
+SUCCESS
+
+
+551  
+c
+.
+¡©us
+
+
+553  
+TaskStus
+.
+SUCCESS
+
+
+556 
+şass
+ 
+	$AlwaysFa
+(
+Task
+):
+
+558 
+Always
+  
+FAILURE
+
+
+560 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+561 
+	`su³r
+(
+AlwaysFa
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+563 
+def
+ 
+	$run
+(
+£lf
+):
+
+565 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+567 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+569  
+c
+.
+¡©us
+
+
+571  
+TaskStus
+.
+FAILURE
+
+
+573 
+şass
+ 
+	$AlwaysSucûed
+(
+Task
+):
+
+575 
+Always
+  
+SUCCESS
+
+
+577 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+578 
+	`su³r
+(
+AlwaysSucûed
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+580 
+def
+ 
+	$run
+(
+£lf
+):
+
+582 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+584 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+586  
+c
+.
+¡©us
+
+
+588  
+TaskStus
+.
+SUCCESS
+
+
+591 
+şass
+ 
+	$Inv”t
+(
+Task
+):
+
+593 
+Tuº
+ 
+SUCCESS
+ 
+što
+ 
+FAILURE
+ 
+ªd
+ 
+viû
+-
+v”§
+
+
+595 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+596 
+	`su³r
+(
+Inv”t
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+598 
+def
+ 
+	$run
+(
+£lf
+):
+
+600 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+602 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+604 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+605  
+TaskStus
+.
+SUCCESS
+
+
+607 
+–if
+ 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+608  
+TaskStus
+.
+FAILURE
+
+
+611  
+c
+.
+¡©us
+
+
+613 #AlŸ 
+TaskNÙ
+ 
+to
+ 
+Inv”t
+ 
+backw¬ds
+ 
+com·tib™y
+
+
+614 
+TaskNÙ
+ = 
+Inv”t
+
+
+616 
+şass
+ 
+	$UÁFau»
+(
+Task
+):
+
+618 
+CÚtšue
+ 
+executšg
+ 
+a
+ 
+sk
+ 
+uÁ
+ 
+™
+ 
+çs
+ 
+Ü
+ 
+max_©‹m±s
+ 
+is
+ 
+»ached
+.
+
+620 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+Çme
+, 
+max_©‹m±s
+=-1, *
+¬gs
+, **
+kw¬gs
+):
+
+621 
+	`su³r
+(
+UÁFau»
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+623 
+£lf
+.
+max_©‹m±s
+ = max_attempts
+
+624 
+£lf
+.
+©‹m±s
+ = 0
+
+626 
+def
+ 
+	$run
+(
+£lf
+):
+
+627 
+c
+ = 
+£lf
+.
+chd»n
+[0]
+
+629 
+£lf
+.
+©‹m±s
+ < s–f.
+max_©‹m±s
+ 
+Ü
+ self.max_attempts == -1:
+
+631 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+633 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+634  
+TaskStus
+.
+SUCCESS
+
+
+636 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+637 
+£lf
+.
+©‹m±s
+ += 1
+
+638 
+c
+.
+	$»£t
+()
+
+640  
+TaskStus
+.
+RUNNING
+
+
+642  
+TaskStus
+.
+FAILURE
+
+
+644 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+645 
+c
+ = 
+£lf
+.
+chd»n
+[0]
+
+646 
+c
+.
+	$»£t
+()
+
+647 
+£lf
+.
+©‹m±s
+ = 0
+
+649 #AlŸ 
+UÁFa
+ 
+to
+ 
+UÁFau»
+ 
+backw¬ds
+ 
+com·tib™y
+
+
+650 
+UÁFa
+ = 
+UÁFau»
+
+
+652 
+şass
+ 
+	$UÁSucûss
+(
+Task
+):
+
+654 
+CÚtšue
+ 
+executšg
+ 
+a
+ 
+sk
+ 
+uÁ
+ 
+™
+ 
+sucûeds
+ 
+Ü
+ 
+max_©‹m±s
+ 
+is
+ 
+»ached
+.
+
+656 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+Çme
+, 
+max_©‹m±s
+=-1, *
+¬gs
+, **
+kw¬gs
+):
+
+657 
+	`su³r
+(
+UÁSucûss
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+659 
+£lf
+.
+max_©‹m±s
+ = max_attempts
+
+660 
+£lf
+.
+©‹m±s
+ = 0
+
+662 
+def
+ 
+	$run
+(
+£lf
+):
+
+663 
+c
+ = 
+£lf
+.
+chd»n
+[0]
+
+665 
+£lf
+.
+©‹m±s
+ < s–f.
+max_©‹m±s
+ 
+Ü
+ self.max_attempts == -1:
+
+667 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+669 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+670  
+TaskStus
+.
+SUCCESS
+
+
+672 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+673 
+£lf
+.
+©‹m±s
+ += 1
+
+674 
+c
+.
+	$»£t
+()
+
+676  
+TaskStus
+.
+RUNNING
+
+
+678 
+£lf
+.
+»£t_aá”
+:
+
+679 
+£lf
+.
+	$»£t
+()
+
+681  
+TaskStus
+.
+FAILURE
+
+
+683 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+684 
+c
+ = 
+£lf
+.
+chd»n
+[0]
+
+685 
+c
+.
+	$»£t
+()
+
+686 
+£lf
+.
+©‹m±s
+ = 0
+
+688 
+şass
+ 
+	$AutoRemoveSequ’û
+(
+Task
+):
+
+690 
+Remove
+ 
+—ch
+ 
+sucûssful
+ 
+subsk
+ 
+äom
+ 
+a
+ 
+£qu’û
+
+
+692 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, *
+¬gs
+, **
+kw¬gs
+):
+
+693 
+	`su³r
+(
+AutoRemoveSequ’û
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, *
+¬gs
+, **
+kw¬gs
+)
+
+695 
+def
+ 
+	$run
+(
+£lf
+):
+
+696 
+c
+ 
+š
+ 
+£lf
+.
+chd»n
+:
+
+697 
+c
+.
+¡©us
+ = c.
+	$run
+()
+
+699 
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+700  
+TaskStus
+.
+FAILURE
+
+
+702 
+c
+.
+¡©uss
+ =ğ
+TaskStus
+.
+RUNNING
+:
+
+703  
+TaskStus
+.
+RUNNING
+
+
+705 
+Œy
+:
+
+706 
+£lf
+.
+chd»n
+.
+	$»move
+(
+£lf
+.
+chd»n
+[0])
+
+707 
+exû±
+:
+
+708  
+TaskStus
+.
+FAILURE
+
+
+710  
+TaskStus
+.
+SUCCESS
+
+
+712 
+şass
+ 
+	$C®lbackTask
+(
+Task
+):
+
+714 
+Tuº
+ 
+ªy
+ 
+ÿÎback
+ 
+	$funùiÚ
+ (
+cb
+è
+što
+ 
+a
+ 
+sk
+
+
+716 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+Çme
+, 
+cb
+=
+NÚe
+, 
+cb_¬gs
+=[], 
+cb_kw¬gs
+={
+	}
+}, **
+	gkw¬gs
+):
+
+717 
+su³r
+(
+C®lbackTask
+, 
+£lf
+).
+__š™__
+(
+Çme
+, 
+cb
+=
+NÚe
+, 
+cb_¬gs
+=[], 
+cb_kw¬gs
+={}, **
+kw¬gs
+)
+
+719 
+	g£lf
+.
+	gÇme
+ = 
+Çme
+
+
+720 
+£lf
+.
+cb
+ = cb
+
+721 
+£lf
+.
+cb_¬gs
+ = cb_args
+
+722 
+£lf
+.
+cb_kw¬gs
+ = cb_kwargs
+
+724 
+def
+ 
+	$run
+(
+£lf
+):
+
+725 
+¡©us
+ = 
+£lf
+.
+	$cb
+(*
+£lf
+.
+cb_¬gs
+, **£lf.
+cb_kw¬gs
+)
+
+727 
+¡©us
+ 
+is
+ 
+NÚe
+:
+
+728 
+£lf
+.
+¡©us
+ = 
+TaskStus
+.
+RUNNING
+
+
+730 
+–if
+ 
+¡©us
+:
+
+731 
+£lf
+.
+¡©us
+ = 
+TaskStus
+.
+SUCCESS
+
+
+734 
+£lf
+.
+¡©us
+ = 
+TaskStus
+.
+FAILURE
+
+
+736  
+£lf
+.
+¡©us
+
+
+738 
+def
+ 
+	$»£t
+(
+£lf
+):
+
+739 
+£lf
+.
+¡©us
+ = 
+NÚe
+
+
+741 
+şass
+ 
+	$Wa™Task
+(
+Task
+):
+
+743 
+This
+ 
+is
+ 
+a
+ *
+blockšg
+* 
+wa™
+ 
+sk
+. 
+The
+ 
+š‹rv®
+ 
+¬gum’t
+ i 
+š
+ 
+£cÚds
+.
+
+745 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+š‹rv®
+, *
+¬gs
+, **
+kw¬gs
+):
+
+746 
+	`su³r
+(
+Wa™Task
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+, 
+š‹rv®
+, *
+¬gs
+, **
+kw¬gs
+)
+
+748 
+£lf
+.
+š‹rv®
+ = interval
+
+750 
+def
+ 
+	$run
+(
+£lf
+):
+
+751 
+	$¦“p
+(
+£lf
+.
+š‹rv®
+)
+
+753  
+TaskStus
+.
+SUCCESS
+
+
+755 
+şass
+ 
+	$loİ
+(
+Task
+):
+
+757 
+Loİ
+ 
+ov”
+ 
+Úe
+ 
+Ü
+ 
+mÜe
+ 
+subsks
+ 
+a
+ 
+giv’
+ 
+numb”
+ 
+of
+ 
+™”©iÚs
+
+
+759 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+sk
+, 
+™”©iÚs
+=-1):
+
+760 
+Ãw_Çme
+ = 
+sk
+.
+Çme
+ + "_loİ_" + 
+	$¡r
+(
+™”©iÚs
+)
+
+761 
+	`su³r
+(
+loİ
+, 
+£lf
+).
+	$__š™__
+(
+Ãw_Çme
+)
+
+763 
+£lf
+.
+™”©iÚs
+ = iterations
+
+764 
+£lf
+.
+Şd_run
+ = 
+sk
+.
+run
+
+
+765 
+£lf
+.
+Şd_»£t
+ = 
+sk
+.
+»£t
+
+
+766 
+£lf
+.
+Şd_chd»n
+ = 
+sk
+.
+chd»n
+
+
+767 
+£lf
+.
+loİ_couÁ
+ = 0
+
+769 
+	`´št
+("Loİ i‹¿tiÚs: " + 
+	$¡r
+(
+£lf
+.
+™”©iÚs
+))
+
+771 
+def
+ 
+	$run
+(
+£lf
+):
+
+772 
+£lf
+.
+™”©iÚs
+ !ğ-1 
+ªd
+ s–f.
+loİ_couÁ
+ >= self.iterations:
+
+773  
+TaskStus
+.
+SUCCESS
+
+
+775 
+	`´št
+("Loİ " + 
+	`¡r
+(
+£lf
+.
+loİ_couÁ
+ + 1))
+
+777 
+True
+:
+
+778 
+£lf
+.
+¡©us
+ = s–f.
+	$Şd_run
+()
+
+780 
+£lf
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+783  
+£lf
+.
+¡©us
+
+
+785 
+£lf
+.
+	$Şd_»£t
+()
+
+786 
+£lf
+.
+loİ_couÁ
+ += 1
+
+788 
+şass
+ 
+	$lim™
+(
+Task
+):
+
+790 
+Lim™
+ 
+a
+ 
+sk
+ 
+to
+ 
+the
+ 
+giv’
+ 
+numb”
+ 
+of
+ 
+executiÚs
+
+
+792 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+sk
+, 
+max_executiÚs
+=-1):
+
+793 
+Ãw_Çme
+ = 
+sk
+.
+Çme
+ + "_lim™_" + 
+	$¡r
+(
+max_executiÚs
+)
+
+794 
+	`su³r
+(
+lim™
+, 
+£lf
+).
+	$__š™__
+(
+Ãw_Çme
+)
+
+796 
+£lf
+.
+max_executiÚs
+ = max_executions
+
+797 
+£lf
+.
+Şd_run
+ = 
+sk
+.
+run
+
+
+798 
+£lf
+.
+Şd_»£t
+ = 
+sk
+.
+»£t
+
+
+799 
+£lf
+.
+Şd_chd»n
+ = 
+sk
+.
+chd»n
+
+
+800 
+£lf
+.
+executiÚ_couÁ
+ = 0
+
+802 
+	`´št
+("Lim™‚umb” oàexecutiÚ to: " + 
+	$¡r
+(
+£lf
+.
+max_executiÚs
+))
+
+804 
+def
+ 
+	$run
+(
+£lf
+):
+
+805 
+£lf
+.
+max_executiÚs
+ !ğ-1 
+ªd
+ s–f.
+executiÚ_couÁ
+ >= self.max_executions:
+
+806 
+£lf
+.
+executiÚ_couÁ
+ = 0
+
+808 
+£lf
+.
+_ªnounû
+:
+
+809 
+	`´št
+(
+£lf
+.
+Çme
+ + "„—ched maximum‚umb” (" + 
+	`¡r
+(£lf.
+max_executiÚs
+) + ") ofƒxecutions.")
+
+811  
+TaskStus
+.
+FAILURE
+
+
+813 
+True
+:
+
+814 
+£lf
+.
+¡©us
+ = s–f.
+	$Şd_run
+()
+
+816 
+£lf
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+819  
+£lf
+.
+¡©us
+
+
+821 
+£lf
+.
+	$Şd_»£t
+()
+
+822 
+£lf
+.
+executiÚ_couÁ
+ += 1
+
+824 
+şass
+ 
+	$ignÜe_çu»
+(
+Task
+):
+
+826 
+Always
+  
+e™h”
+ 
+RUNNING
+ 
+Ü
+ 
+SUCCESS
+.
+
+828 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+sk
+):
+
+829 
+Ãw_Çme
+ = 
+sk
+.
+Çme
+ + "_ignore_failure"
+
+830 
+	`su³r
+(
+ignÜe_çu»
+, 
+£lf
+).
+	$__š™__
+(
+Ãw_Çme
+)
+
+832 
+£lf
+.
+Şd_run
+ = 
+sk
+.
+run
+
+
+834 
+def
+ 
+	$run
+(
+£lf
+):
+
+835 
+True
+:
+
+836 
+£lf
+.
+¡©us
+ = s–f.
+	$Şd_run
+()
+
+838 
+£lf
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+839  
+TaskStus
+.
+SUCCESS
+
+
+841  
+£lf
+.
+¡©us
+
+
+843 
+şass
+ 
+	$ignÜe_sucûss
+(
+Task
+):
+
+845 
+Always
+  
+FAILURE
+ 
+Ü
+ 
+RUNNING
+
+
+847 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+sk
+):
+
+848 
+Ãw_Çme
+ = 
+sk
+.
+Çme
+ + "_ignore_success"
+
+849 
+	`su³r
+(
+ignÜe_sucûss
+, 
+£lf
+).
+	$__š™__
+(
+Ãw_Çme
+)
+
+851 
+£lf
+.
+Şd_run
+ = 
+sk
+.
+run
+
+
+853 
+def
+ 
+	$run
+(
+£lf
+):
+
+854 
+True
+:
+
+855 
+£lf
+.
+¡©us
+ = s–f.
+	$Şd_run
+()
+
+857 
+£lf
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+858  
+TaskStus
+.
+FAILURE
+
+
+860  
+£lf
+.
+¡©us
+
+
+862 
+şass
+ 
+	$sk_nÙ
+(
+Task
+):
+
+864 
+Tuº
+ 
+SUCCESS
+ 
+što
+ 
+FAILURE
+ 
+ªd
+ 
+viû
+-
+v”§
+
+
+866 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+sk
+):
+
+867 
+Ãw_Çme
+ = 
+sk
+.
+Çme
+ + "_not"
+
+868 
+	`su³r
+(
+sk_nÙ
+, 
+£lf
+).
+	$__š™__
+(
+Ãw_Çme
+)
+
+870 
+£lf
+.
+Şd_run
+ = 
+sk
+.
+run
+
+
+872 
+def
+ 
+	$run
+(
+£lf
+):
+
+873 
+True
+:
+
+874 
+£lf
+.
+¡©us
+ = s–f.
+	$Şd_run
+()
+
+876 
+£lf
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+877  
+TaskStus
+.
+SUCCESS
+
+
+879 
+–if
+ 
+£lf
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+880  
+TaskStus
+.
+FAILURE
+
+
+883  
+£lf
+.
+¡©us
+
+
+885 #AlŸ 
+sk_nÙ
+ 
+to
+ 
+šv”t
+ 
+which
+ 
+£ems
+ 
+mÜe
+ 
+štu™ive
+
+
+886 
+šv”t
+ = 
+sk_nÙ
+
+
+888 
+şass
+ 
+	$uÁ_ç
+(
+Task
+):
+
+890 
+Execu‹
+ 
+a
+ 
+sk
+ 
+uÁ
+ 
+™
+ 
+çs
+
+
+892 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+sk
+):
+
+893 
+Ãw_Çme
+ = 
+sk
+.
+Çme
+ + "_until_fail"
+
+894 
+	`su³r
+(
+uÁ_ç
+, 
+£lf
+).
+	$__š™__
+(
+Ãw_Çme
+)
+
+896 
+£lf
+.
+Şd_run
+ = 
+sk
+.
+run
+
+
+898 
+def
+ 
+	$run
+(
+£lf
+):
+
+899 
+True
+:
+
+900 
+£lf
+.
+¡©us
+ = s–f.
+	$Şd_run
+()
+
+902 
+£lf
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+906  
+£lf
+.
+¡©us
+
+
+908  
+TaskStus
+.
+SUCCESS
+
+
+910 
+şass
+ 
+	$®ways_ç
+(
+Task
+):
+
+912 
+Execu‹
+ 
+a
+ 
+sk
+ 
+but
+ 
+®ways
+  
+FAILTURE
+
+
+914 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+sk
+):
+
+915 
+Ãw_Çme
+ = 
+sk
+.
+Çme
+ + "_always_fail"
+
+916 
+	`su³r
+(
+®ways_ç
+, 
+£lf
+).
+	$__š™__
+(
+Ãw_Çme
+)
+
+918 
+£lf
+.
+Şd_run
+ = 
+sk
+.
+run
+
+
+920 
+def
+ 
+	$run
+(
+£lf
+):
+
+921 
+True
+:
+
+922 
+£lf
+.
+	$Şd_run
+()
+
+924 
+£lf
+.
+¡©us
+ = 
+TaskStus
+.
+FAILURE
+
+
+926  
+TaskStus
+.
+FAILURE
+
+
+929 
+def
+ 
+	$´št_Œ“
+(
+Œ“
+, 
+šd’t
+=0, 
+u£_symbŞs
+=
+F®£
+):
+
+931 
+Pršt
+ 
+ª
+ 
+ASCII
+ 
+»´e£Á©iÚ
+ 
+of
+ 
+the
+ 
+Œ“
+
+
+933 
+u£_symbŞs
+:
+
+934 
+šd’t
+ == 0:
+
+935 
+	$´št_Œ“_symbŞ
+(
+Œ“
+, 
+šd’t
+)
+
+936 
+šd’t
+ += 1
+
+938 
+c
+ 
+š
+ 
+Œ“
+.
+chd»n
+:
+
+939 
+	$´št_Œ“_symbŞ
+(
+c
+, 
+šd’t
+)
+
+941 
+Œy
+:
+
+942 
+c
+.
+chd»n
+ != []:
+
+943 
+	`´št_Œ“
+(
+c
+, 
+šd’t
++1, 
+u£_symbŞs
+)
+
+944 
+exû±
+:
+
+945 
+·ss
+
+
+947 
+c
+ 
+š
+ 
+Œ“
+.
+chd»n
+:
+
+948 
+´št
+ " " * 
+šd’t
+, "-->", 
+c
+.
+Çme
+
+
+950 
+Œy
+:
+
+951 
+c
+.
+chd»n
+ != []:
+
+952 
+	`´št_Œ“
+(
+c
+, 
+šd’t
+ + 1)
+
+953 
+exû±
+:
+
+954 
+·ss
+
+
+956 
+def
+ 
+	$´št_Œ“_symbŞ
+(
+c
+, 
+šd’t
+):
+
+958 
+U£
+ 
+ASCII
+ 
+symbŞs
+ 
+to
+ 
+»´e£Á
+ 
+Sequ’û
+, 
+S–eùÜ
+, 
+Task
+, 
+‘c
+.
+
+960 
+	$isš¡ªû
+(
+c
+, 
+S–eùÜ
+):
+
+961 
+´št
+ " " * 
+šd’t
+, "--?",
+
+962 
+–if
+ 
+	`isš¡ªû
+(
+c
+, (
+Sequ’û
+, 
+I‹¿tÜ
+)):
+
+963 
+´št
+ " " * 
+šd’t
+, "-->",
+
+964 
+–if
+ 
+	`isš¡ªû
+(
+c
+, (
+RªdomSequ’û
+, 
+RªdomI‹¿tÜ
+, 
+Weigh‹dRªdomSequ’û
+, 
+Weigh‹dRªdomI‹¿tÜ
+)):
+
+965 
+´št
+ " " * 
+šd’t
+, "~~>",
+
+966 
+–if
+ 
+	`isš¡ªû
+(
+c
+, (
+RªdomS–eùÜ
+, 
+Weigh‹dRªdomS–eùÜ
+)):
+
+967 
+´št
+ " " * 
+šd’t
+, "~~?",
+
+968 
+–if
+ 
+	$isš¡ªû
+(
+c
+, 
+P¬®ËlOÃ
+):
+
+969 
+´št
+ " " * 
+šd’t
+, "==?",
+
+970 
+–if
+ 
+	$isš¡ªû
+(
+c
+, 
+P¬®ËlAÎ
+):
+
+971 
+´št
+ " " * 
+šd’t
+, "==>",
+
+972 
+–if
+ 
+	$isš¡ªû
+(
+c
+, 
+Loİ
+):
+
+973 
+´št
+ " " * 
+šd’t
+, "<->",
+
+974 
+–if
+ 
+	$isš¡ªû
+(
+c
+, 
+Inv”t
+):
+
+975 
+´št
+ " " * 
+šd’t
+, "--!",
+
+977 
+´št
+ " " * 
+šd’t
+, "--|",
+
+979 
+´št
+ 
+c
+.
+Çme
+
+
+981 
+def
+ 
+	$´št_phpsyÁax_Œ“
+(
+Œ“
+):
+
+983 
+Pršt
+ 
+ª
+ 
+ouut
+ 
+com·tibË
+ 
+w™h
+ 
+œÚü“k
+.
+Ãt
+/
+phpSyÁaxT»e
+
+
+985 
+c
+ 
+š
+ 
+Œ“
+.
+chd»n
+:
+
+986 
+´št
+ "[" + 
+¡ršg
+.
+	`»¶aû
+(
+c
+.
+Çme
+, "_", "."),
+
+987 
+c
+.
+chd»n
+ != []:
+
+988 
+	`´št_phpsyÁax_Œ“
+(
+c
+),
+
+989 
+´št
+ "]",
+
+991 #deà
+	`´št_dÙ_Œ“
+(
+roÙ
+, 
+dÙf•©h
+=
+NÚe
+):
+
+993 #Pršˆ
+ª
+ 
+ouut
+ 
+com·tibË
+ 
+w™h
+ 
+the
+ 
+DOT
+ 
+syÇx
+ 
+ªd
+ 
+G¿phiz
+
+
+995 #g¸ğ
+pgv
+.
+	`AG¿ph
+(
+¡riù
+=
+True
+, 
+dœeùed
+=True, 
+rÙ©e
+='0', 
+bgcŞÜ
+='wh™e', 
+Üd”šg
+="out")
+
+996 #gr.
+node_©Œ
+['fontsize'] = '9'
+
+997 #gr.
+node_©Œ
+['color'] = 'black'
+
+998 #
+#ià
+dÙf•©h
+ 
+is
+ 
+NÚe
+:
+
+1000 #dÙf•©h = 
+os
+.
+·th
+.
+	`ex·ndu£r
+('~') + '/.ros/tree.dot'
+
+1001 #
+#glob® 
+Ï¡_dÙ_Œ“
+
+
+1003 #
+## 
+Add
+ 
+the
+ 
+roÙ
+ 
+node
+
+
+1005 #gr.
+	`add_node
+(
+roÙ
+.
+Çme
+)
+
+1006 #nodğ
+gr
+.
+	`g‘_node
+(
+roÙ
+.
+Çme
+)
+
+1007 #
+#ià
+roÙ
+.
+¡©us
+ =ğ
+TaskStus
+.
+RUNNING
+:
+
+1009 #node.
+©Œ
+['fillcolor'] = 'yellow'
+
+1010 #node.
+©Œ
+['style'] = 'filled'
+
+1011 #node.
+©Œ
+['border'] = 'bold'
+
+1012 #–ià
+roÙ
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+1013 #node.
+©Œ
+['color'] = 'green'
+
+1014 #–ià
+roÙ
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+1015 #node.
+©Œ
+['color'] = 'red'
+
+1017 #node.
+©Œ
+['color'] = 'black'
+
+1018 #
+#deà
+	`add_edges
+(
+roÙ
+):
+
+1020 #fÜ 
+c
+ 
+š
+ 
+roÙ
+.
+chd»n
+:
+
+1021 #ià
+	`isš¡ªû
+(
+c
+, (
+Sequ’û
+, 
+I‹¿tÜ
+, 
+RªdomSequ’û
+, 
+RªdomI‹¿tÜ
+, 
+Weigh‹dRªdomSequ’û
+, 
+Weigh‹dRªdomI‹¿tÜ
+)):
+
+1022 #gr.
+	`add_node
+(
+c
+.
+Çme
+, 
+sh­e
+="cds")
+
+1023 #–ià
+	`isš¡ªû
+(
+c
+, (
+S–eùÜ
+, 
+RªdomS–eùÜ
+, 
+Weigh‹dRªdomS–eùÜ
+)):
+
+1024 #gr.
+	`add_node
+(
+c
+.
+Çme
+, 
+sh­e
+="diamond")
+
+1025 #–ià
+	`isš¡ªû
+(
+c
+, (
+P¬®ËlOÃ
+, 
+P¬®ËlAÎ
+)):
+
+1026 #gr.
+	`add_node
+(
+c
+.
+Çme
+, 
+sh­e
+="parallelogram")
+
+1027 #–ià
+	`isš¡ªû
+(
+c
+, 
+Inv”t
+):
+
+1028 #gr.
+	`add_node
+(
+c
+.
+Çme
+, 
+sh­e
+="house")
+
+1030 #gr.
+	`add_node
+(
+c
+.
+Çme
+)
+
+1031 #
+#gr.
+	`add_edge
+((
+roÙ
+.
+Çme
+, 
+c
+.name))
+
+1033 #nodğ
+gr
+.
+	`g‘_node
+(
+c
+.
+Çme
+)
+
+1034 #
+#ià
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+RUNNING
+:
+
+1036 #node.
+©Œ
+['fillcolor'] = 'yellow'
+
+1037 #node.
+©Œ
+['style'] = 'filled'
+
+1038 #node.
+©Œ
+['border'] = 'bold'
+
+1039 #–ià
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+SUCCESS
+:
+
+1040 #node.
+©Œ
+['color'] = 'green'
+
+1041 #–ià
+c
+.
+¡©us
+ =ğ
+TaskStus
+.
+FAILURE
+:
+
+1042 #node.
+©Œ
+['color'] = 'red'
+
+1044 #node.
+©Œ
+['color'] = 'black'
+
+1045 #
+#ià
+c
+.
+chd»n
+ != []:
+
+1047 #add_edges(
+c
+)
+
+1048 #
+#add_edges(
+roÙ
+)
+
+1050 #
+#cu¼’t_dÙ_Œ“ = 
+gr
+.
+	`¡ršg
+()
+
+1052 #
+#ià
+cu¼’t_dÙ_Œ“
+ !ğ
+Ï¡_dÙ_Œ“
+:
+
+1054 #gr.
+	`wr™e
+(
+dÙf•©h
+)
+
+1055 #Ï¡_dÙ_Œ“ = 
+gr
+.
+	`¡ršg
+()
+
+	@/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/src/pi_trees_lib/task_setup.py
+
+1 #!/
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+3 
+impÜt
+ 
+ro¥y
+
+
+4 
+impÜt
+ 
+aùiÚlib
+
+
+5 
+äom
+ 
+aùiÚlib
+ 
+impÜt
+ 
+GßlStus
+
+
+6 
+äom
+ 
+	ggeom‘ry_msgs
+.
+msg
+ 
+impÜt
+ 
+	gPo£
+, 
+	gPošt
+, 
+	gQu©”niÚ
+, 
+Twi¡
+
+
+7 
+äom
+ 
+	gmove_ba£_msgs
+.
+msg
+ 
+impÜt
+ 
+	gMoveBa£AùiÚ
+, 
+	gMoveBa£Gßl
+, 
+MoveBa£AùiÚF“dback
+
+
+8 
+äom
+ 
+	gtf
+.
+ŒªsfÜm©iÚs
+ 
+impÜt
+ 
+qu©”niÚ_äom_euËr
+
+
+9 
+äom
+ 
+	gvisu®iz©iÚ_msgs
+.
+msg
+ 
+impÜt
+ 
+M¬k”
+
+
+10 
+äom
+ 
+m©h
+ 
+impÜt
+ 
+pi
+
+
+11 
+äom
+ 
+cŞËùiÚs
+ 
+impÜt
+ 
+Ord”edDiù
+
+
+13 
+def
+ 
+	$£tup_sk_’vœÚm’t
+(
+£lf
+):
+
+14 #How 
+big
+ 
+is
+ 
+the
+ 
+squ¬e
+ 
+we
+ 
+wªt
+h
+robÙ
+ 
+to
+ 
+·ŒŞ
+?
+
+15 
+£lf
+.
+squ¬e_size
+ = 
+ro¥y
+.
+	`g‘_·¿m
+("~square_size", 1.0) #meters
+
+17 #S‘ 
+the
+ 
+low
+ 
+b©‹ry
+ 
+	`th»shŞd
+ (
+b‘w“n
+ 0 
+ªd
+ 100)
+
+18 
+£lf
+.
+low_b©‹ry_th»shŞd
+ = 
+ro¥y
+.
+	`g‘_·¿m
+('~low_battery_threshold', 50)
+
+20 #How 
+mªy
+ 
+times
+ 
+should
+ 
+we
+ 
+execu‹
+ 
+the
+ 
+·ŒŞ
+ 
+loİ
+
+
+21 
+£lf
+.
+n_·ŒŞs
+ = 
+ro¥y
+.
+	`g‘_·¿m
+("~n_patrols", 2) #meters
+
+23 #How dØ
+we
+ 
+have
+ 
+to
+ 
+g‘
+Ø
+—ch
+ 
+waypošt
+?
+
+24 
+£lf
+.
+move_ba£_timeout
+ = 
+ro¥y
+.
+	`g‘_·¿m
+("~move_base_timeout", 10) #seconds
+
+26 #In™Ÿliz
+the
+ 
+·ŒŞ
+ 
+couÁ”
+
+
+27 
+£lf
+.
+·ŒŞ_couÁ
+ = 0
+
+29 #Subsüib
+to
+ 
+the
+ 
+move_ba£
+ 
+aùiÚ
+ 
+£rv”
+
+
+30 
+£lf
+.
+move_ba£
+ = 
+aùiÚlib
+.
+	`Sim¶eAùiÚCl›Á
+("move_ba£", 
+MoveBa£AùiÚ
+)
+
+32 
+ro¥y
+.
+	`logšfo
+("Waiting for move_base‡ction server...")
+
+34 #Wa™ 
+up
+ 
+to
+ 60 
+£cÚds
+ 
+the
+ 
+aùiÚ
+ 
+£rv”
+Ø
+become
+ 
+avaabË
+
+
+35 
+£lf
+.
+move_ba£
+.
+	`wa™_fÜ_£rv”
+(
+ro¥y
+.
+	$Du¿tiÚ
+(60))
+
+37 
+ro¥y
+.
+	`logšfo
+("Connectedo move_base‡ction server")
+
+39 #C»©
+a
+ 
+li¡
+ 
+to
+ 
+hŞd
+ 
+the
+ 
+rg‘
+ 
+	`qu©”niÚs
+ (
+Ü›Á©iÚs
+)
+
+40 
+qu©”niÚs
+ = 
+	$li¡
+()
+
+42 #Fœ¡ 
+defše
+ 
+the
+ 
+cÜÃr
+ 
+Ü›Á©iÚs
+ 
+as
+ 
+EuËr
+ 
+ªgËs
+
+
+43 
+euËr_ªgËs
+ = (
+pi
+/2,…i, 3*pi/2, 0)
+
+45 #Th’ 
+cÚv”t
+ 
+the
+ 
+ªgËs
+ 
+to
+ 
+qu©”niÚs
+
+
+46 
+ªgË
+ 
+š
+ 
+euËr_ªgËs
+:
+
+47 
+q_ªgË
+ = 
+	`qu©”niÚ_äom_euËr
+(0, 0, 
+ªgË
+, 
+axes
+='sxyz')
+
+48 
+q
+ = 
+	$Qu©”niÚ
+(*
+q_ªgË
+)
+
+49 
+qu©”niÚs
+.
+	$­³nd
+(
+q
+)
+
+51 #C»©
+a
+ 
+li¡
+ 
+to
+ 
+hŞd
+ 
+the
+ 
+waypošt
+ 
+po£s
+
+
+52 
+£lf
+.
+waypošts
+ = 
+	$li¡
+()
+
+54 #Aµ’d 
+—ch
+ 
+of
+ 
+the
+ 
+four
+ 
+waypošts
+ 
+to
+h
+li¡
+. 
+Each
+ 
+waypošt
+
+
+55 #i 
+a
+ 
+po£
+ 
+cÚsi¡šg
+ 
+of
+‡ 
+pos™iÚ
+ 
+ªd
+ 
+Ü›Á©iÚ
+ 
+š
+ 
+the
+ 
+m­
+ 
+äame
+.
+
+56 
+£lf
+.
+waypošts
+.
+	`­³nd
+(
+	`Po£
+(
+	`Pošt
+(0.0, 0.0, 0.0), 
+qu©”niÚs
+[3]))
+
+57 
+£lf
+.
+waypošts
+.
+	`­³nd
+(
+	`Po£
+(
+	`Pošt
+(£lf.
+squ¬e_size
+, 0.0, 0.0), 
+qu©”niÚs
+[0]))
+
+58 
+£lf
+.
+waypošts
+.
+	`­³nd
+(
+	`Po£
+(
+	`Pošt
+(£lf.
+squ¬e_size
+, s–f.squ¬e_size, 0.0), 
+qu©”niÚs
+[1]))
+
+59 
+£lf
+.
+waypošts
+.
+	`­³nd
+(
+	`Po£
+(
+	`Pošt
+(0.0, s–f.
+squ¬e_size
+, 0.0), 
+qu©”niÚs
+[2]))
+
+61 #C»©
+a
+ 
+m­pšg
+ 
+of
+ 
+room
+ 
+Çmes
+ 
+to
+ 
+waypošt
+ 
+loÿtiÚs
+
+
+62 
+room_loÿtiÚs
+ = (('h®lway', 
+£lf
+.
+waypošts
+[0]),
+
+63 ('livšg_room', 
+£lf
+.
+waypošts
+[1]),
+
+64 ('k™ch’', 
+£lf
+.
+waypošts
+[2]),
+
+65 ('b©hroom', 
+£lf
+.
+waypošts
+[3]))
+
+67 #StÜ
+the
+ 
+m­pšg
+ 
+as
+ 
+ª
+ 
+Üd”ed
+ 
+diùiÚ¬y
+ 
+so
+ 
+we
+ 
+ÿn
+ 
+vis™
+h
+rooms
+ 
+š
+ 
+£qu’û
+
+
+68 
+£lf
+.
+room_loÿtiÚs
+ = 
+	$Ord”edDiù
+(
+room_loÿtiÚs
+)
+
+70 #Wh”
+is
+ 
+the
+ 
+dockšg
+ 
+¡©iÚ
+?
+
+71 
+£lf
+.
+dockšg_¡©iÚ_po£
+ = (
+	`Po£
+(
+	`Pošt
+(0.5, 0.5, 0.0), 
+	$Qu©”niÚ
+(0.0, 0.0, 0.0, 1.0)))
+
+73 #In™Ÿliz
+the
+ 
+waypošt
+ 
+visu®iz©iÚ
+ 
+m¬k”s
+ 
+RViz
+
+
+74 
+	$š™_waypošt_m¬k”s
+(
+£lf
+)
+
+76 #S‘ 
+a
+ 
+visu®iz©iÚ
+ 
+m¬k”
+ 
+©
+ 
+—ch
+ 
+waypošt
+
+
+77 
+waypošt
+ 
+š
+ 
+£lf
+.
+waypošts
+:
+
+78 
+p
+ = 
+	$Pošt
+()
+
+79 
+p
+ = 
+waypošt
+.
+pos™iÚ
+
+
+80 
+£lf
+.
+waypošt_m¬k”s
+.
+pošts
+.
+	$­³nd
+(
+p
+)
+
+82 #S‘ 
+a
+ 
+m¬k”
+ 
+the
+ 
+dockšg
+ 
+¡©iÚ
+
+
+83 
+	$š™_dockšg_¡©iÚ_m¬k”
+(
+£lf
+)
+
+85 #Publish” 
+to
+ 
+mªu®ly
+ 
+cÚŒŞ
+ 
+the
+ 
+	`robÙ
+ (
+e
+.
+g
+.Ø
+¡İ
+ 
+™
+)
+
+86 
+£lf
+.
+cmd_v–_pub
+ = 
+ro¥y
+.
+	`Publish”
+('cmd_v–', 
+Twi¡
+, 
+queue_size
+=5)
+
+88 
+ro¥y
+.
+	`logšfo
+("Starting Tasks")
+
+90 #Publish 
+the
+ 
+waypošt
+ 
+m¬k”s
+
+
+91 
+£lf
+.
+m¬k”_pub
+.
+	$publish
+(
+£lf
+.
+waypošt_m¬k”s
+)
+
+92 
+ro¥y
+.
+	$¦“p
+(1)
+
+93 
+£lf
+.
+m¬k”_pub
+.
+	$publish
+(
+£lf
+.
+waypošt_m¬k”s
+)
+
+95 #Publish 
+the
+ 
+dockšg
+ 
+¡©iÚ
+ 
+m¬k”
+
+
+96 
+£lf
+.
+dockšg_¡©iÚ_m¬k”_pub
+.
+	$publish
+(
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+)
+
+97 
+ro¥y
+.
+	$¦“p
+(1)
+
+99 
+def
+ 
+	$š™_waypošt_m¬k”s
+(
+£lf
+):
+
+100 #S‘ 
+up
+ 
+our
+ 
+waypošt
+ 
+m¬k”s
+
+
+101 
+m¬k”_sÿË
+ = 0.2
+
+102 
+m¬k”_liãtime
+ = 0 #0 
+is
+ 
+fÜev”
+
+
+103 
+m¬k”_ns
+ = 'waypoints'
+
+104 
+m¬k”_id
+ = 0
+
+105 
+m¬k”_cŞÜ
+ = {'r': 1.0, 'g': 0.7, 'b': 1.0, 'a': 1.0
+	}
+}
+
+107 #Defš
+a
+ 
+m¬k”
+ 
+publish”
+.
+
+108 
+£lf
+.
+m¬k”_pub
+ = 
+ro¥y
+.
+Publish”
+('waypošt_m¬k”s', 
+M¬k”
+, 
+queue_size
+=5)
+
+110 #In™Ÿliz
+the
+ 
+m¬k”
+ 
+pošts
+ 
+li¡
+.
+
+111 
+£lf
+.
+waypošt_m¬k”s
+ = 
+	$M¬k”
+()
+
+112 
+£lf
+.
+waypošt_m¬k”s
+.
+ns
+ = 
+m¬k”_ns
+
+
+113 
+£lf
+.
+waypošt_m¬k”s
+.
+id
+ = 
+m¬k”_id
+
+
+114 
+£lf
+.
+waypošt_m¬k”s
+.
+ty³
+ = 
+M¬k”
+.
+CUBE_LIST
+
+
+115 
+£lf
+.
+waypošt_m¬k”s
+.
+aùiÚ
+ = 
+M¬k”
+.
+ADD
+
+
+116 
+£lf
+.
+waypošt_m¬k”s
+.
+liãtime
+ = 
+ro¥y
+.
+	$Du¿tiÚ
+(
+m¬k”_liãtime
+)
+
+117 
+£lf
+.
+waypošt_m¬k”s
+.
+sÿË
+.
+x
+ = 
+m¬k”_sÿË
+
+
+118 
+£lf
+.
+waypošt_m¬k”s
+.
+sÿË
+.
+y
+ = 
+m¬k”_sÿË
+
+
+119 
+£lf
+.
+waypošt_m¬k”s
+.
+cŞÜ
+.
+r
+ = 
+m¬k”_cŞÜ
+['r']
+
+120 
+£lf
+.
+waypošt_m¬k”s
+.
+cŞÜ
+.
+g
+ = 
+m¬k”_cŞÜ
+['g']
+
+121 
+£lf
+.
+waypošt_m¬k”s
+.
+cŞÜ
+.
+b
+ = 
+m¬k”_cŞÜ
+['b']
+
+122 
+£lf
+.
+waypošt_m¬k”s
+.
+cŞÜ
+.
+a
+ = 
+m¬k”_cŞÜ
+['a']
+
+124 
+£lf
+.
+waypošt_m¬k”s
+.
+h—d”
+.
+äame_id
+ = 'odom'
+
+125 
+£lf
+.
+waypošt_m¬k”s
+.
+h—d”
+.
+¡amp
+ = 
+ro¥y
+.
+Time
+.
+	$now
+()
+
+126 
+£lf
+.
+waypošt_m¬k”s
+.
+pošts
+ = 
+	$li¡
+()
+
+128 
+def
+ 
+	$š™_dockšg_¡©iÚ_m¬k”
+(
+£lf
+):
+
+129 #Defš
+a
+ 
+m¬k”
+ 
+the
+ 
+ch¬gšg
+ 
+¡©iÚ
+
+
+130 
+m¬k”_sÿË
+ = 0.3
+
+131 
+m¬k”_liãtime
+ = 0 #0 
+is
+ 
+fÜev”
+
+
+132 
+m¬k”_ns
+ = 'waypoints'
+
+133 
+m¬k”_id
+ = 0
+
+134 
+m¬k”_cŞÜ
+ = {'r': 0.7, 'g': 0.7, 'b': 0.0, 'a': 1.0
+	}
+}
+
+136 
+£lf
+.
+dockšg_¡©iÚ_m¬k”_pub
+ = 
+ro¥y
+.
+Publish”
+('dockšg_¡©iÚ_m¬k”', 
+M¬k”
+, 
+queue_size
+=5)
+
+138 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+ = 
+	$M¬k”
+()
+
+139 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+ns
+ = 
+m¬k”_ns
+
+
+140 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+id
+ = 
+m¬k”_id
+
+
+141 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+ty³
+ = 
+M¬k”
+.
+CYLINDER
+
+
+142 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+aùiÚ
+ = 
+M¬k”
+.
+ADD
+
+
+143 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+liãtime
+ = 
+ro¥y
+.
+	$Du¿tiÚ
+(
+m¬k”_liãtime
+)
+
+144 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+sÿË
+.
+x
+ = 
+m¬k”_sÿË
+
+
+145 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+sÿË
+.
+y
+ = 
+m¬k”_sÿË
+
+
+146 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+sÿË
+.
+z
+ = 0.02
+
+147 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+cŞÜ
+.
+r
+ = 
+m¬k”_cŞÜ
+['r']
+
+148 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+cŞÜ
+.
+g
+ = 
+m¬k”_cŞÜ
+['g']
+
+149 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+cŞÜ
+.
+b
+ = 
+m¬k”_cŞÜ
+['b']
+
+150 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+cŞÜ
+.
+a
+ = 
+m¬k”_cŞÜ
+['a']
+
+152 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+h—d”
+.
+äame_id
+ = 'odom'
+
+153 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+h—d”
+.
+¡amp
+ = 
+ro¥y
+.
+Time
+.
+	$now
+()
+
+154 
+£lf
+.
+dockšg_¡©iÚ_m¬k”
+.
+po£
+ = s–f.
+dockšg_¡©iÚ_po£
+
+
+	@
+1
+.
+1
+/usr/include
+9
+761
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/examples/composite_tasks.py
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/examples/parallel_example.py
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/examples/patrol_tree.py
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/examples/weighted_random_example.py
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/examples/xd_btree_example.py
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/setup.py
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/src/pi_trees_lib/__init__.py
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/src/pi_trees_lib/pi_trees_lib.py
+/home/xd/project/xd_robot/xd_robot_test/src/pi_trees_lib/src/pi_trees_lib/task_setup.py
