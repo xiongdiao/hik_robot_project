@@ -45,9 +45,6 @@ catkin_package(CATKIN_DEPENDS
 catkin_install_python(PROGRAMS 
     scripts/hik_robot_main_topic.py
     scripts/hik_robot_main_service.py
-    scripts/test_service.py
-    scripts/test_patrol_topic.py
-    scripts/test_follow_topic.py
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

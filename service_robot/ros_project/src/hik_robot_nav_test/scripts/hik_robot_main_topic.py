@@ -6,7 +6,7 @@ import move_base
 import actionlib
 from std_msgs.msg import String 
 from hik_robot_nav_test.msg import HikRobotSetModulesMsg
-from rosjava_hikrobot_msgs.msg import HikRobotSetTaskMsg
+from rosjava_hikrobot_msgs.msg import *
 from geometry_msgs.msg import PoseStamped
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from smach_ros import SimpleActionState  
@@ -30,6 +30,27 @@ def follow_task(msg):
         pub = rospy.Publisher('HiRobotSetModules', HikRobotSetModulesMsg, queue_size=10)
         pub.publish(HikRobotSetModulesMsg(0,0,1))
 
+def approching(msg):
+    if msg.cmd == 0:
+        print "approching task stop"
+    elif msg.cmd == 1:
+        print "approching task start"
+
+def setPose(msg):
+    print "set pose", msg.num
+    if msg.num == 0:
+        # 到主卧
+        pass
+    elif msg.num == 1:
+        pass
+    elif msg.num == 2:
+        pass
+    elif msg.num == 3:
+        pass
+    elif msg.num == 4:
+        pass
+    else:
+        pass
 
 def set_task_callback(msg):
     group = msg.group
@@ -37,21 +58,19 @@ def set_task_callback(msg):
     position = msg.goal.target_pose.pose.position
     orientation = msg.goal.target_pose.pose.orientation
 
-    print(rospy.get_caller_id(), 
-        msg.group, 
-        position.x, position.y, position.z,
-        orientation.x, orientation.y, orientation.z, orientation.w)
+    print rospy.get_caller_id(), msg.group, msg.num, msg.cmd
 
     if msg.group == 2:
         if msg.num == 3: #[2, 3] patrol
             patrol_task(msg)
-
         elif msg.num == 0: #[2, 0] following
             follow_task(msg)
-
+        elif msg.num == 1: #[2, 1] approching
+            approching(msg)
         else:
             print "inviled msg"
-
+    elif msg.group == 3:
+        setPose(msg)
 
 def listener():
     rospy.init_node('hik_robot_test', anonymous=True)

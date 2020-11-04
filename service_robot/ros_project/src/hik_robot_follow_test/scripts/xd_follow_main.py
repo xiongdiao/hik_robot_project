@@ -19,13 +19,14 @@ class FollowTask():
         # The root node
         FollowTaskSeqNode = Sequence("FollowTask", reset_after = True)
         self.node = FollowTaskSeqNode
+        self.goal = None
         # Create follow task sub
         rospy.Subscriber("HikRobotFollowTaskMsg", HikRobotSetModulesMsg, self.followTaskMsgCb, tcp_nodelay=True)
 
         rospy.Service('HikRobotFollowTaskSrv', HikRobotSetModulesSrv, self.followTaskSrvCb)
 
         # Create follow action
-        FollowActionNode = FollowAction("FollowActionNode", 1, 5, 1)
+        FollowActionNode = FollowAction("FollowActionNode", 1, 2, 1)
 
         #PrepareCaramerSeq = Selector("PrepareCaramerSel")
         #TurnAroundActionNode = TurnAroundAction()
@@ -62,6 +63,7 @@ class FollowTask():
                 print "Running failure"
             else:
                 print "unknow status"
+
             time.sleep(1)
 
     def followTaskMsgCb(self, msg):
@@ -106,6 +108,42 @@ class FollowAction(Task):
     def reset(self):
         print self.name, "reset"
         self.count = 0
+
+class CheckPoseAction(Task):
+    def __init__(self, name, start, stop, step, *args, **kwargs):
+        super(CheckPoseAction, self).__init__(name, *args, **kwargs)
+        self.name = name
+        self.start = start
+        self.stop = stop
+        self.step = step
+        self.count = self.start
+        self.state = None
+        rospy.Subscriber("HikRobotCheckPoseMsg", HikRobotCheckPoseMsg, self.CheckPoseMsgCb, tcp_nodelay=True)
+        rospy.Service('HikRobotCheckPoseSrv', HikRobotCheckPoseSrv, self.CheckPoseSrvCb)
+        self.pub = rospy.Publisher('tmp', tmp, queue_size=10)
+
+        print "Creating CheckPoseAction", self.start, self.stop, self.step
+
+    # 如果在无状态情况下，则自动进入running状态，等待消息/服务回调配置进入其他状态
+    def run(self):
+        print self.name, "running"
+        if self.state == None:
+            # 第一次进入，检查老人是否在相机中，在返回成功，不在发送语音询问请求然后返回running状态
+            self.pub(tmp(0,0,0))
+            return self.state = TaskStatus.RUNNING
+
+        return self.state
+
+    def reset(self):
+        print self.name, "reset"
+        self.count = 0
+        self.state = None
+
+    def CheckPoseMsgCb(self, msg):
+        print self.name, "check pose msg cb"
+
+    def CheckPoseSrvCb(self, req):
+        print self.name, "check pose srv cb"
 
 if __name__ == '__main__':
     rospy.init_node('FollowTask')
