@@ -15,21 +15,22 @@ def talker():
         pub = rospy.Publisher('HikRobotFollowTaskMsg', HikRobotSetModulesMsg, queue_size=10, tcp_nodelay=True)
         rospy.init_node('test_follow_task', anonymous=True)
         
+        
         if int(sys.argv[2]) == 0:
             print "stop"
-            pub.publish(HikRobotSetModulesMsg(0,0,0))
+            pub.publish(HikRobotSetModulesMsg(2,1,0))
         else:
             print "start" 
-            pub.publish(HikRobotSetModulesMsg(0,0,1))
+            pub.publish(HikRobotSetModulesMsg(2,1,1))
 
     elif sys.argv[1] == 'srv':
         rospy.wait_for_service('HikRobotFollowTaskSrv')
         try:
             setFollowTaskSrv = rospy.ServiceProxy('HikRobotFollowTaskSrv', HikRobotSetModulesSrv)
             if int(sys.argv[2]) == 0:
-                req = HikRobotSetModulesSrvRequest(0,0,0)
+                req = HikRobotSetModulesSrvRequest(2,1,0)
             else:
-                req = HikRobotSetModulesSrvRequest(0,0,1)
+                req = HikRobotSetModulesSrvRequest(2,1,1)
 
             resp = setFollowTaskSrv(req)
             return resp.result

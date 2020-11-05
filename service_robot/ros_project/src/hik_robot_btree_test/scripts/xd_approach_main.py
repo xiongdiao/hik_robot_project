@@ -4,6 +4,7 @@
 import time
 import sys
 import signal
+import rospy
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from pi_trees_ros.pi_trees_ros import *
 from pi_trees_lib.pi_trees_lib import *
@@ -32,7 +33,7 @@ class ApproachTask():
         self.goal = None
         self.NeedApproach = False
 
-        rospy.Subscriber("HikRobotFollowTaskMsg", HikRobotSetModulesMsg, self.approachTaskMsgCb, tcp_nodelay=True)
+        rospy.Subscriber("HiRobotSetTaskMsg", HikRobotSetTaskMsg, self.approachTaskMsgCb, tcp_nodelay=True)
         rospy.Service('HikRobotFollowTaskSrv', HikRobotSetModulesSrv, self.approachTaskSrvCb)
 
         CheckPoseActionNode =  CheckPoseAction("CheckPoseActionNode")
@@ -70,8 +71,8 @@ class ApproachTask():
 
     def approachTaskMsgCb(self, msg):
         print "approachTaskMsgCb"
-        if msg.group == 0 and msg.num == 0:
-            if msg.param == 0:
+        if msg.group == 2 and msg.num == 1:
+            if msg.cmd == 0:
                 self.NeedApproach = False
                 self.node.cancel()
                 print "cancel task"
@@ -95,6 +96,7 @@ class ApproachAction(Task):
         self.goal = MoveBaseGoal()
 
         rospy.Subscriber("HiRobotSetTaskMsg", HikRobotSetTaskMsg, self.approachTaskMsgCb, tcp_nodelay=True)
+        self.voice_pub = rospy.Publisher('HikRobotVoiceOut', HikRobotVoiceOut, queue_size=10)
         # 定义action 执行move_bace_action, 在回调中配置action状态为successed
         self.moveBaseAction = actionlib.SimpleActionClient("move_base", MoveBaseAction)
 
@@ -125,18 +127,23 @@ class ApproachAction(Task):
                 self.moveBaseAction.send_goal(self.goal, active_cb = self.actionActiveCb, done_cb = self.actionDoneCb)
             elif msg.num == 1:
                 print "到次卧"
+                self.status = TaskStatus.SUCCESS
             elif msg.num == 2:
                 print "到阳台"
+                self.status = TaskStatus.SUCCESS
             elif msg.num == 3:
                 print "到客厅"
+                self.status = TaskStatus.SUCCESS
             elif msg.num == 4:
                 print "到厨房"
+                self.status = TaskStatus.SUCCESS
 
     def actionActiveCb(self):
         print self.name, "action active successed"
 
     def actionDoneCb(self, state, result):
         if state == 3:
+            self.voice_pub.publish(HikRobotVoiceOut(4, 0, 0, 0))
             self.status = TaskStatus.SUCCESS
 
         print "actionDoneCb", state, result
@@ -156,7 +163,7 @@ class CheckPoseAction(Task):
     # 如果在无状态情况下，则自动进入running状态，等待消息/服务回调配置进入其他状态
     def run(self):
         if self.status == None:
-            print self.name, "running"
+            print self.name, "req coordinate"
             # 第一次进入，检查老人是否在相机中，在返回成功，不在发送语音询问请求然后返回running状态
             self.voice_pub.publish(HikRobotVoiceOut(1, 0, 0, 0))
             self.status = TaskStatus.SUCCESS

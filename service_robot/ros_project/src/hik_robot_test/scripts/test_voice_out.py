@@ -2,6 +2,7 @@
 
 import rospy
 import sys
+import time
 from std_msgs.msg import String, Header
 from move_base_msgs.msg import MoveBaseGoal
 from geometry_msgs.msg import PoseStamped
@@ -14,6 +15,13 @@ def talker():
 
     voice_pub = rospy.Publisher('HikRobotVoiceOut', HikRobotVoiceOut, queue_size=10)
     rospy.init_node('VoiceOutTest', anonymous=True)
+    #voice_pub = rospy.Publisher('VoiceChatter', String, queue_size=10)
+    time.sleep(1)
+
+    timeout_t = time.time() + 5
+    #print time.time(), timeout_t
+    while voice_pub.get_num_connections() == 0 and timeout_t > time.time():
+        time.sleep(0.01)
 
     group = int(sys.argv[1])
     num   = int(sys.argv[2])
@@ -22,6 +30,8 @@ def talker():
 
     print group, num, person, cmd
     voice_pub.publish(HikRobotVoiceOut(group, num, person, cmd))
+    #print "hello world"
+    #voice_pub.publish(String("hello world"))
 
 if __name__ == '__main__':
     try:

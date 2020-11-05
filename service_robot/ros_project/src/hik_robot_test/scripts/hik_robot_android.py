@@ -7,16 +7,18 @@ from rosjava_hikrobot_msgs.msg import HikRobotVoiceOut
 
 
 def voiceOutSubCb(msg):
-    group = msg.group
-    num   = msg.num
-    person= msg.person
-    cmd   = msg.cmd
+   # group = msg.group
+   # num   = msg.num
+   # person= msg.person
+   # cmd   = msg.cmd
 
-    print rospy.get_caller_id(), group, num, person, cmd
+    #print rospy.get_caller_id(), group, num, person, cmd
+    print msg.data
 
 def listener():
     rospy.init_node('androidSimulate', anonymous=True)
-    rospy.Subscriber("HikRobotVoiceOut", HikRobotVoiceOut, voiceOutSubCb)
+    #rospy.Subscriber("HikRobotVoiceOut", HikRobotVoiceOut, voiceOutSubCb)
+    rospy.Subscriber("VoiceChatter", String, voiceOutSubCb)
     print('hik robot android Subscriber is ready to get req.')
     rospy.spin()
 
