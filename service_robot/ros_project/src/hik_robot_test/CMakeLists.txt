@@ -19,6 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_message_files(
     DIRECTORY msg 
+    FILES HikRobotFile.msg
     FILES HikRobotSetTaskMsg.msg
     FILES HikRobotSetModulesMsg.msg
 )
