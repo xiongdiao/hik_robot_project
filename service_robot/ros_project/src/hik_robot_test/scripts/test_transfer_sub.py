@@ -18,7 +18,7 @@ def set_task_callback(msg):
     print "get video data"
     data = msg.data
     name = msg.name
-    with open(name, 'wb') as f:
+    with open("../" + name, 'wb') as f:
         f.write(data)
 
 def listener():
