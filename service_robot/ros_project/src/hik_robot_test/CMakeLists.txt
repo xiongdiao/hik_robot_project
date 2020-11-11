@@ -28,6 +28,7 @@ add_service_files(
     DIRECTORY srv 
     FILES HikRobotSetTaskSrv.srv
     FILES HikRobotSetModulesSrv.srv
+    FILES HikRobotVoiceOutSrv.srv
 )
     
 

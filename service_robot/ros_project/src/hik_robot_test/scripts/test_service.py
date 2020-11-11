@@ -5,11 +5,10 @@ from __future__ import print_function
 import sys
 import rospy
 
-from hik_robot_nav.srv import *
 from std_msgs.msg import String, Header
 from move_base_msgs.msg import MoveBaseGoal
 from geometry_msgs.msg import PoseStamped
-from hik_robot_nav.msg import HikRobotSetTaskMsg
+from hik_robot_test.srv import *
 
 def client_req(x, y):
     rospy.wait_for_service('hik_robot_set_task_srv')
@@ -20,7 +19,14 @@ def client_req(x, y):
         robot_goal.target_pose.header = Header()
         #robot_goal.target_pose.header.stamp = time
         robot_goal.target_pose.header.stamp = rospy.Time(12,34)
-        req = HikRobotSetTaskSrvRequest(x,y,3,4,5,robot_goal)
+        #req = HikRobotSetTaskSrvRequest(x,y,3,4,5,robot_goal)
+        req = HikRobotSetTaskSrvRequest()
+        req.group = x
+        req.num = y
+        req.cmd = 3
+        req.param = 4
+        req.angle = 5
+        req.goal.append(robot_goal)
         #resp1 = add_two_ints(x, y)
         resp = add_two_ints(req)
         return resp.result
