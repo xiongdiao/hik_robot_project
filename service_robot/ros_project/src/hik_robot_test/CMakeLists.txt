@@ -17,6 +17,10 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib_msgs
 )
 
+add_action_files(
+    DIRECTORY action
+    FILES VoiceOut.action 
+)
 add_message_files(
     DIRECTORY msg 
     FILES HikRobotFile.msg
@@ -27,8 +31,11 @@ add_message_files(
 add_service_files( 
     DIRECTORY srv 
     FILES HikRobotSetTaskSrv.srv
-    FILES HikRobotSetModulesSrv.srv
     FILES HikRobotVoiceOutSrv.srv
+    FILES HikRobotTaskMngSrv.srv
+    FILES HikRobotTaskSrv.srv
+    FILES HikRobotStatusSrv.srv
+    FILES HikRobotFileSrv.srv
 )
     
 
