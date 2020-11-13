@@ -9,7 +9,7 @@ from hik_robot_test.msg import *
 
 def voiceout_srv_handle(req):
     print "voiceout_srv_handle"
-    return 5
+    return 1
 
 # 模拟安卓收发消息
 # HikRobotSetTaskSrv

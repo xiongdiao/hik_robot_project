@@ -128,7 +128,7 @@ class TaskMng():
     # 接受语音服务转发的task配置请求 启动，暂停，抢占等task任务处理
     def task_mng_handle(self, req):
         # 检查当前执行人物与新任务，并判断执行是否需要抢占，先实现简单直接抢占，后续补充根据紧急情况判断是否能够抢占
-        #print "task_mng_handle"
+        # print "task_mng_handle"
         if self.current_task:
             print "stop current_task", self.current_task
             self.current_task.stop()
@@ -143,6 +143,7 @@ class TaskMng():
             print "taskmng start approachtask"
             self.current_task = ApproachTask("ApproachTask")
 
+        # 返回1, 确认已收到
         return 1
 
     # task执行完成后做请求，查询人物list看是否有待执行人物
@@ -171,28 +172,32 @@ class TaskMng():
             # 执行频率间隔
             time.sleep(1)
 
-
 # 独立线程执行
 class PatrolTask():
     def __init__(self, name):
-        #self.req = req
         self.name = name
         self.count = 0
         self.need_pause = False
+        self.voice_done = False
         self.need_to_terminate = False
         self.terminate_mutex = threading.RLock()
+
         # 初始化行为树
         self.btree_init()
-        self.voice_done = False
+
         # 创建task thread 执行task行为树
         self.execute_thread = threading.Thread(None, self.executeLoop)
         self.execute_thread.start()
         
+        # 创建HikRobotStatusSrv client 
         self.set_status = rospy.ServiceProxy('HikRobotStatusSrv', HikRobotStatusSrv)
+
+        # 创建SimpleActionClient client 
         self.voice_ac_client = actionlib.SimpleActionClient('VoiceOutAction', VoiceOutAction)
 
         # 创建task service 服务，根据请求执行对应任务
         #rospy.Service(self.name, HikRobotTaskSrv, self.srv_handle)
+
         print name, "init finish"
 
     def __del__(self):
@@ -248,11 +253,10 @@ class PatrolTask():
 
             if status == TaskStatus.SUCCESS:
                 # 执行success后，上报任务状态已完成
-                print self.name, "Finished running tree."
                 with self.terminate_mutex:
-                    print "set terminate true."
                     self.need_to_terminate = True
                 self.set_task_status(1)
+                print self.name, "finish success"
 
             elif status == TaskStatus.RUNNING:
                 self.count = self.count + 1
@@ -269,15 +273,14 @@ class PatrolTask():
                 # 执行failure后，上报状态任务执行失败
                 with self.terminate_mutex:
                     self.need_to_terminate = True
-
-                self.set_status(rsp)
+                self.set_task_status(0)
                 print self.name, "Running failure"
             else:
                 print "unknow status"
             
-            print self.name, "loop"
+            #print self.name, "loop"
             #行为树帧间隔
-            time.sleep(1)
+            time.sleep(0.1)
 
 class ApproachTask():
     def __init__(self, name):
@@ -309,21 +312,19 @@ class ApproachTask():
         print self.name, "start"
         self.need_pause = False
 
-    def srv_handle():
+    def srv_handle(self):
         pass
 
-    def btree_init():
+    def btree_init(self):
         self.root_btree = None
 
+
     def executeLoop():
-        
         while (not rospy.is_shutdown()):
             if (self.need_to_terminate):
                 break
-        
             #执行行为树
             self.root_btree.run()
-            
             #行为树帧间隔
             time.sleep(0.1)
 
