@@ -7,8 +7,8 @@ from pi_trees_ros.pi_trees_ros import *
 from pi_trees_lib.pi_trees_lib import *
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
-from patrol_task import PatrolTask
-from approach_task import ApproachTask
+from task_patrol import PatrolTask
+from task_approach import ApproachTask
 
 class TaskMng():
     # 定义一个表，根据group num 直接找到对应处理函数然后做对应动作

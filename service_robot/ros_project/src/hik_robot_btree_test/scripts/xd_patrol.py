@@ -5,8 +5,8 @@ import sys
 import signal
 import rospy
 
-from task_mng_module import TaskMng
-from voice_service_module import VoiceService
+from module_task_mng import TaskMng
+from module_voice_service import VoiceService
 
 def quit(signum, frame):
     print 'stop task'
