@@ -33,29 +33,29 @@ def client_test():
         resp = SetTaskSrv(req)
         print "1", resp.result
 
-        time.sleep(3)
-        req.group = 2
-        req.num = 2
-        req.cmd = 1
-        req.param = 1
-        resp = SetTaskSrv(req)
-        print "2", resp.result
+    #    time.sleep(3)
+    #    req.group = 2
+    #    req.num = 2
+    #    req.cmd = 1
+    #    req.param = 1
+    #    resp = SetTaskSrv(req)
+    #    print "2", resp.result
 
-        time.sleep(3)
-        req.group = 2
-        req.num = 2
-        req.cmd = 1
-        req.param = 1
-        resp = SetTaskSrv(req)
-        print "3", resp.result
+    #    time.sleep(3)
+    #    req.group = 2
+    #    req.num = 2
+    #    req.cmd = 1
+    #    req.param = 1
+    #    resp = SetTaskSrv(req)
+    #    print "3", resp.result
 
-        time.sleep(3)
-        req.group = 2
-        req.num = 2
-        req.cmd = 1
-        req.param = 1
-        resp = SetTaskSrv(req)
-        print "4", resp.result
+    #    time.sleep(3)
+    #    req.group = 2
+    #    req.num = 2
+    #    req.cmd = 1
+    #    req.param = 1
+    #    resp = SetTaskSrv(req)
+    #    print "4", resp.result
 
         return resp.result
     except rospy.ServiceException as e:

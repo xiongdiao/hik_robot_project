@@ -2,9 +2,12 @@
 
 import rospy
 import actionlib
+import sys
+import time
 from actionlib_msgs.msg import GoalStatus
 from pi_trees_lib.pi_trees_lib import *
-import sys
+from hik_robot_test.srv import * 
+from hik_robot_test.msg import *
 
 class MonitorTask(Task):
     """

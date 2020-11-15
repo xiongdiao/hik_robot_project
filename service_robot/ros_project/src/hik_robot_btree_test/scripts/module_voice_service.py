@@ -2,15 +2,18 @@
 # -*- coding: UTF-8 -*-
 
 import rospy
+import time
 import threading
-from pi_trees_ros.pi_trees_ros import *
-from pi_trees_lib.pi_trees_lib import *
+import actionlib
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+from hik_robot_test.msg import *
+from hik_robot_test.srv import *
 
 
 # 语音服务类，处理语音输入输出指令，分发给不同的模块
 VOICEIN_STATUS = 0
 VOICEOUT_STATUS = 1
+
 class VoiceService():
     ac_feedback = VoiceOutFeedback()
     ac_result = VoiceOutResult()

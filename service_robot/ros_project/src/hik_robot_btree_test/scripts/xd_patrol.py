@@ -14,7 +14,9 @@ def quit(signum, frame):
     #sys.exit()
 
 if __name__ == '__main__':
+
     rospy.init_node('FollowTask')
+
     signal.signal(signal.SIGINT, quit)
     signal.signal(signal.SIGTERM, quit)
 
