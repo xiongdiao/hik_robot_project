@@ -72,8 +72,6 @@ class PatrolTask():
         self.move_action = []
 
         print "goal list len:", len(goal_list)
-        #rospy.loginfo("goal list len:", len(goal_list))
-
         
         # 创建HikRobotStatusSrv client 
         #rospy.wait_for_service('HikRobotStatusSrv')
@@ -105,7 +103,8 @@ class PatrolTask():
 
     # 初始化人物行为树，添加各节点
     def btree_init(self, goal_list):
-        self.root_btree = Sequence("FollowTask", reset_after = False)
+        self.root_btree = Sequence("PatrolTask", reset_after = False)
+
         # 添加巡检点
         for i in range(0, len(goal_point)):
             goal = MoveBaseGoal()
@@ -156,10 +155,6 @@ class PatrolTask():
     def srv_handle(self):
         pass
 
-    def voice_done_cb(self, state, result):
-        self.voice_done = True
-        print "voice_done_cb running"
-
     def set_task_status(self, status):
         StatusReq = HikRobotStatusSrvRequest()
         StatusReq.group = 2 
@@ -197,7 +192,7 @@ class PatrolTask():
                 with self.terminate_mutex:
                     self.need_to_terminate = True
                 self.set_task_status(0)
-                print self.name, "Running failure"
+                print self.name, "failure"
 
             else:
                 print "unknow status"

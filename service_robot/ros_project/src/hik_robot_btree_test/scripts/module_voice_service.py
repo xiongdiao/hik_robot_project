@@ -86,4 +86,5 @@ class VoiceService():
             time.sleep(0.2)
             
         # 只能在execute_cb中执行set_successed
+        print self.name, "voiceout handle set successed"
         self.voiceout_as.set_succeeded(self.ac_result)

@@ -915,7 +915,7 @@ class until_fail(Task):
     
 class always_fail(Task):
     """
-        Execute a task but always return FAILTURE
+        Execute a task but always return FAILURE 
     """
     def __init__(self, task):
         new_name = task.name + "_always_fail"

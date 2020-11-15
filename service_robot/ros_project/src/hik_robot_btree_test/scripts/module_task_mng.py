@@ -60,7 +60,7 @@ class TaskMng():
             # 实例化执行全屋巡检task
             print "taskmng start patroltask"
             self.current_task = PatrolTask("PatrolTask", goal_point)
-        elif req.grep == 2 and req.num == 1:
+        elif req.group == 2 and req.num == 1:
             # 实例化执行靠近老人task
             print "taskmng start approachtask"
             self.current_task = ApproachTask("ApproachTask")
@@ -72,9 +72,10 @@ class TaskMng():
     def status_srv_handle(self, req):
         # 检查完成的task是当前task 还是list中的task，并做对应处理
         # to be continue
-        rospy.loginfo(self.name + "handle task status req")
 
+        rospy.loginfo(self.name + "handle task status req")
         del self.current_task
+
         self.current_task = None
         if len(self.task_list) != 0:
             #当前任务列表不为空
