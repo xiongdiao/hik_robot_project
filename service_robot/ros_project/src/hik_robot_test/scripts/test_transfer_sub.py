@@ -15,7 +15,7 @@ import time
 from hik_robot_test.msg import HikRobotFile
 
 def set_task_callback(msg):
-    print "get video data"
+    print "get video data", msg.name
     data = msg.data
     name = msg.name
     with open("../" + name, 'wb') as f:

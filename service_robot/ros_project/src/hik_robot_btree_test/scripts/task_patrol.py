@@ -3,6 +3,9 @@
 
 import rospy
 import threading
+import subprocess
+import time
+import signal
 from pi_trees_ros.pi_trees_ros import *
 from pi_trees_lib.pi_trees_lib import *
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
@@ -17,6 +20,45 @@ goal_point=[
     ['阳台', (0.112158038761, 5.17669966938, 4.69199491482e-08),   (-1.5094644549e-08, 1.16399754546e-07, 0.734774907242, 0.678311016929)],
     ['书房', (-4.01049644155, 2.2449960999, -2.97643652442e-06),   (-6.6380401294e-06, -3.49535828781e-06, 0.899343173441, 0.437243474884)],  
 ]
+
+class PubVideoTask(Task):
+    def __init__(self, name, path, video_name, *args, **kwargs):
+        super(PubVideoTask, self).__init__(name, *args, **kwargs)
+        self.name = name
+        self.status = None
+        self.action_started = False
+        self.video_path = path
+        self.video_file = HikRobotFile()
+        self.video_file.name = video_name 
+        self.video_pub = rospy.Publisher('HiRobotVideoFile', HikRobotFile, queue_size=10)
+
+    def run(self):
+
+        if not self.action_started:
+            self.action_started = True
+
+            cmd = ["rosrun", "image_view", "video_recorder", "image:=/camera/rgb/image_raw", "_filename:=" + self.video_path + self.video_file.name]
+            p = subprocess.Popen(cmd, stdout=subprocess.PIPE, preexec_fn=os.setsid)
+            time.sleep(10)
+            try:
+                os.killpg(os.getpgid(p.pid), signal.SIGINT)
+            except OSError:
+                pass
+            p.wait()
+
+            self.status = TaskStatus.FAILURE
+            print self.name, "run"
+            with open(self.video_path + self.video_file.name, 'rb') as f:
+                data = f.read()
+                self.video_file.data = data
+                self.video_pub.publish(self.video_file)
+                self.status = TaskStatus.SUCCESS
+
+        return self.status
+
+    def reset(self):
+        self.action_started = False
+
 
 class PatrolTask():
     def __init__(self, name, goal_list):
@@ -42,9 +84,6 @@ class PatrolTask():
 
         # 创建task service 服务，根据请求执行对应任务
         #rospy.Service(self.name, HikRobotTaskSrv, self.srv_handle)
-
-        # 订阅坐标信息，存储当前坐标位置
-        #rospy.Subscriber("odom", Odometry, self.get_Odome)
 
         # 初始化行为树
         self.btree_init(goal_list)
@@ -81,6 +120,7 @@ class PatrolTask():
             goal.target_pose.pose.orientation.w = goal_point[i][2][3]
             self.move_action.append(SimpleActionTask("approachAction" + str(i), 'move_base', MoveBaseAction, goal, result_timeout = 600))
             self.root_btree.add_child(self.move_action[i])
+            self.root_btree.add_child(PubVideoTask("PubVideoTask" + str(i), './', str(i) + ".avi"))
 
         # 添加当前位置
         self.get_current_pose()
