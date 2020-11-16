@@ -40,19 +40,19 @@ class VoiceService():
         rospy.wait_for_service('HikRobotVoiceOutSrv')
         self.voiceout_handle = rospy.ServiceProxy('HikRobotVoiceOutSrv', HikRobotVoiceOutSrv)
 
-        print self.name, "init finish"
+        rospy.loginfo(self.name + " init finish")
 
     def voicein_srv_handle(self, req):
         if self.status == VOICEIN_STATUS:
             # 执行主动请求的set task指令
-            #print("runing VOICEIN_STATUS")
+            #rospy.loginfo("runing VOICEIN_STATUS")
             self.set_task(req)
         elif self.status == VOICEOUT_STATUS:
             # 执行被动应答的set task指令
-            #print("runing VOICEOUT_STATUS")
+            #rospy.loginfo("runing VOICEOUT_STATUS")
             self.voice_rsp(req)
         else:
-            print("unknow status")
+            rospy.loginfo("unknow status")
 
         # 返回1 说明收到消息
         return 1
@@ -75,16 +75,15 @@ class VoiceService():
 
     # 执行语音输出请求指令回调，进入语音请求状态 语音服务->安卓模块
     def voiceout_execute_cb(self, goal):
-        print self.name, "voiceout_execute_cb"
+        rospy.loginfo(self.name + " voiceout_execute_cb")
         self.status = VOICEOUT_STATUS
         req = HikRobotVoiceOutSrvRequest()
         req.group = goal.group
         rsp = self.voiceout_handle(req)
-        print self.name, "voiceout handle", rsp
         # 等待回复
         while self.status == VOICEOUT_STATUS and not self.voiceout_as.is_preempt_requested(): 
             time.sleep(0.2)
             
         # 只能在execute_cb中执行set_successed
-        print self.name, "voiceout handle set successed"
+        rospy.loginfo(self.name + " voiceout handle set successed")
         self.voiceout_as.set_succeeded(self.ac_result)

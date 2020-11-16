@@ -41,29 +41,45 @@ class TaskMng():
 
         self.execute_thread = threading.Thread(None, self.executeLoop)
         self.execute_thread.start()
-        print self.name, "init finish"
+        rospy.loginfo(self.name + " init finish")
     
     def __del__(self):
         assert(self.execute_thread)
         self.execute_thread.join()
 
-    # 接受语音服务转发的task配置请求 启动，暂停，抢占等task任务处理
-    def task_mng_handle(self, req):
+    def handle_current_task(self):
         # 检查当前执行人物与新任务，并判断执行是否需要抢占，先实现简单直接抢占，后续补充根据紧急情况判断是否能够抢占
-        # print "task_mng_handle"
         if self.current_task:
-            print "stop current_task", self.current_task
+            rospy.loginfo("stop current_task " + self.current_task.name)
             self.current_task.stop()
             self.task_list.append(self.current_task)
+    
+    def get_task_id(self):
+        pass
 
-        if req.group == 2 and req.num == 2 and req.cmd == 1 and req.param == 1:
-            # 实例化执行全屋巡检task
-            print "taskmng start patroltask"
-            self.current_task = PatrolTask("PatrolTask", goal_point)
-        elif req.group == 2 and req.num == 1:
-            # 实例化执行靠近老人task
-            print "taskmng start approachtask"
-            self.current_task = ApproachTask("ApproachTask")
+    # 接受语音服务转发的task配置请求 启动，暂停，抢占等task任务处理
+    def task_mng_handle(self, req):
+        self.handle_current_task()
+        # 启动任务
+        if req.cmd == 1:
+            rospy.loginfo("taskmng start: " + str(req.group) + " " + str(req.num))
+            if req.group == 2 and req.num == 2:
+                # 实例化执行全屋巡检task
+                self.current_task = PatrolTask("PatrolTask", goal_point)
+            elif req.group == 2 and req.num == 1:
+                # 实例化执行靠近老人task
+                self.current_task = ApproachTask("ApproachTask")
+
+        # 停止任务
+        elif req.cmd == 0:
+            rospy.loginfo("taskmng stop: " + str(req.group) + " " + str(req.num))
+            # 查找指令对应任务，并彻底结束任务
+
+        # 暂停任务
+        elif req.cmd == 2:
+            rospy.loginfo("taskmng pause: " + str(req.group) + " " + str(req.num))
+            # 查找指令对应任务，并暂停任务
+            pass
 
         # 返回1, 确认已收到
         return 1
@@ -72,14 +88,13 @@ class TaskMng():
     def status_srv_handle(self, req):
         # 检查完成的task是当前task 还是list中的task，并做对应处理
         # to be continue
-
-        rospy.loginfo(self.name + "handle task status req")
+        rospy.loginfo(self.name + " handle task status req")
         del self.current_task
 
         self.current_task = None
         if len(self.task_list) != 0:
             #当前任务列表不为空
-            print "get task from list"
+            rospy.loginfo("get task from list")
             self.current_task = self.task_list.pop()
             self.current_task.start()
 
@@ -93,7 +108,6 @@ class TaskMng():
             #        break
         
             # 执行任务管理
-            #print self.name, "loop running"
             
             # 执行频率间隔
             time.sleep(1)

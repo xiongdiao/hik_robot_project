@@ -47,7 +47,7 @@ class PubVideoTask(Task):
             p.wait()
 
             self.status = TaskStatus.FAILURE
-            print self.name, "run"
+            rospy.loginfo(self.name + " run")
             with open(self.video_path + self.video_file.name, 'rb') as f:
                 data = f.read()
                 self.video_file.data = data
@@ -71,7 +71,7 @@ class PatrolTask():
         self.current_goal = MoveBaseGoal()
         self.move_action = []
 
-        print "goal list len:", len(goal_list)
+        rospy.loginfo("goal list len: " + str(len(goal_list)))
         
         # 创建HikRobotStatusSrv client 
         #rospy.wait_for_service('HikRobotStatusSrv')
@@ -90,10 +90,10 @@ class PatrolTask():
         self.execute_thread = threading.Thread(None, self.executeLoop)
         self.execute_thread.start()
 
-        print name, "init finish"
+        rospy.loginfo(name + " init finish")
 
     def __del__(self):
-        print self.name, "del"
+        rospy.loginfo(self.name + " del")
         with self.terminate_mutex:
             self.need_to_terminate = True
 
@@ -128,13 +128,13 @@ class PatrolTask():
 
         print_tree(self.root_btree, use_symbols=True)
 
-    def stop(self):
-        print self.name, "stop"
-        #self.root_btree.stop()
+    def pause(self):
+        rospy.loginfo(self.name + " pause")
+        #self.root_btree.pause()
         self.need_pause = True
 
     def start(self):
-        print self.name, "start"
+        rospy.loginfo(self.name + " start")
         #self.root_btree.start()
         self.need_pause = False
 
@@ -159,8 +159,8 @@ class PatrolTask():
         StatusReq = HikRobotStatusSrvRequest()
         StatusReq.group = 2 
         StatusReq.num = 2 
-        StatusReq.cmd = 1 
-        StatusReq.param = status 
+        StatusReq.id = 1 
+        StatusReq.status = status
         self.set_status(StatusReq)
 
     def executeLoop(self):
@@ -169,7 +169,7 @@ class PatrolTask():
                 break
 
             if self.need_pause:
-                #self.root_btree.stop()
+                #self.root_btree.pause()
                 time.sleep(0.1)
                 continue
         
@@ -181,10 +181,10 @@ class PatrolTask():
                 with self.terminate_mutex:
                     self.need_to_terminate = True
                 self.set_task_status(1)
-                print self.name, "finish success"
+                rospy.loginfo(self.name + " finish success")
 
             elif status == TaskStatus.RUNNING:
-                #print self.name, "Running running"
+                #rospy.loginfo(self.name + " running")
                 pass
 
             elif status == TaskStatus.FAILURE:
@@ -192,12 +192,11 @@ class PatrolTask():
                 with self.terminate_mutex:
                     self.need_to_terminate = True
                 self.set_task_status(0)
-                print self.name, "failure"
+                rospy.loginfo(self.name + " failure")
 
             else:
-                print "unknow status"
+                rospy.loginfo("unknow status")
             
-            #print self.name, "loop"
             #行为树帧间隔
             time.sleep(0.1)
 

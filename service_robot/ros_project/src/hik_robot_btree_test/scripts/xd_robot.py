@@ -9,7 +9,7 @@ from module_task_mng import TaskMng
 from module_voice_service import VoiceService
 
 def quit(signum, frame):
-    print 'stop task'
+    rospy.loginfo("stop task")
     rospy.signal_shutdown("quit")
     #sys.exit()
 
@@ -29,6 +29,6 @@ if __name__ == '__main__':
     del voice_service 
     del task_mng
 
-    print "exit successed"
+    rospy.loginfo("exit successed")
 
 
