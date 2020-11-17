@@ -212,6 +212,8 @@ class SimpleActionTask(Task):
     
     def reset(self):
         rospy.logdebug("RESETTING " + str(self.name))
+        if not self.action_finished and self.action_started:
+            self.action_client.cancel_goal()
         self.action_started = False
         self.action_finished = False
         self.goal_status_reported = False

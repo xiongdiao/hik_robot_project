@@ -48,20 +48,22 @@ class TaskMng():
         self.execute_thread.join()
 
     def handle_current_task(self):
-        # 检查当前执行人物与新任务，并判断执行是否需要抢占，先实现简单直接抢占，后续补充根据紧急情况判断是否能够抢占
+        # 检查当前执行人物与新任务，直接取消旧任务执行新任务
         if self.current_task:
             rospy.loginfo("stop current_task " + self.current_task.name)
             self.current_task.stop()
-            self.task_list.append(self.current_task)
+            del self.current_task
+            self.current_task = None
+            #self.task_list.append(self.current_task)
     
     def get_task_id(self):
         pass
 
     # 接受语音服务转发的task配置请求 启动，暂停，抢占等task任务处理
     def task_mng_handle(self, req):
-        self.handle_current_task()
         # 启动任务
         if req.cmd == 1:
+            self.handle_current_task()
             rospy.loginfo("taskmng start: " + str(req.group) + " " + str(req.num))
             if req.group == 2 and req.num == 2:
                 # 实例化执行全屋巡检task
@@ -74,12 +76,15 @@ class TaskMng():
         elif req.cmd == 0:
             rospy.loginfo("taskmng stop: " + str(req.group) + " " + str(req.num))
             # 查找指令对应任务，并彻底结束任务
+            if self.current_task:
+                self.current_task.stop()
+                del self.current_task
+                self.current_task = None
 
         # 暂停任务
         elif req.cmd == 2:
             rospy.loginfo("taskmng pause: " + str(req.group) + " " + str(req.num))
             # 查找指令对应任务，并暂停任务
-            pass
 
         # 返回1, 确认已收到
         return 1

@@ -133,6 +133,11 @@ class PatrolTask():
         #self.root_btree.pause()
         self.need_pause = True
 
+    def stop(self):
+        rospy.loginfo(self.name + " stop")
+        self.need_to_terminate = True
+        self.root_btree.reset()
+
     def start(self):
         rospy.loginfo(self.name + " start")
         #self.root_btree.start()

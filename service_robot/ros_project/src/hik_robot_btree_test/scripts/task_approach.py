@@ -4,6 +4,7 @@
 import rospy
 import threading
 from nav_msgs.msg import Odometry 
+from actionlib_msgs.msg import GoalStatus
 from pi_trees_ros.pi_trees_ros import *
 from pi_trees_lib.pi_trees_lib import *
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
@@ -39,7 +40,7 @@ class ApproachTask():
         self.execute_thread.start()
 
     def __del__(self):
-        rospy.loginfo(self.name + "del")
+        rospy.loginfo(self.name + " del")
         with self.terminate_mutex:
             self.need_to_terminate = True
 
@@ -63,12 +64,18 @@ class ApproachTask():
 
         print_tree(self.root_btree, use_symbols=True)
 
-    def stop(self):
-        rospy.loginfo(self.name + "stop")
+    def pause(self):
+        rospy.loginfo(self.name + " pause")
+        #self.root_btree.pause()
         self.need_pause = True
 
+    def stop(self):
+        rospy.loginfo(self.name + " stop")
+        self.need_to_terminate = True
+        self.root_btree.reset()
+
     def start(self):
-        rospy.loginfo(self.name + "start")
+        rospy.loginfo(self.name + " start")
         self.need_pause = False
 
     def srv_handle(self):
@@ -99,10 +106,10 @@ class ApproachTask():
                 with self.terminate_mutex:
                     self.need_to_terminate = True
                 self.set_task_status(1)
-                rospy.loginfo(self.name + "finish success")
+                rospy.loginfo(self.name + " finish success")
 
             elif status == TaskStatus.RUNNING:
-                rospy.loginfo(self.name + "Running running")
+                rospy.loginfo(self.name + " running")
                 pass
 
             elif status == TaskStatus.FAILURE:
@@ -110,7 +117,7 @@ class ApproachTask():
                 with self.terminate_mutex:
                     self.need_to_terminate = True
                 self.set_task_status(0)
-                rospy.loginfo(self.name + "failure")
+                rospy.loginfo(self.name + " failure")
 
             else:
                 rospy.loginfo("unknow status")
@@ -124,7 +131,9 @@ class TurnArroundAction(Task):
         super(TurnArroundAction, self).__init__(name, *args, **kwargs)
         self.name = name
         self.status = None
-        rospy.loginfo("Creating TurnArroundAction angle" + str(angle))
+        self.action_finished = False
+        self.action_started = False
+        rospy.loginfo("Creating TurnArroundAction angle: " + str(angle))
         self.target_goal = MoveBaseGoal()
         current_odom = rospy.wait_for_message('/odom', Odometry, timeout=5)
         position    = current_odom.pose.pose.position
@@ -141,21 +150,34 @@ class TurnArroundAction(Task):
 
     # 如果在无状态情况下，则自动进入running状态，等待消息/服务回调配置进入其他状态
     def run(self):
+        if not self.action_started:
+            self.action_started = True
 
         status = self.turn_arround_task.run()
         if status == TaskStatus.SUCCESS:
-            rospy.loginfo(self.name + "finish success")
+            rospy.loginfo(self.name + " finish success")
         elif status == TaskStatus.RUNNING:
-            rospy.loginfo(self.name + "running")
+            rospy.loginfo(self.name + " running")
+        elif status == TaskStatus.SUCCESS:
+            rospy.loginfo(self.name + " running")
+            self.action_finished = True
         elif status == TaskStatus.FAILURE:
-            rospy.loginfo(self.name + "failure")
+            rospy.loginfo(self.name + " failure")
+            self.action_finished = True
         else:
             rospy.loginfo("unknow status")
 
         return status
 
     def reset(self):
-        self.turn_arround_task.reset()
+        rospy.loginfo(self.name + " reset")
+        if not self.action_finished and self.action_started == True:
+            rospy.loginfo(self.name + " turn arround task reset")
+            self.turn_arround_task.reset()
+
+        self.action_finished = False
+        self.turn_arround_task = None
+        self.action_started = False
 
 class ApproachAction(Task):
     def __init__(self, name, *args, **kwargs):
@@ -163,41 +185,46 @@ class ApproachAction(Task):
         self.name = name
         self.status = TaskStatus.RUNNING
         self.action_finished = False
+        self.action_started = False
 
         rospy.loginfo("Creating ApproachAction start")
         # 创建 VoiceOutAction 请求声音交互，并获取交互结果
         self.voice_ac_client = actionlib.SimpleActionClient('VoiceOutAction', VoiceOutAction)
+        self.voice_ac_finished = False
         time.sleep(1)
-        goal = VoiceOutGoal() 
-        goal.group = 2
-        goal.num = 1
-        self.voice_ac_client.send_goal(goal,
-                                    #active_cb = callback_active,
-                                    #feedback_cb = callback_feedback,
-                                    done_cb = self.callback_done)
+        self.voice_goal = VoiceOutGoal() 
+        self.voice_goal.group = 2
+        self.voice_goal.num = 1
         self.approach_task = None
         rospy.loginfo("Creating ApproachAction finish")
 
     def run(self):
+        if not self.action_started:
+            self.voice_ac_client.send_goal(self.voice_goal,
+                                        #active_cb = callback_active,
+                                        #feedback_cb = callback_feedback,
+                                        done_cb = self.callback_done)
+            self.action_started = True
+
         if not self.action_finished:
             if self.approach_task:
                 self.status = self.approach_task.run()
             else:
-                rospy.loginfo(self.name + "wait for target pose")
+                rospy.loginfo(self.name + " wait for target pose")
 
             if self.status == TaskStatus.FAILURE:
-                rospy.loginfo(self.name + "failure")
+                rospy.loginfo(self.name + " failure")
                 self.action_finished = True
             elif self.status == TaskStatus.SUCCESS:
-                rospy.loginfo(self.name + "success")
+                rospy.loginfo(self.name + " success")
                 self.action_finished = True
             elif self.status == TaskStatus.RUNNING:
-                rospy.loginfo(self.name + "running")
+                rospy.loginfo(self.name + " running")
  
         return self.status
 
     def callback_done(self, state, result):
-        rospy.loginfo(self.name + "callback done")
+        rospy.loginfo(self.name + " callback done")
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = 'map'
         goal.target_pose.header.stamp = rospy.Time.now()
@@ -209,10 +236,21 @@ class ApproachAction(Task):
         goal.target_pose.pose.orientation.z = goal_point[0][2][2]
         goal.target_pose.pose.orientation.w = goal_point[0][2][3]
         self.approach_task = SimpleActionTask("ApproachAction", 'move_base', MoveBaseAction, goal, result_timeout = 600)
+        self.voice_ac_finished = True
 
     def reset(self):
+        rospy.loginfo(self.name + " reset")
+        if GoalStatus.ACTIVE == self.voice_ac_client.get_state() or GoalStatus.PENDING == self.voice_ac_client.get_state():
+            rospy.loginfo(self.name + " cancel goal")
+            self.voice_ac_client.cancel_goal()
+
+        if self.approach_task and not self.action_finished:
+            self.approach_task.reset()
+
+        self.voice_ac_finished = False
         self.action_finished = False
         self.approach_task = None
+        self.action_started = False
 
 
 class CheckTarget(Task):
@@ -225,8 +263,9 @@ class CheckTarget(Task):
     # 如果在无状态情况下，则自动进入running状态，等待消息/服务回调配置进入其他状态
     def run(self):
         # 默认检测不到
-        rospy.loginfo(self.name + "status" + str(self.status))
+        rospy.loginfo(self.name + " status " + str(self.status))
         return self.status
 
     def reset(self):
+        rospy.loginfo(self.name + " reset")
         self.action_started = False
