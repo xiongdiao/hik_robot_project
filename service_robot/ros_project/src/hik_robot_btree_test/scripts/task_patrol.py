@@ -117,13 +117,13 @@ class PatrolTask():
             goal.target_pose.pose.orientation.y = goal_point[i][2][1]
             goal.target_pose.pose.orientation.z = goal_point[i][2][2]
             goal.target_pose.pose.orientation.w = goal_point[i][2][3]
-            self.move_action.append(SimpleActionTask("approachAction" + str(i), 'move_base', MoveBaseAction, goal, result_timeout = 600))
+            self.move_action.append(SimpleActionTask("patrolAction" + str(i), 'move_base', MoveBaseAction, goal, result_timeout = 600))
             self.root_btree.add_child(self.move_action[i])
             self.root_btree.add_child(PubVideoTask("PubVideoTask" + str(i), './', str(i) + ".avi"))
 
         # 添加当前位置
         self.get_current_pose()
-        self.move_action.append(SimpleActionTask("approachCurrent", 'move_base', MoveBaseAction, self.current_goal, result_timeout = 600))
+        self.move_action.append(SimpleActionTask("moveToStart", 'move_base', MoveBaseAction, self.current_goal, result_timeout = 600))
         self.root_btree.add_child(self.move_action[len(self.move_action) - 1])
 
         print_tree(self.root_btree, use_symbols=True)

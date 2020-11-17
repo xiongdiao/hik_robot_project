@@ -84,7 +84,7 @@ class TaskMng():
         # 暂停任务
         elif req.cmd == 2:
             rospy.loginfo("taskmng pause: " + str(req.group) + " " + str(req.num))
-            # 查找指令对应任务，并暂停任务
+            # 查找指令对应任务，并暂停任务，暂停功能暂不实现
 
         # 返回1, 确认已收到
         return 1

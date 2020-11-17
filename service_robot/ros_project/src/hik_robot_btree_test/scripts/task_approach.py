@@ -85,7 +85,7 @@ class ApproachTask():
         StatusReq = HikRobotStatusSrvRequest()
         StatusReq.group = 2 
         StatusReq.num = 1 
-        StatusReq.cmd = 1 
+        StatusReq.id  = 0
         StatusReq.param = status 
         self.set_status(StatusReq)
 
