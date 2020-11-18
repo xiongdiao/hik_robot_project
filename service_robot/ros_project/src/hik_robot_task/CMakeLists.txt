@@ -43,6 +43,7 @@ add_service_files(
   HikRobotVoiceOutSrv.srv
   HikRobotFileSrv.srv
   HikRobotNavSrv.srv
+  HikRobotPatrolSrv.srv
 
 ) 
 
