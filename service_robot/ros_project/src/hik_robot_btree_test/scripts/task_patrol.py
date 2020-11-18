@@ -11,8 +11,10 @@ from pi_trees_lib.pi_trees_lib import *
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from nav_msgs.msg import Odometry 
 
-from hik_robot_test.msg import *
-from hik_robot_test.srv import *
+from hik_robot_btree_test.msg import *
+from hik_robot_btree_test.srv import *
+from hik_robot_task.msg import *
+from hik_robot_task.srv import *
 
 goal_point=[   
     ['主卧', (-4.04510669055, -2.7710217169, -2.93690315345e-07 ), ( -2.50929001864e-06, -1.04532299837e-08, 0.999954645332, 0.0095240365914)],
@@ -28,9 +30,13 @@ class PubVideoTask(Task):
         self.status = None
         self.action_started = False
         self.video_path = path
-        self.video_file = HikRobotFile()
+        #self.video_file = HikRobotFile()
+        self.video_file = HikRobotFileSrvRequest()
         self.video_file.name = video_name 
         self.video_pub = rospy.Publisher('HiRobotVideoFile', HikRobotFile, queue_size=10)
+
+        rospy.wait_for_service('HiRobotVideoFile')
+        self.video_client_handle = rospy.ServiceProxy('HiRobotVideoFile', HikRobotFileSrv)
 
     def run(self):
 
@@ -51,7 +57,8 @@ class PubVideoTask(Task):
             with open(self.video_path + self.video_file.name, 'rb') as f:
                 data = f.read()
                 self.video_file.data = data
-                self.video_pub.publish(self.video_file)
+                #self.video_pub.publish(self.video_file)
+                self.video_client_handle(self.video_file)
                 self.status = TaskStatus.SUCCESS
 
         return self.status
@@ -78,7 +85,7 @@ class PatrolTask():
         self.set_status = rospy.ServiceProxy('HikRobotStatusSrv', HikRobotStatusSrv)
 
         # 创建SimpleActionClient client 
-        self.voice_ac_client = actionlib.SimpleActionClient('VoiceOutAction', VoiceOutAction)
+        self.voice_ac_client = actionlib.SimpleActionClient('VoiceOutAcAction', VoiceOutAcAction)
 
         # 创建task service 服务，根据请求执行对应任务
         #rospy.Service(self.name, HikRobotTaskSrv, self.srv_handle)

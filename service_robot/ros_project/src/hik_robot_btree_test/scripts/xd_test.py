@@ -5,8 +5,10 @@ import time
 from geometry_msgs.msg import Twist
 import sys, select, termios, tty
 
-from hik_robot_test.srv import * 
-from hik_robot_test.msg import *
+from hik_robot_btree_test.msg import *
+from hik_robot_btree_test.srv import *
+from hik_robot_task.msg import *
+from hik_robot_task.srv import *
 
 msg = """
 Simulate android to Control robot!
@@ -15,19 +17,8 @@ req: [group num cmd param angle goal[]]
 q : to quit
 """
 
-SetTaskBindings = {
-        '1':(2, 2, 1, 1),
-        '2':(2, 1, 1, 1),
-        '3':(0, 0, 0, 1),
-        '4':(0, 0, 0, 1),
-        '5':(0, 0, 0, 1),
-        '6':(0, 0, 0, 1),
-        '7':(0, 0, 0, 1),
-        '8':(0, 0, 0, 1),
-        }
-
 def voiceout_srv_handle(req):
-    print "get voiceout req:", req.group, req.num, req.person, req.cmd
+    print "get voiceout req:", req.group, req.voicenum
     return 1
 
 def getKey():
@@ -54,18 +45,18 @@ if __name__=="__main__":
     print msg
     while(1):
         
-        group = raw_input("req > ")
-        if len(group) < 7:
-            if len(group) > 0 and group[0] == 'q': 
+        argv = raw_input("req > ")
+        if len(argv) < 7:
+            if len(argv) > 0 and argv[0] == 'q': 
                 break
 
-            print "please input: group num cmd param"
+            print "please input: argv num cmd param"
             continue
 
-        req.group = int(group[0])
-        req.num   = int(group[2])
-        req.cmd   = int(group[4])
-        req.param = int(group[6])
+        req.group = int(argv[0])
+        req.num   = int(argv[2])
+        req.cmd   = int(argv[4])
+        req.param = int(argv[6])
         
 
         print "send req :", req.group, req.num, req.cmd, req.param

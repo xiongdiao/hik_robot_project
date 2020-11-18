@@ -6,8 +6,10 @@ import time
 import threading
 import actionlib
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
-from hik_robot_test.msg import *
-from hik_robot_test.srv import *
+from hik_robot_btree_test.msg import *
+from hik_robot_btree_test.srv import *
+from hik_robot_task.msg import *
+from hik_robot_task.srv import *
 
 
 # 语音服务类，处理语音输入输出指令，分发给不同的模块
@@ -15,8 +17,8 @@ VOICEIN_STATUS = 0
 VOICEOUT_STATUS = 1
 
 class VoiceService():
-    ac_feedback = VoiceOutFeedback()
-    ac_result = VoiceOutResult()
+    ac_feedback = VoiceOutAcFeedback()
+    ac_result = VoiceOutAcResult()
     srv_req = HikRobotSetModulesSrvRequest()
 
     def __init__(self, name):
@@ -29,7 +31,7 @@ class VoiceService():
         self.voicein_srv = rospy.Service("HikRobotSetTaskSrv", HikRobotSetTaskSrv, self.voicein_srv_handle)
 
         # 初始化 任务task模块->语音服务模块 语音输出交互请求action server
-        self.voiceout_as = actionlib.SimpleActionServer("VoiceOutAction", VoiceOutAction, execute_cb=self.voiceout_execute_cb, auto_start = False)
+        self.voiceout_as = actionlib.SimpleActionServer("VoiceOutAcAction", VoiceOutAcAction, execute_cb=self.voiceout_execute_cb, auto_start = False)
         self.voiceout_as.start()
 
         #初始化 语音服务模块->任务管理模块 task配置服务client句柄

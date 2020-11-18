@@ -13,8 +13,10 @@ import threading
 import time
 
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
-from hik_robot_test.msg import *
-from hik_robot_test.srv import *
+from hik_robot_btree_test.msg import *
+from hik_robot_btree_test.srv import *
+from hik_robot_task.msg import *
+from hik_robot_task.srv import *
 from task_patrol import PatrolTask
 from task_approach import ApproachTask
 

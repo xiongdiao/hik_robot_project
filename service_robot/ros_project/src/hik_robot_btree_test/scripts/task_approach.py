@@ -86,7 +86,7 @@ class ApproachTask():
         StatusReq.group = 2 
         StatusReq.num = 1 
         StatusReq.id  = 0
-        StatusReq.param = status 
+        StatusReq.status = status 
         self.set_status(StatusReq)
 
     def executeLoop(self):
@@ -189,7 +189,7 @@ class ApproachAction(Task):
 
         rospy.loginfo("Creating ApproachAction start")
         # 创建 VoiceOutAction 请求声音交互，并获取交互结果
-        self.voice_ac_client = actionlib.SimpleActionClient('VoiceOutAction', VoiceOutAction)
+        self.voice_ac_client = actionlib.SimpleActionClient('VoiceOutAcAction', VoiceOutAcAction)
         self.voice_ac_finished = False
         time.sleep(1)
         self.voice_goal = VoiceOutGoal() 

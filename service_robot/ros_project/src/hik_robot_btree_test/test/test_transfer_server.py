@@ -12,7 +12,7 @@ import rospy
 import sys
 import os
 import time
-from hik_robot_test.srv import *
+from hik_robot_task.srv import *
 
 def haldle_req(req):
     print "get video data"

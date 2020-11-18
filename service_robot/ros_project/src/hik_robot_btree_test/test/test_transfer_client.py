@@ -8,7 +8,7 @@ import signal
 import time
 import subprocess
 from std_msgs.msg import String, Header
-from hik_robot_test.srv import *
+from hik_robot_task.srv import *
 
 
 class PubVideoTask():

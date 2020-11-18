@@ -17,12 +17,24 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+add_action_files(
+    DIRECTORY action
+    FILES VoiceOutAc.action 
+)
+
 add_message_files(
     DIRECTORY msg
+    FILES HikRobotFile.msg
+    FILES HikRobotSetTaskMsg.msg
+    FILES HikRobotSetModulesMsg.msg
 )
 
 add_service_files( 
     DIRECTORY srv
+    FILES HikRobotTaskMngSrv.srv
+    FILES HikRobotTaskSrv.srv
+    FILES HikRobotStatusSrv.srv
+    FILES HikRobotSetModulesSrv.srv
 )
     
 
@@ -39,9 +51,6 @@ catkin_package(CATKIN_DEPENDS
 
 
 catkin_install_python(PROGRAMS 
-    scripts/xd_follow_main.py
-    scripts/test_follow.py
-    scripts/xd_btree_ros.py
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

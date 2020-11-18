@@ -1,0 +1,3 @@
+string name
+uint8  num
+uint8[] data
