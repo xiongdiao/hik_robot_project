@@ -67,7 +67,7 @@ class TaskMng():
         if req.cmd == 1:
             self.handle_current_task()
             rospy.loginfo("taskmng start: " + str(req.group) + " " + str(req.num))
-            if req.group == 2 and req.num == 2:
+            if req.group == 2: 
                 # 实例化执行全屋巡检task
                 self.current_task = PatrolTask("PatrolTask", goal_point)
             elif req.group == 2 and req.num == 1:
