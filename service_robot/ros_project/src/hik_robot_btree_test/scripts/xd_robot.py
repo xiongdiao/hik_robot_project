@@ -26,9 +26,6 @@ if __name__ == '__main__':
 
     rospy.spin()
 
-    del voice_service 
-    del task_mng
-
     rospy.loginfo("exit successed")
 
 
