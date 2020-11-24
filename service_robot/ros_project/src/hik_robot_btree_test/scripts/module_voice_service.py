@@ -29,6 +29,8 @@ class VoiceService():
         # 初始化 安卓模块->语音服务模块 语音输入请求 set task
         rospy.Service("HikRobotSetTaskSrv", HikRobotSetTaskSrv, self.voicein_srv_handle)
         rospy.Service('HikRobotPatrolSrv', HikRobotPatrolSrv, self.haldle_patrol_req)
+        rospy.Service('HikRobotApproachSrv', HikRobotApproachSrv, self.haldle_approach_req)
+        rospy.Service('HikRobotSetManPoseSrv', HikRobotSetManPoseSrv, self.haldle_setpose_req)
 
         # 初始化 任务task模块->语音服务模块 语音输出交互请求action server
         self.voiceout_as = actionlib.SimpleActionServer("VoiceOutAcAction", VoiceOutAcAction, execute_cb=self.voiceout_execute_cb, auto_start = False)
@@ -44,6 +46,19 @@ class VoiceService():
 
         rospy.loginfo(self.name + " init finish")
 
+    def voicein_srv_handle(self, req):
+        if self.status == VOICEIN_STATUS:
+            # 执行主动请求的set task指令
+            self.set_task(req)
+        elif self.status == VOICEOUT_STATUS:
+            # 执行被动应答的set task指令
+            self.voice_rsp(req)
+        else:
+            rospy.loginfo("unknow status")
+
+        # 返回1 说明收到消息
+        return 1
+
     def haldle_patrol_req(self,  req):
         if self.status == VOICEIN_STATUS:
             # 执行主动请求的set task指令
@@ -56,20 +71,30 @@ class VoiceService():
             self.voice_rsp(req)
         else:
             rospy.loginfo("unknow status")
-
         return 1
 
-    def voicein_srv_handle(self, req):
+    def haldle_approach_req(self, req):
         if self.status == VOICEIN_STATUS:
             # 执行主动请求的set task指令
-            self.set_task(req)
+            rospy.loginfo("haldle_approach_req voice in status " + str(req.cmd) + " " + str(req.angle))
         elif self.status == VOICEOUT_STATUS:
             # 执行被动应答的set task指令
-            self.voice_rsp(req)
+            rospy.loginfo("haldle_approach_req voice out status " + str(req.cmd) + " " + str(req.angle))
         else:
             rospy.loginfo("unknow status")
 
-        # 返回1 说明收到消息
+        return 1
+
+    def haldle_setpose_req(self, req):
+        if self.status == VOICEIN_STATUS:
+            # 执行主动请求的set task指令
+            rospy.loginfo("haldle_setpose_req voice in status " + str(req.group) + " " + str(req.room))
+        elif self.status == VOICEOUT_STATUS:
+            # 执行被动应答的set task指令
+            rospy.loginfo("haldle_setpose_req voice out status " + str(req.group) + " " + str(req.room))
+        else:
+            rospy.loginfo("unknow status")
+
         return 1
 
     def set_task(self, req):

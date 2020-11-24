@@ -44,7 +44,8 @@ add_service_files(
   HikRobotFileSrv.srv
   HikRobotNavSrv.srv
   HikRobotPatrolSrv.srv
-
+  HikRobotSetManPoseSrv.srv
+  HikRobotApproachSrv.srv
 ) 
 
 

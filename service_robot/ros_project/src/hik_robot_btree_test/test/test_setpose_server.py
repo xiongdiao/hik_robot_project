@@ -13,7 +13,7 @@ def haldle_req(req):
     return 1
 
 def listener():
-    rospy.init_node('test_node')
+    rospy.init_node('test_setpose_node')
     s = rospy.Service('HikRobotSetManPoseSrv', HikRobotSetManPoseSrv, haldle_req)
     print('hik robot HikRobotSetManPoseSrv service is ready to get req.')
     rospy.spin()
