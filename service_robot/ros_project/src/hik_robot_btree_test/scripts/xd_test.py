@@ -27,6 +27,14 @@ eg:
 q : to quit
 """
 
+tips="""
+     please input: task_type argv ...
+     eg:
+         patrol      : 0 [cmd num]
+         approach    : 1 [cmd angle]
+         setpose     : 2 [group room]
+"""
+
 def voiceout_srv_handle(req):
     print "get voiceout req:", req.group, req.voicenum
     return 1
@@ -77,15 +85,16 @@ if __name__=="__main__":
         param=[]
         argv = raw_input("req > ")
 
-        if len(argv) < 5:
+        if len(argv) < 3:
             if len(argv) > 0 and argv[0] == 'q': 
                 break
-
-            print "please input: task_type argv ..."
+            print tips
             continue
 
         param = map(int, argv.split())
-        print param
+        if len(param) < 3:
+            print tips
+            continue
 
         task_type = int(param[0])
         if task_type == 0:

@@ -23,6 +23,12 @@ eg:
 
 q : to quit
 """
+tips="""
+     please input: task_type argv ...
+     eg:
+         HikRobotVoiceOutSrv   : 0 [cmd voicenum]
+         HikRobotFileSrv       : 1 [name num data]
+"""
 
 def voicein_srv_handle(req):
     print "get voicein_srv_handle req:"
@@ -79,12 +85,16 @@ if __name__=="__main__":
     while(1):
         param=[]
         argv = raw_input("req > ")
-        if argv[0] == 'q': 
+        if len(argv) < 3:
+            if len(argv) > 0 and argv[0] == 'q': 
                 break
+
+            print tips
+            continue
 
         param = map(int, argv.split())
         if len(param) < 3:
-            print "please input: task_type argv ..."
+            print tips
             continue
         
         task_type = int(param[0])
