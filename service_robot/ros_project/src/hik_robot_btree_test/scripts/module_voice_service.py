@@ -28,9 +28,9 @@ class VoiceService():
 
         # 初始化 安卓模块->语音服务模块 语音输入请求 set task
         rospy.Service("HikRobotSetTaskSrv", HikRobotSetTaskSrv, self.voicein_srv_handle)
-        rospy.Service('HikRobotPatrolSrv', HikRobotPatrolSrv, self.haldle_patrol_req)
-        rospy.Service('HikRobotApproachSrv', HikRobotApproachSrv, self.haldle_approach_req)
-        rospy.Service('HikRobotSetManPoseSrv', HikRobotSetManPoseSrv, self.haldle_setpose_req)
+        rospy.Service('HikRobotPatrolSrv', HikRobotPatrolSrv, self.handle_patrol_req)
+        rospy.Service('HikRobotApproachSrv', HikRobotApproachSrv, self.handle_approach_req)
+        rospy.Service('HikRobotSetManPoseSrv', HikRobotSetManPoseSrv, self.handle_setpose_req)
 
         # 初始化 任务task模块->语音服务模块 语音输出交互请求action server
         self.voiceout_as = actionlib.SimpleActionServer("VoiceOutAcAction", VoiceOutAcAction, execute_cb=self.voiceout_execute_cb, auto_start = False)
@@ -59,39 +59,47 @@ class VoiceService():
         # 返回1 说明收到消息
         return 1
 
-    def haldle_patrol_req(self,  req):
+    def handle_patrol_req(self,  req):
+        TaskReq = HikRobotTaskMngSrvRequest()
+        TaskReq.group = 2
+        TaskReq.num = 2
+        TaskReq.cmd = req.cmd
         if self.status == VOICEIN_STATUS:
             # 执行主动请求的set task指令
-            TaskReq = HikRobotTaskMngSrvRequest()
-            TaskReq.group = 2
-            TaskReq.cmd = req.cmd
             self.set_task(TaskReq)
         elif self.status == VOICEOUT_STATUS:
             # 执行被动应答的set task指令
-            self.voice_rsp(req)
+            self.voice_rsp(TaskReq)
         else:
             rospy.loginfo("unknow status")
         return 1
 
-    def haldle_approach_req(self, req):
+    def handle_approach_req(self, req):
+        TaskReq = HikRobotTaskMngSrvRequest()
+        TaskReq.group = 2
+        TaskReq.num = 1
+        TaskReq.cmd = req.cmd
+        TaskReq.angle = req.angle
         if self.status == VOICEIN_STATUS:
-            # 执行主动请求的set task指令
-            rospy.loginfo("haldle_approach_req voice in status " + str(req.cmd) + " " + str(req.angle))
+            rospy.loginfo("handle_approach_req voice in: %d %d", req.cmd, req.angle)
+            self.set_task(TaskReq)
         elif self.status == VOICEOUT_STATUS:
-            # 执行被动应答的set task指令
-            rospy.loginfo("haldle_approach_req voice out status " + str(req.cmd) + " " + str(req.angle))
+            rospy.loginfo("handle_approach_req voice resp: %d %d", req.cmd, req.angle)
+            self.voice_rsp(TaskReq)
         else:
             rospy.loginfo("unknow status")
 
         return 1
 
-    def haldle_setpose_req(self, req):
+    def handle_setpose_req(self, req):
+        TaskReq = HikRobotTaskMngSrvRequest()
+        TaskReq.group = 2
+        TaskReq.num = req.room
         if self.status == VOICEIN_STATUS:
-            # 执行主动请求的set task指令
-            rospy.loginfo("haldle_setpose_req voice in status " + str(req.group) + " " + str(req.room))
+            rospy.loginfo("handle_setpose_req voice in: %d %d", req.group, req.room)
         elif self.status == VOICEOUT_STATUS:
-            # 执行被动应答的set task指令
-            rospy.loginfo("haldle_setpose_req voice out status " + str(req.group) + " " + str(req.room))
+            rospy.loginfo("handle_setpose_req voice resp: %d %d", req.group, req.room)
+            self.voice_rsp(TaskReq)
         else:
             rospy.loginfo("unknow status")
 
@@ -119,6 +127,7 @@ class VoiceService():
         self.status = VOICEOUT_STATUS
         req = HikRobotVoiceOutSrvRequest()
         req.group = goal.group
+        req.voicenum = goal.num
         rsp = self.voiceout_handle(req)
         # 等待回复
         while self.status == VOICEOUT_STATUS and not self.voiceout_as.is_preempt_requested(): 

@@ -35,6 +35,15 @@ def file_srv_haldle(req):
     print "get file transfer req:", req.name, req.num
     return 1
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
+
+    return False
+
 
 if __name__=="__main__":
     settings = termios.tcgetattr(sys.stdin)
@@ -61,9 +70,13 @@ if __name__=="__main__":
     setpose_handle= rospy.ServiceProxy('HikRobotSetManPoseSrv', HikRobotSetManPoseSrv)
 
     print msg
-
+    param=list()
+    j = str()
     while(1):
+        j=""
+        param=[]
         argv = raw_input("req > ")
+
         if len(argv) < 3:
             if len(argv) > 0 and argv[0] == 'q': 
                 break
@@ -71,23 +84,26 @@ if __name__=="__main__":
             print "please input: task_type argv ..."
             continue
 
-        task_type = int(argv[0])
+        param = map(int, argv.split())
+        print param
+
+        task_type = int(param[0])
         if task_type == 0:
             req = HikRobotPatrolSrvRequest()
-            req.cmd = int(argv[2])
-            req.num = int(argv[4])
+            req.cmd = int(param[1])
+            req.num = int(param[2])
             patrol_handle(req)
 
         elif task_type == 1:
             req = HikRobotApproachSrvRequest()
-            req.cmd   = int(argv[2])
-            req.angle = int(argv[4])
+            req.cmd   = int(param[1])
+            req.angle = int(param[2])
             approach_handle(req)
 
         elif task_type == 2:
             req = HikRobotSetManPoseSrvRequest()
-            req.group = int(argv[2])
-            req.room = int(argv[4])
+            req.group = int(param[1])
+            req.room = int(param[2])
             setpose_handle(req)
 
         time.sleep(0.5)

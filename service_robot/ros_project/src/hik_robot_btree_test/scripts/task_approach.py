@@ -9,6 +9,11 @@ from pi_trees_ros.pi_trees_ros import *
 from pi_trees_lib.pi_trees_lib import *
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
+from hik_robot_btree_test.msg import *
+from hik_robot_btree_test.srv import *
+from hik_robot_task.msg import *
+from hik_robot_task.srv import *
+
 goal_point=[   
     ['主卧', (-4.04510669055, -2.7710217169, -2.93690315345e-07 ), ( -2.50929001864e-06, -1.04532299837e-08, 0.999954645332, 0.0095240365914)],
     ['次卧', (4.28719623994, -1.68696903075, 6.7047681851e-09),    (1.39978919884e-08, 1.58919747342e-08, -0.557240571657, 0.830351097608)],
@@ -17,9 +22,10 @@ goal_point=[
 ]
 
 class ApproachTask():
-    def __init__(self, name):
+    def __init__(self, name, angle):
         self.name = name
         self.count = 0
+        self.angle = angle
         self.need_pause = False
         self.voice_done = False
         self.need_to_terminate = False
@@ -33,7 +39,7 @@ class ApproachTask():
         # 待算法提供topic，叶节点直接订阅消息并
 
         # 初始化行为树
-        self.btree_init(angle=0.5)
+        self.btree_init(angle=self.angle)
 
         # 创建task thread 执行task行为树
         self.execute_thread = threading.Thread(None, self.executeLoop)
@@ -133,12 +139,12 @@ class TurnArroundAction(Task):
         self.status = None
         self.action_finished = False
         self.action_started = False
-        rospy.loginfo("Creating TurnArroundAction angle: " + str(angle))
+        rospy.loginfo("Creating TurnArroundAction angle: %d", angle)
         self.target_goal = MoveBaseGoal()
         current_odom = rospy.wait_for_message('/odom', Odometry, timeout=5)
         position    = current_odom.pose.pose.position
         orientation = current_odom.pose.pose.orientation 
-        z = orientation.z + angle
+        z = orientation.z + angle/180
         if z > 1:
             z = z-2
         goal        = self.target_goal
@@ -192,9 +198,9 @@ class ApproachAction(Task):
         self.voice_ac_client = actionlib.SimpleActionClient('VoiceOutAcAction', VoiceOutAcAction)
         self.voice_ac_finished = False
         time.sleep(1)
-        self.voice_goal = VoiceOutGoal() 
-        self.voice_goal.group = 2
-        self.voice_goal.num = 1
+        self.voice_goal = VoiceOutAcGoal() 
+        self.voice_goal.group = 5
+        self.voice_goal.num = 0
         self.approach_task = None
         rospy.loginfo("Creating ApproachAction finish")
 
@@ -228,13 +234,13 @@ class ApproachAction(Task):
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = 'map'
         goal.target_pose.header.stamp = rospy.Time.now()
-        goal.target_pose.pose.position.x    = goal_point[0][1][0]
-        goal.target_pose.pose.position.y    = goal_point[0][1][1]
-        goal.target_pose.pose.position.z    = goal_point[0][1][2]
-        goal.target_pose.pose.orientation.x = goal_point[0][2][0]
-        goal.target_pose.pose.orientation.y = goal_point[0][2][1]
-        goal.target_pose.pose.orientation.z = goal_point[0][2][2]
-        goal.target_pose.pose.orientation.w = goal_point[0][2][3]
+        goal.target_pose.pose.position.x    = goal_point[result.num][1][0]
+        goal.target_pose.pose.position.y    = goal_point[result.num][1][1]
+        goal.target_pose.pose.position.z    = goal_point[result.num][1][2]
+        goal.target_pose.pose.orientation.x = goal_point[result.num][2][0]
+        goal.target_pose.pose.orientation.y = goal_point[result.num][2][1]
+        goal.target_pose.pose.orientation.z = goal_point[result.num][2][2]
+        goal.target_pose.pose.orientation.w = goal_point[result.num][2][3]
         self.approach_task = SimpleActionTask("ApproachAction", 'move_base', MoveBaseAction, goal, result_timeout = 600)
         self.voice_ac_finished = True
 
