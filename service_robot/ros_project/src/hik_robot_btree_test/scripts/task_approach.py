@@ -54,9 +54,8 @@ class ApproachTask():
 
     def btree_init(self, angle=0):
         self.root_btree = Selector("ApproachSelTask", reset_after = False)
-        ApproachTargetSeqNode = Sequence("ApproachTargetSeqnode", reset_after=False)
-
         FirstCheckTargetNode = CheckTarget("FirstCheckTargetAction")
+        ApproachTargetSeqNode = Sequence("ApproachTargetSeqnode", reset_after=False)
 
         TurnArroundActionNode = TurnArroundAction("TurnArroundActionNode", angle)
         ApproachActionNode = ApproachAction("ApproachActionNode")

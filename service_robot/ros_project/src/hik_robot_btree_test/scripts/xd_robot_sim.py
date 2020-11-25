@@ -15,8 +15,8 @@ msg = """
 Simulate robot main controller!
 ----------------------------------
 type:
-    voice out : 0 [cmd voicenum]
-    file out  : 1 [name data]
+    HikRobotVoiceOutSrv   : 0 [cmd voicenum]
+    HikRobotFileSrv       : 1 [name num data]
 
 eg:
     0 1 1 
@@ -30,27 +30,27 @@ def voicein_srv_handle(req):
     return 1
 
 def handle_patrol_req(req):
-    print "get handle_patrol_req req:"
+    print "get handle_patrol_req:"
     print req
     return 1
 
 def handle_approach_req(req):
-    print "get handle_approach_req req:"
+    print "get handle_approach_req:"
     print req
     return 1
 
 def handle_setpose_req(req):
-    print "get handle_setpose_req req:"
+    print "get handle_setpose_req:"
     print req
     return 1
 
 def handle_follow_req(req):
-    print "get handle_follow_req req:"
+    print "get handle_follow_req:"
     print req
     return 1
 
 def handle_nav_req(req):
-    print "get handle_nav_req req:"
+    print "get handle_nav_req:"
     print req
     return 1
 
@@ -79,16 +79,14 @@ if __name__=="__main__":
     while(1):
         param=[]
         argv = raw_input("req > ")
-
-        if len(argv) < 5:
-            if len(argv) > 0 and argv[0] == 'q': 
+        if argv[0] == 'q': 
                 break
-            print "please input: task_type argv ..."
-            continue
 
         param = map(int, argv.split())
-        print param
-
+        if len(param) < 3:
+            print "please input: task_type argv ..."
+            continue
+        
         task_type = int(param[0])
         if task_type == 0:
             req = HikRobotVoiceOutSrvRequest()
