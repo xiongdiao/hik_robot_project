@@ -77,7 +77,7 @@ if __name__=="__main__":
         param=[]
         argv = raw_input("req > ")
 
-        if len(argv) < 3:
+        if len(argv) < 5:
             if len(argv) > 0 and argv[0] == 'q': 
                 break
 

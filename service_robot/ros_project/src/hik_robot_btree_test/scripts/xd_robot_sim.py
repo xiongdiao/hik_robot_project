@@ -14,7 +14,9 @@ msg = """
 ----------------------------------
 Simulate robot main controller!
 ----------------------------------
-req: [group voicenum]
+type:
+    voice out : 0 [cmd voicenum]
+    file out  : 1 [name data]
 
 eg:
     0 1 1 
@@ -42,6 +44,16 @@ def handle_setpose_req(req):
     print req
     return 1
 
+def handle_follow_req(req):
+    print "get handle_follow_req req:"
+    print req
+    return 1
+
+def handle_nav_req(req):
+    print "get handle_nav_req req:"
+    print req
+    return 1
+
 if __name__=="__main__":
     settings = termios.tcgetattr(sys.stdin)
     rospy.init_node('xd_robot_sim')
@@ -51,32 +63,43 @@ if __name__=="__main__":
     rospy.Service('HikRobotPatrolSrv', HikRobotPatrolSrv, handle_patrol_req)
     rospy.Service('HikRobotApproachSrv', HikRobotApproachSrv, handle_approach_req)
     rospy.Service('HikRobotSetManPoseSrv', HikRobotSetManPoseSrv, handle_setpose_req)
+    rospy.Service('HikRobotNavSrv', HikRobotNavSrv, handle_nav_req)
+    rospy.Service('HikRobotFollowSrv', HikRobotFollowSrv, handle_follow_req)
 
     # 初始化 语音服务模块->安卓模块 请求安卓发声
     rospy.wait_for_service('HikRobotVoiceOutSrv')
     voiceout_handle = rospy.ServiceProxy('HikRobotVoiceOutSrv', HikRobotVoiceOutSrv)
 
+    # 初始化 文件上传模块
+    rospy.wait_for_service('HiRobotVideoFile')
+    file_client_handle = rospy.ServiceProxy('HiRobotVideoFile', HikRobotFileSrv)
+
     print msg
     param=list()
-    req = HikRobotVoiceOutSrvRequest()
     while(1):
         param=[]
         argv = raw_input("req > ")
 
-        if len(argv) < 3:
+        if len(argv) < 5:
             if len(argv) > 0 and argv[0] == 'q': 
                 break
-
-            print "please input: group voicenum"
+            print "please input: task_type argv ..."
             continue
 
         param = map(int, argv.split())
         print param
 
-        req.group = int(param[0])
-        req.voicenum = int(param[1])
+        task_type = int(param[0])
+        if task_type == 0:
+            req = HikRobotVoiceOutSrvRequest()
+            req.group = int(param[1])
+            req.voicenum = int(param[2])
+            voiceout_handle(req)
 
-        voiceout_handle(req)
+        elif task_type == 1:
+            file_req = HikRobotFileSrvRequest()
+            file_req.name = str(param[1])
+            file_client_handle(file_req)
 
         time.sleep(0.5)
 
