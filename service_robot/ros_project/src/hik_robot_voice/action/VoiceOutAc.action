@@ -1,0 +1,16 @@
+#goal definition
+int64 group
+int64 num
+int64 person
+int64 cmd
+---
+#result definition
+int64 group
+int64 num
+int64 cmd
+int64 param
+int64 angle
+move_base_msgs/MoveBaseGoal[] goal
+---
+#feedback
+int64 feedback
